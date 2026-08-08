@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" fill="none">
+  <rect width="600" height="450" fill="#F4F6F3"/>
+  <circle cx="300" cy="210" r="140" fill="#EAE5DE"/>
+  
+  <!-- Vermicompost Illustration -->
+  <g transform="translate(180, 95)">
+    <!-- Aerated Vermibed Planter / Pot -->
+    <path d="M40 110 L200 110 L185 240 L55 240 Z" fill="#2E1C14" rx="8"/>
+    <!-- Fine Black Gold Soil Grain Texture -->
+    <ellipse cx="120" cy="115" rx="78" ry="14" fill="#3D261C"/>
+    
+    <!-- Organic Vermi Castings & Worm Silhouette elements -->
+    <path d="M70 140 Q85 130 100 145 T130 140" stroke="#D98880" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <path d="M110 180 Q125 170 140 185 T170 180" stroke="#D98880" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <circle cx="75" cy="195" r="4" fill="#5D4037"/>
+    <circle cx="105" cy="215" r="5" fill="#4E342E"/>
+    <circle cx="150" cy="205" r="4" fill="#3E2723"/>
+    
+    <!-- Rich Plant Stem with Multiple Leaves -->
+    <path d="M120 115 Q118 60 120 25" stroke="#1F6B4F" stroke-width="4" stroke-linecap="round"/>
+    <path d="M120 75 Q90 50 70 70 Q95 85 120 75 Z" fill="#1F6B4F"/>
+    <path d="M120 60 Q150 35 170 55 Q145 70 120 60 Z" fill="#5D8A72"/>
+    <path d="M120 40 Q100 15 90 30 Q105 45 120 40 Z" fill="#1F6B4F"/>
+  </g>
+  
+  <rect x="120" y="380" width="360" height="42" rx="21" fill="#FFFFFF" stroke="#E2E8E0"/>
+  <circle cx="145" cy="401" r="5" fill="#1F6B4F"/>
+  <text x="160" y="406" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="#171A18">Vermicompost • Earthworm-Processed Castings</text>
+</svg>

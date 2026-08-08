@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" fill="none">
+  <!-- Circular Loop Icon -->
+  <g transform="translate(10, 10)">
+    <circle cx="30" cy="30" r="26" stroke="#E2E8E0" stroke-width="4" stroke-dasharray="3 3"/>
+    <!-- Infinity / Double Möbius Circular Arrows -->
+    <path d="M18 30 C 18 20, 26 16, 33 24 C 38 29, 44 34, 50 30 C 54 27, 54 21, 48 18" stroke="#1F6B4F" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+    <path d="M42 30 C 42 40, 34 44, 27 36 C 22 31, 16 26, 10 30 C 6 33, 6 39, 12 42" stroke="#5D8A72" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+    <!-- Orange Reinvestment Accent Node -->
+    <circle cx="48" cy="18" r="4.5" fill="#E65100"/>
+    <polygon points="46,14 53,17 48,22" fill="#E65100"/>
+    <!-- Green Loop Node -->
+    <circle cx="12" cy="42" r="4" fill="#1F6B4F"/>
+  </g>
+  <!-- Brand Typography -->
+  <text x="82" y="44" font-family="'Space Grotesk', 'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28" fill="#171A18" letter-spacing="1.5">ECO<tspan fill="#1F6B4F">LOOP</tspan></text>
+  <text x="84" y="60" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="9.5" fill="#5D8A72" letter-spacing="2.8">FROM WASTE TO WORTH</text>
+</svg>

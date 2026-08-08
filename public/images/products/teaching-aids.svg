@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" fill="none">
+  <rect width="600" height="450" fill="#F4F6F3"/>
+  <circle cx="300" cy="210" r="140" fill="#EEF2F6"/>
+  
+  <!-- Teaching-Learning Aids (Modular Geometric & Science Demo Model) -->
+  <g transform="translate(180, 80)">
+    <!-- Upcycled Cardboard & Bottle Cap Abacus / Science Kit -->
+    <rect x="25" y="40" width="190" height="190" rx="14" fill="#FFFFFF" stroke="#1F6B4F" stroke-width="3"/>
+    
+    <!-- Wire Track 1 -->
+    <line x1="45" y1="80" x2="195" y2="80" stroke="#5D8A72" stroke-width="3"/>
+    <circle cx="65" cy="80" r="10" fill="#E65100"/>
+    <circle cx="90" cy="80" r="10" fill="#1F6B4F"/>
+    <circle cx="115" cy="80" r="10" fill="#F1C40F"/>
+    
+    <!-- Wire Track 2 -->
+    <line x1="45" y1="130" x2="195" y2="130" stroke="#5D8A72" stroke-width="3"/>
+    <circle cx="145" cy="130" r="10" fill="#3498DB"/>
+    <circle cx="170" cy="130" r="10" fill="#9B59B6"/>
+    
+    <!-- Wire Track 3 with Gear/Wheel -->
+    <line x1="45" y1="180" x2="195" y2="180" stroke="#5D8A72" stroke-width="3"/>
+    <circle cx="70" cy="180" r="12" fill="#2ECC71"/>
+    <polygon points="70,165 74,175 85,175 76,182 79,193 70,186 61,193 64,182 55,175 66,175" fill="#FFFFFF"/>
+    <circle cx="120" cy="180" r="10" fill="#E67E22"/>
+    
+    <!-- Base stand -->
+    <rect x="15" y="235" width="210" height="15" rx="4" fill="#171A18"/>
+  </g>
+  
+  <rect x="110" y="380" width="380" height="42" rx="21" fill="#FFFFFF" stroke="#E2E8E0"/>
+  <circle cx="135" cy="401" r="5" fill="#1F6B4F"/>
+  <text x="150" y="406" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="#171A18">Teaching Aids • STEM &amp; Environmental Education</text>
+</svg>

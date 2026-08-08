@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" fill="none">
+  <rect width="600" height="450" fill="#F4F6F3"/>
+  <circle cx="300" cy="210" r="140" fill="#ECE7DF"/>
+  
+  <!-- Organic Compost Illustration -->
+  <g transform="translate(180, 100)">
+    <!-- Jute Eco Bag / Rich Dark Soil Mound -->
+    <path d="M40 230 C20 180, 35 90, 120 90 C205 90, 220 180, 200 230 Z" fill="#D7C4A8" stroke="#B89F7D" stroke-width="2"/>
+    <path d="M50 120 C80 110, 160 110, 190 120 L180 230 L60 230 Z" fill="#5D4037"/>
+    <!-- Dark Soil / Humus Texture -->
+    <circle cx="85" cy="150" r="12" fill="#3E2723"/>
+    <circle cx="120" cy="140" r="18" fill="#4E342E"/>
+    <circle cx="155" cy="160" r="15" fill="#3E2723"/>
+    <circle cx="95" cy="185" r="16" fill="#4E342E"/>
+    <circle cx="140" cy="195" r="18" fill="#3E2723"/>
+    
+    <!-- Sprouting Young Plant from Compost -->
+    <path d="M120 140 Q115 70 120 40" stroke="#1F6B4F" stroke-width="4" stroke-linecap="round"/>
+    <path d="M120 60 Q95 30 75 55 Q100 70 120 60 Z" fill="#1F6B4F"/>
+    <path d="M120 50 Q145 20 165 45 Q140 60 120 50 Z" fill="#5D8A72"/>
+  </g>
+  
+  <rect x="130" y="380" width="340" height="42" rx="21" fill="#FFFFFF" stroke="#E2E8E0"/>
+  <circle cx="155" cy="401" r="5" fill="#1F6B4F"/>
+  <text x="170" y="406" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="#171A18">Organic Compost • Aerobic Scraps &amp; Garden Waste</text>
+</svg>

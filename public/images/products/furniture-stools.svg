@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" fill="none">
+  <rect width="600" height="450" fill="#F4F6F3"/>
+  <circle cx="300" cy="210" r="140" fill="#EDEFE9"/>
+  
+  <!-- Recycled Material Stool / Modular Seating -->
+  <g transform="translate(180, 90)">
+    <!-- Stool Top Cushion / Upcycled Wooden Round Seat -->
+    <ellipse cx="120" cy="70" rx="90" ry="24" fill="#D7CCC8" stroke="#1F6B4F" stroke-width="3"/>
+    <ellipse cx="120" cy="62" rx="90" ry="24" fill="#EFEBE9" stroke="#1F6B4F" stroke-width="2"/>
+    <path d="M30 62 C30 75, 210 75, 210 62 L210 78 C210 90, 30 90, 30 78 Z" fill="#D7CCC8"/>
+    
+    <!-- Recycled Tire / Compressed Tube Rim Base -->
+    <ellipse cx="120" cy="115" rx="80" ry="20" fill="#37474F"/>
+    <ellipse cx="120" cy="110" rx="80" ry="20" fill="#455A64"/>
+    
+    <!-- 3 Stool Legs (Upcycled Pallet Wood / Reclaimed Pipes) -->
+    <!-- Left Leg -->
+    <rect x="50" y="120" width="16" height="130" rx="4" fill="#8D6E63" stroke="#5D4037" stroke-width="2" transform="rotate(8 58 120)"/>
+    <!-- Right Leg -->
+    <rect x="174" y="120" width="16" height="130" rx="4" fill="#8D6E63" stroke="#5D4037" stroke-width="2" transform="rotate(-8 182 120)"/>
+    <!-- Back Leg -->
+    <rect x="112" y="115" width="16" height="140" rx="4" fill="#6D4C41" stroke="#4E342E" stroke-width="2"/>
+    
+    <!-- Ring Reinforcement Strut -->
+    <ellipse cx="120" cy="190" rx="60" ry="12" fill="none" stroke="#1F6B4F" stroke-width="4"/>
+  </g>
+  
+  <rect x="110" y="380" width="380" height="42" rx="21" fill="#FFFFFF" stroke="#E2E8E0"/>
+  <circle cx="135" cy="401" r="5" fill="#1F6B4F"/>
+  <text x="150" y="406" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="#171A18">Recycled Stool • Upcycled Material Furniture</text>
+</svg>

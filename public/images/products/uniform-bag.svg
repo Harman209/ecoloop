@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" fill="none">
+  <rect width="600" height="450" fill="#F4F6F3"/>
+  <circle cx="300" cy="210" r="140" fill="#E8EEF5"/>
+  
+  <!-- Upcycled Uniform Bag Illustration -->
+  <g transform="translate(190, 80)">
+    <!-- Bag Handles -->
+    <path d="M75 100 C75 40, 145 40, 145 100" stroke="#1F6B4F" stroke-width="7" fill="none" stroke-linecap="round"/>
+    
+    <!-- Bag Body (School Uniform Plaid / Navy Stitch Style) -->
+    <path d="M40 100 L180 100 L170 260 L50 260 Z" fill="#2C3E50" rx="10"/>
+    <!-- Striped Uniform Trim -->
+    <rect x="44" y="140" width="132" height="12" fill="#E67E22"/>
+    <rect x="46" y="160" width="128" height="6" fill="#1F6B4F"/>
+    
+    <!-- Pocket from Uniform -->
+    <path d="M80 180 L140 180 L135 230 L85 230 Z" fill="#34495E" stroke="#5D8A72" stroke-width="1.5"/>
+    <line x1="80" y1="180" x2="140" y2="180" stroke="#FFFFFF" stroke-dasharray="3 3" stroke-width="1.5"/>
+    
+    <!-- School Badge Silhouette on Pocket -->
+    <circle cx="110" cy="205" r="10" fill="#1F6B4F"/>
+    <path d="M107 205 L113 205 M110 200 L110 210" stroke="#FFFFFF" stroke-width="1.5"/>
+  </g>
+  
+  <rect x="130" y="380" width="340" height="42" rx="21" fill="#FFFFFF" stroke="#E2E8E0"/>
+  <circle cx="155" cy="401" r="5" fill="#1F6B4F"/>
+  <text x="170" y="406" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="#171A18">Uniform Bag • Upcycled School Fabric</text>
+</svg>

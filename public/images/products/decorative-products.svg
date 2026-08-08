@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" fill="none">
+  <rect width="600" height="450" fill="#F4F6F3"/>
+  <circle cx="300" cy="210" r="140" fill="#FAF0E6"/>
+  
+  <!-- Recycled Decorative Vase & Lamp/Desk Organizer -->
+  <g transform="translate(190, 80)">
+    <!-- Upcycled Glass/Metal Base Vase -->
+    <path d="M70 120 C50 160, 40 220, 50 250 L170 250 C180 220, 170 160, 150 120 L135 120 L135 90 L85 90 L85 120 Z" fill="#FFFFFF" stroke="#1F6B4F" stroke-width="3"/>
+    
+    <!-- Intricate Jute/Twine & Geometric Upcycled Pattern -->
+    <path d="M52 190 Q110 210 168 190" stroke="#E65100" stroke-width="3" fill="none"/>
+    <path d="M50 210 Q110 230 170 210" stroke="#5D8A72" stroke-width="3" fill="none"/>
+    <path d="M50 170 Q110 190 170 170" stroke="#1F6B4F" stroke-width="3" fill="none"/>
+    
+    <!-- Dried Botanical/Paper Craft Flora sticking out -->
+    <path d="M110 90 Q100 40 70 30" stroke="#5D8A72" stroke-width="2.5" fill="none"/>
+    <circle cx="68" cy="28" r="8" fill="#E67E22"/>
+    
+    <path d="M110 90 Q120 30 140 20" stroke="#1F6B4F" stroke-width="2.5" fill="none"/>
+    <circle cx="142" cy="18" r="10" fill="#1F6B4F"/>
+    
+    <path d="M110 90 L110 15" stroke="#5D8A72" stroke-width="2.5"/>
+    <circle cx="110" cy="12" r="7" fill="#F1C40F"/>
+  </g>
+  
+  <rect x="110" y="380" width="380" height="42" rx="21" fill="#FFFFFF" stroke="#E2E8E0"/>
+  <circle cx="135" cy="401" r="5" fill="#1F6B4F"/>
+  <text x="150" y="406" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="#171A18">Decorative Products • Creative Repurposed Design</text>
+</svg>

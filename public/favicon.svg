@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Rounded Background Container -->
+  <rect width="64" height="64" rx="16" fill="#171A18"/>
+  
+  <!-- Green Infinity Loop with Subtle Gradient Aesthetic -->
+  <defs>
+    <linearGradient id="infinityGrad" x1="8" y1="32" x2="56" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#288563"/>
+      <stop offset="50%" stop-color="#1F6B4F"/>
+      <stop offset="100%" stop-color="#5D8A72"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#1F6B4F" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Infinity Path -->
+  <path
+    d="M20 22 C 12 22, 10 32, 18 38 C 24 43, 30 33, 32 32 C 34 31, 40 21, 46 26 C 54 32, 52 42, 44 42 C 36 42, 30 33, 32 32 C 34 31, 40 43, 46 38 C 54 32, 52 22, 44 22 C 36 22, 30 31, 32 32 C 34 33, 40 21, 46 26"
+    stroke="url(#infinityGrad)"
+    stroke-width="5.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    filter="url(#glow)"
+  />
+  
+  <!-- Accent Node Dots -->
+  <circle cx="21" cy="24" r="2.5" fill="#E65100"/>
+  <circle cx="43" cy="40" r="2.5" fill="#4ADE80"/>
+</svg>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#F7F7F3"/>
+  <rect x="40" y="40" width="1120" height="550" rx="24" fill="#FFFFFF" stroke="#E2E8E0" stroke-width="2"/>
+  
+  <!-- Subtle Background Grid & Circular Accents -->
+  <circle cx="1000" cy="180" r="320" fill="#1F6B4F" fill-opacity="0.04"/>
+  <circle cx="150" cy="450" r="220" fill="#E65100" fill-opacity="0.03"/>
+  
+  <g transform="translate(100, 140)">
+    <!-- Badge -->
+    <rect x="0" y="0" width="310" height="38" rx="19" fill="#1F6B4F" fill-opacity="0.1"/>
+    <text x="20" y="24" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="14" fill="#1F6B4F" letter-spacing="2">CBSE SKILL EXPO • INITIATIVE</text>
+    
+    <!-- Title -->
+    <text x="0" y="110" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="76" fill="#171A18" letter-spacing="-1">ECO<tspan fill="#1F6B4F">LOOP</tspan></text>
+    <text x="0" y="170" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="36" fill="#E65100" letter-spacing="1">FROM WASTE TO WORTH.</text>
+    
+    <!-- Subtext -->
+    <text x="0" y="230" font-family="'Plus Jakarta Sans', sans-serif" font-weight="500" font-size="22" fill="#5D8A72">A Student-Led Circular Economy Marketplace &amp; Zero-Waste Model</text>
+    <text x="0" y="268" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="20" fill="#171A18">Swami Sant Dass Public School, Jalandhar</text>
+    
+    <!-- Cycle Pill List -->
+    <g transform="translate(0, 320)">
+      <rect x="0" y="0" width="160" height="42" rx="10" fill="#171A18"/>
+      <text x="80" y="26" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="14" fill="#FFFFFF">1. RECOVER</text>
+      
+      <text x="180" y="26" font-family="'Space Grotesk', sans-serif" font-size="20" fill="#5D8A72">→</text>
+      
+      <rect x="205" y="0" width="160" height="42" rx="10" fill="#1F6B4F"/>
+      <text x="285" y="26" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="14" fill="#FFFFFF">2. TRANSFORM</text>
+      
+      <text x="385" y="26" font-family="'Space Grotesk', sans-serif" font-size="20" fill="#5D8A72">→</text>
+      
+      <rect x="410" y="0" width="160" height="42" rx="10" fill="#5D8A72"/>
+      <text x="490" y="26" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="14" fill="#FFFFFF">3. DISTRIBUTE</text>
+      
+      <text x="590" y="26" font-family="'Space Grotesk', sans-serif" font-size="20" fill="#5D8A72">→</text>
+      
+      <rect x="615" y="0" width="160" height="42" rx="10" fill="#E65100"/>
+      <text x="695" y="26" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="14" fill="#FFFFFF">4. REINVEST</text>
+    </g>
+  </g>
+</svg>
