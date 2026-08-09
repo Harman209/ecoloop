@@ -183,10 +183,10 @@ export const Products: React.FC = () => {
           <Info size={22} style={{ color: 'var(--color-secondary-green)', flexShrink: 0, marginTop: '2px' }} />
           <div>
             <h4 style={{ fontSize: '0.95rem', marginBottom: '0.25rem', color: 'var(--color-primary-dark)' }}>
-              CBSE Skill Expo Exhibition Catalogue Note
+              Product Catalogue Note
             </h4>
             <p style={{ fontSize: '0.85rem', color: 'var(--color-text-secondary)', lineHeight: '1.5' }}>
-              All 10 listed products represent physical items produced by student participants at Swami Sant Dass Public School. To replace any product image with actual exhibition photographs, simply place corresponding JPEG/PNG files in <code style={{ backgroundColor: 'var(--color-surface-subtle)', padding: '2px 6px', borderRadius: '4px' }}>/public/images/products/[filename].jpg</code>.
+              All 10 listed products represent physical items produced by student participants at Swami Sant Dass Public School. To replace any product image with actual project photographs, simply place corresponding JPEG/PNG files in <code style={{ backgroundColor: 'var(--color-surface-subtle)', padding: '2px 6px', borderRadius: '4px' }}>/public/images/products/[filename].jpg</code>.
             </p>
           </div>
         </div>

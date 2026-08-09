@@ -9,7 +9,7 @@
   <g transform="translate(100, 140)">
     <!-- Badge -->
     <rect x="0" y="0" width="310" height="38" rx="19" fill="#1F6B4F" fill-opacity="0.1"/>
-    <text x="20" y="24" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="14" fill="#1F6B4F" letter-spacing="2">CBSE SKILL EXPO • INITIATIVE</text>
+    <text x="20" y="24" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="14" fill="#1F6B4F" letter-spacing="2">ZERO-WASTE • INITIATIVE</text>
     
     <!-- Title -->
     <text x="0" y="110" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="76" fill="#171A18" letter-spacing="-1">ECO<tspan fill="#1F6B4F">LOOP</tspan></text>

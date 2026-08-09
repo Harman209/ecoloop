@@ -142,7 +142,7 @@ export const BusinessModel: React.FC = () => {
                 </div>
                 <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem' }}>5. School Adaptation &amp; Licensing</h3>
                 <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}>
-                  Future possibility: Packaging the ECOLOOP toolkit (SOP manuals, segregation bin guidelines, recipe cards) for adoption by other CBSE schools seeking zero-waste campus status.
+                  Future possibility: Packaging the ECOLOOP toolkit (SOP manuals, segregation bin guidelines, recipe cards) for adoption by other educational institutions seeking zero-waste campus status.
                 </p>
               </div>
               <div style={{ marginTop: '1.25rem', paddingTop: '0.75rem', borderTop: '1px solid var(--color-surface-subtle)', fontSize: '0.8rem', color: 'var(--color-accent-orange)' }}>

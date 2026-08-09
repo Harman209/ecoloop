@@ -194,7 +194,7 @@ export const Enquire: React.FC = () => {
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement('a');
     link.setAttribute('href', encodedUri);
-    link.setAttribute('download', `ECOLOOP_Exhibition_Enquiries_${new Date().toISOString().slice(0, 10)}.csv`);
+    link.setAttribute('download', `ECOLOOP_Enquiries_${new Date().toISOString().slice(0, 10)}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -240,7 +240,7 @@ export const Enquire: React.FC = () => {
                 </span>
               </div>
               <p style={{ fontSize: '0.82rem', color: 'var(--color-text-secondary)', marginTop: '0.2rem' }}>
-                All submissions are instantly recorded with offline safety and transmitted to the ECOLOOP Exhibition Sheet.
+                All submissions are instantly recorded with offline safety and transmitted to the ECOLOOP Order Sheet.
               </p>
             </div>
           </div>
@@ -577,7 +577,7 @@ export const Enquire: React.FC = () => {
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <FileSpreadsheet size={22} style={{ color: 'var(--color-primary-green)' }} />
-                  <h3 style={{ fontSize: '1.25rem' }}>Exhibition Enquiries Record</h3>
+                  <h3 style={{ fontSize: '1.25rem' }}>Project Enquiries Record</h3>
                 </div>
                 <button
                   onClick={() => setShowAdminModal(false)}
@@ -588,7 +588,7 @@ export const Enquire: React.FC = () => {
               </div>
 
               <p style={{ fontSize: '0.85rem', color: 'var(--color-text-secondary)', marginBottom: '1rem' }}>
-                Total <strong>{savedEnquiries.length}</strong> enquiry submissions stored locally on this exhibition device.
+                Total <strong>{savedEnquiries.length}</strong> enquiry submissions stored locally on this device.
               </p>
 
               {/* Table or Empty State */}

@@ -1,6 +1,5 @@
 # 🌿 ECOLOOP — Circular Economy Marketplace MVP
 
-[![CBSE Skill Expo](https://img.shields.io/badge/CBSE%20Skill%20Expo-2026-brightgreen.svg)](#)
 [![Theme](https://img.shields.io/badge/Theme-Environment%20%26%20Sustainability-1F6B4F.svg)](#)
 [![Sub-Theme](https://img.shields.io/badge/Sub--Theme-Circular%20Economy%20for%20Zero%20Waste%20Schools-5D8A72.svg)](#)
 [![Institution](https://img.shields.io/badge/School-Swami%20Sant%20Dass%20Public%20School%2C%20Jalandhar-171A18.svg)](#)
@@ -12,7 +11,7 @@
 
 ## 📌 Product Overview
 
-**ECOLOOP** is an innovative circular economy initiative developed at **Swami Sant Dass Public School, Jalandhar** for the **CBSE Skill Expo**.
+**ECOLOOP** is an innovative circular economy initiative developed at **Swami Sant Dass Public School, Jalandhar**.
 
 The physical project demonstrates how waste generated on a school campus can be:
 1. **Collected** at source
@@ -58,7 +57,7 @@ WASTE → RESOURCE RECOVERY → PRODUCT CREATION → CUSTOMER → REVENUE → RE
   - Deep-dive into campus collection, color-coded bins, student workshop stations, and the closed reinvestment loop.
 
 - **🏫 Page 5: About ECOLOOP (`/about`)**
-  - School context, zero-waste vision, CBSE Skill Expo alignment, and green skill competencies.
+  - School context, zero-waste campus vision, and green skill competencies.
 
 - **💼 Page 6: Business Model (`/business-model`)**
   - 5 Revenue streams distinguishing between **Current Demonstration** and **Future Scope**.
@@ -141,6 +140,5 @@ npm run build
 
 - **Initiative:** ECOLOOP
 - **Institution:** Swami Sant Dass Public School, Jalandhar
-- **Exhibition:** CBSE Skill Expo 2026
 - **Theme:** Environment & Sustainability
 - **Sub-Theme:** Circular Economy for Zero Waste Schools

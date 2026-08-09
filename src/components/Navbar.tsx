@@ -117,7 +117,7 @@ export const Navbar: React.FC = () => {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', paddingBottom: '0.75rem', borderBottom: '1px solid var(--color-card-border)' }}>
               <span className="eyebrow eyebrow-accent" style={{ fontSize: '0.75rem', margin: 0 }}>
                 <Sparkles size={12} />
-                CBSE Skill Expo 2026
+                Circular Economy Initiative
               </span>
               <span style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', fontWeight: 600 }}>
                 Navigation

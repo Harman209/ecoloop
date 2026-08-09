@@ -33,7 +33,7 @@ export const Home: React.FC = () => {
               </span>
               <span className="eyebrow eyebrow-accent">
                 <Award size={13} />
-                CBSE SKILL EXPO
+                ZERO-WASTE INITIATIVE
               </span>
             </div>
 
@@ -256,7 +256,7 @@ export const Home: React.FC = () => {
                   </div>
                   <h4 style={{ fontSize: '1.15rem', marginBottom: '0.5rem' }}>Model Adaptation &amp; Licensing</h4>
                   <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>
-                    Future possibility: The ECOLOOP operational blueprint could be adapted by partner schools across CBSE clusters.
+                    Future possibility: The ECOLOOP operational blueprint could be adapted by partner institutions across school networks.
                   </p>
                 </div>
               </div>
@@ -317,7 +317,7 @@ export const Home: React.FC = () => {
       <section className="section-dark" style={{ padding: '5rem 0' }}>
         <div className="container text-center">
           <span className="eyebrow eyebrow-accent" style={{ marginBottom: '1.25rem' }}>
-            CBSE SKILL EXPO 2026
+            CIRCULAR INNOVATION
           </span>
           <h2 style={{ fontSize: '2.5rem', marginBottom: '1.25rem' }}>
             Experience the ECOLOOP Circular Model

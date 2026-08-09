@@ -44,7 +44,7 @@ export const About: React.FC = () => {
         >
           <div>
             <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
-              <span className="badge badge-current">CBSE Skill Expo 2026</span>
+              <span className="badge badge-current">Student Sustainability Initiative</span>
               <span className="badge">Swami Sant Dass Public School</span>
             </div>
 
@@ -71,7 +71,7 @@ export const About: React.FC = () => {
           >
             <h3 style={{ fontSize: '1.15rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <Award size={18} style={{ color: 'var(--color-accent-orange)' }} />
-              CBSE Skill Expo Details
+              Initiative Framework
             </h3>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.875rem' }}>
@@ -182,7 +182,7 @@ export const About: React.FC = () => {
             <span>Honest Project Demonstration &amp; Future Scope</span>
           </div>
           <p style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}>
-            This website serves as the <strong>digital business/marketplace layer</strong> of our CBSE Skill Expo physical demonstration. It demonstrates how student-led circular products can be discovered and ordered. Where advanced concepts (such as cluster school licensing and green skill workshops) are proposed, they represent our forward-looking roadmap to scale circular economy education across Indian schools.
+            This website serves as the <strong>digital business/marketplace layer</strong> of our physical circular economy demonstration. It demonstrates how student-led circular products can be discovered and ordered. Where advanced concepts (such as cluster school licensing and green skill workshops) are proposed, they represent our forward-looking roadmap to scale circular economy education across schools.
           </p>
         </div>
 

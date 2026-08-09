@@ -67,13 +67,13 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Exhibition Theme & Context */}
+          {/* Project Theme & Context */}
           <div>
-            <h4 className="footer-heading">Exhibition</h4>
+            <h4 className="footer-heading">Project Focus</h4>
             <ul className="footer-links">
               <li style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#9eb0a4' }}>
                 <Award size={14} style={{ color: 'var(--color-accent-orange)' }} />
-                <span>CBSE Skill Expo</span>
+                <span>Zero-Waste Model</span>
               </li>
               <li style={{ color: '#9eb0a4' }}>
                 <strong style={{ color: '#ffffff', display: 'block' }}>Theme:</strong>
