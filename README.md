@@ -23,7 +23,7 @@ The physical project demonstrates how waste generated on a school campus can be:
 7. **Generate** self-sustaining ethical revenue
 8. **Reinvest** 100% of proceeds back into sustainability infrastructure
 
-This web application serves as the **Digital Business & Marketplace Layer** of the ECOLOOP initiative, making the entrepreneurial and resource-recovery model tangible for exhibition judges, teachers, students, parents, and community members.
+This web application serves as the **Digital Business & Marketplace Layer** of the ECOLOOP initiative, making the entrepreneurial and resource-recovery model tangible for students, educators, and community members.
 
 ```
 WASTE → RESOURCE RECOVERY → PRODUCT CREATION → CUSTOMER → REVENUE → REINVESTMENT → SUSTAINABILITY ↺
@@ -70,20 +70,16 @@ WASTE → RESOURCE RECOVERY → PRODUCT CREATION → CUSTOMER → REVENUE → RE
 
 ---
 
-## 📦 Complete Product Catalogue (10 Circular Products)
+## 📦 Verified Product Catalogue (6 Circular Products)
 
 | # | Product Name | Category | Recovered Material Input | Application |
 |---|---|---|---|---|
-| 1 | **Seed Paper** | Paper & Plantable Products | Discarded notebook/office paper + seeds | Greeting cards, bookmarks, tags, certificates |
-| 2 | **Bio-Enzyme Cleaner** | Organic Resource Recovery | Citrus fruit & vegetable peels + jaggery | Campus maintenance & cleaning demonstrations |
-| 3 | **Recycled Uniform Bags** | Upcycled Textiles | Outgrown uniforms & textile offcuts | Shopping, book carry, everyday tote bags |
-| 4 | **Eco-Bricks** | Recycled Material Products | Clean soft plastics + PET bottles | Garden edging, landscaping borders (non-structural) |
-| 5 | **Organic Compost** | Organic Resource Recovery | Canteen scraps + dry garden leaves | School gardens, botanical beds, plantation |
-| 6 | **Vermicompost** | Organic Resource Recovery | Pre-composted organic waste + *Eisenia fetida* | High-potency organic fertilizer for potted plants & gardens |
-| 7 | **Vertical Garden Systems** | Green Campus Products | Recovered containers, bottles, frames | Wall gardens, corridor greening, micro-plantation |
-| 8 | **Teaching-Learning Aids** | Educational Products | Cardboard boxes, bottle caps, scrap wire | STEM models, geometry kits, physics demonstrators |
-| 9 | **Recycled Decorative Products**| Recycled Material Products | Jars, scrap paper rolls, jute twine | Desk organizers, pen stands, eco-displays |
-| 10| **Recycled Furniture / Stools** | Green Campus Products | Wooden pallets, rubber rings, fabric scraps | Eco-corners, activity zones, exhibition seating |
+| 1 | **Eco-Bricks** | Recycled Plastics | Clean soft plastics + PET bottles | Landscaping, garden boundaries & walkways |
+| 2 | **MLP Sheets** | Recycled Plastics | Multi-layered packaging (MLP) films | Utility panels, work mats & partition boards |
+| 3 | **Bottle Planters** | Upcycled Containers | Discarded PET beverage bottles | Classroom herbs, vertical hanging greens & nursery beds |
+| 4 | **Uniform Bags** | Upcycled Textiles | Outgrown school uniforms & fabric offcuts | Daily book carry, tote bags & utility gear |
+| 5 | **Seed Paper** | Paper & Plantable Products | Discarded notebook/office paper + native seeds | Greeting cards, bookmarks, tags, plantable kits |
+| 6 | **Bioenzymes** | Organic Resource Recovery | Citrus fruit peels + canteen scraps + jaggery | Non-toxic surface cleaning & lab practicals |
 
 ---
 

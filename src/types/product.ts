@@ -1,10 +1,9 @@
 export type ProductCategory =
-  | 'Paper & Plantable Products'
+  | 'Recycled Plastics'
+  | 'Upcycled Containers'
   | 'Upcycled Textiles'
-  | 'Organic Resource Recovery'
-  | 'Recycled Material Products'
-  | 'Green Campus Products'
-  | 'Educational Products';
+  | 'Paper & Plantable Products'
+  | 'Organic Resource Recovery';
 
 export interface Product {
   slug: string;

@@ -1,249 +1,156 @@
 import { Product, ProductCategory } from '../types/product';
 
 export const PRODUCT_CATEGORIES: ProductCategory[] = [
-  'Paper & Plantable Products',
+  'Recycled Plastics',
+  'Upcycled Containers',
   'Upcycled Textiles',
+  'Paper & Plantable Products',
   'Organic Resource Recovery',
-  'Recycled Material Products',
-  'Green Campus Products',
-  'Educational Products',
 ];
 
 export const PRODUCTS: Product[] = [
   {
+    slug: 'eco-bricks',
+    name: 'Eco-Bricks',
+    category: 'Recycled Plastics',
+    tagline: 'Dense plastic encapsulation for non-structural landscaping and boundaries.',
+    description:
+      'Clean soft plastics and non-recyclable wrappers densely compacted into standardized PET bottles to safely contain difficult-to-recycle waste.',
+    madeFrom: 'Clean, dry non-biodegradable soft plastics packed into PET bottles',
+    applications: [
+      'Landscaping & planter edging',
+      'Garden boundaries & walkways',
+      'Demonstration structures',
+      'Awareness & eco-workshops',
+    ],
+    howItCreatesValue:
+      'Non-recyclable wrappers, clean packaging films, and lightweight plastics are densely compacted into standardized PET bottles to achieve structural rigidity without burning or dumping.',
+    circularImpact:
+      'Safely encapsulates unrecyclable multi-layered plastics, keeping them out of open drains and municipal waste streams while creating functional garden perimeters.',
+    image: '/images/products/eco-bricks.jpg',
+    fallbackImage: '/images/products/eco-bricks.svg',
+    indicativePrice: 'Demonstration units / Price on enquiry',
+    cautionNotice:
+      'Designed strictly for non-structural landscaping borders, garden perimeter elements, and awareness installations. Not for load-bearing civil construction.',
+    featured: true,
+  },
+  {
+    slug: 'mlp-sheets',
+    name: 'MLP Sheets',
+    category: 'Recycled Plastics',
+    tagline: 'Durable utility boards heat-pressed from multi-layered plastic packaging.',
+    description:
+      'Multi-layered plastic wrappers and metalized films collected, shredded, and thermally compressed into resilient, water-resistant utility sheets.',
+    madeFrom: 'Post-consumer multi-layered plastic (MLP) packaging, food wrappers, and clean laminated films',
+    applications: [
+      'Durable signboards & partition panels',
+      'Outdoor tabletop surfaces',
+      'Storage crate liners & partitions',
+      'Waterproof work mats',
+    ],
+    howItCreatesValue:
+      'Multi-layered plastics—normally impossible to recycle through conventional mechanical means—are segregated, shredded, and hot-pressed into dense, weather-proof composite boards.',
+    circularImpact:
+      'Diverts high-volume, low-value packaging from landfills and open burning, converting single-use wrappers into multi-year structural utility sheets.',
+    image: '/images/products/mlp-sheets.jpg',
+    fallbackImage: '/images/products/mlp-sheets.svg',
+    indicativePrice: 'Custom dimensions / Price on enquiry',
+    cautionNotice:
+      'Thermal compression profile optimized for utility panels and partition boards. Keep away from direct high open flames.',
+    featured: true,
+  },
+  {
+    slug: 'bottle-planters',
+    name: 'Bottle Planters',
+    category: 'Upcycled Containers',
+    tagline: 'Discarded plastic bottles repurposed into simple hanging and standing planters.',
+    description:
+      'Recovered single-use beverage bottles washed, perforated, and cut into modular planters for growing herbs, succulents, and nursery seedlings.',
+    madeFrom: 'Discarded PET beverage bottles, cotton wicking cord, and soil compost mix',
+    applications: [
+      'Classroom windowsill greens',
+      'Corridor & veranda hanging planters',
+      'Seedling germination cups',
+      'Balcony herb gardens',
+    ],
+    howItCreatesValue:
+      'Single-use plastic bottles are rescued from disposal, trimmed, fitted with drainage and wicking lines, and filled with campus soil mix to host living plants.',
+    circularImpact:
+      'Keeps rigid beverage plastic in functional reuse for multiple growing cycles while expanding green coverage across school corridors.',
+    image: '/images/products/bottle-planters.jpg',
+    fallbackImage: '/images/products/bottle-planters.svg',
+    indicativePrice: 'Individual units & batch sets / Price on enquiry',
+    featured: true,
+  },
+  {
+    slug: 'uniform-bags',
+    name: 'Uniform Bags',
+    category: 'Upcycled Textiles',
+    tagline: 'Useful utility bags made by repurposing old school uniforms and fabric.',
+    description:
+      'Outgrown school uniforms and durable fabric offcuts collected during turnover, sanitized, and tailored into sturdy everyday tote and utility bags.',
+    madeFrom: 'Outgrown school uniforms (cotton-polyester blends) and clean textile scrap',
+    applications: [
+      'Everyday tote & shopping bag',
+      'School supply & book carry',
+      'Exhibition kit bags',
+      'Gym & extracurricular gear bag',
+    ],
+    howItCreatesValue:
+      'High-tensile school uniform fabrics are collected, laundered, patterned, and hand-stitched into reinforced utility bags with sturdy load-bearing straps.',
+    circularImpact:
+      'Extends the active lifecycle of high-embodied-energy fabrics for years while displacing single-use plastic carry bags across the campus.',
+    image: '/images/products/uniform-bag.jpg',
+    fallbackImage: '/images/products/uniform-bag.svg',
+    indicativePrice: 'Standard & custom sizes / Price on enquiry',
+    featured: true,
+  },
+  {
     slug: 'seed-paper',
     name: 'Seed Paper',
     category: 'Paper & Plantable Products',
-    tagline: 'Paper that can become a plant instead of becoming waste.',
+    tagline: 'Handmade recycled paper embedded with plantable native seeds.',
     description:
-      'Paper waste can be transformed into plantable seed paper, giving discarded paper a second purpose while creating a product that can return nutrients and life to the environment.',
-    madeFrom: 'Recovered waste paper + organic plant seeds',
+      'Discarded school notebook sheets and office paper pulped, pressed, and embedded with seeds to create biodegradable paper that grows instead of becoming waste.',
+    madeFrom: 'Recovered waste paper, botanical pulp, and organic native plant seeds',
     applications: [
-      'Greeting cards',
-      'Bookmarks',
-      'Tags & Badges',
-      'Certificates',
-      'Educational activities',
+      'Greeting cards & invitations',
+      'Bookmarks & gift tags',
+      'Event certificates & badges',
+      'Hands-on classroom plantation kits',
     ],
     howItCreatesValue:
-      'Recovered school notebooks and office sheets are segregated, shredded, pulped, embedded with native botanical seeds, and manually pressed into biodegradable, germinable sheets.',
+      'Segregated paper scrap is shredded, water-pulped without toxic bleach, blended with hardy seeds, and hand-pressed into textured plantable stationery.',
     circularImpact:
-      'Prevents post-consumer paper from reaching incinerators or landfills, transforming discarded cellulose into a living plant.',
+      'Eliminates paper disposal to landfills and incinerators by transforming used cellulose into living plants and soil biomass.',
     image: '/images/products/seed-paper.jpg',
     fallbackImage: '/images/products/seed-paper.svg',
     indicativePrice: 'Batch orders / Price on enquiry',
     featured: true,
   },
   {
-    slug: 'bio-enzyme-cleaner',
-    name: 'Bio-Enzyme Cleaner',
+    slug: 'bioenzymes',
+    name: 'Bioenzymes',
     category: 'Organic Resource Recovery',
-    tagline: 'Natural cleaning solution fermented from citrus fruit peels.',
+    tagline: 'Natural multi-purpose cleaners fermented from citrus fruit and vegetable peels.',
     description:
-      'Selected fruit and vegetable peels can be processed through fermentation to create a bio-enzyme based cleaning solution, demonstrating the productive reuse of organic waste.',
-    madeFrom: 'Suitable organic / fruit peel waste, jaggery, and water',
+      'Organic citrus peels and vegetable scraps fermented with jaggery and water to produce a natural, enzyme-rich cleaning solution for school surfaces.',
+    madeFrom: 'Citrus fruit peels, canteen vegetable scraps, jaggery, and water',
     applications: [
-      'Cleaning demonstrations',
-      'School maintenance applications where appropriate',
-      'Sustainability education & lab workshops',
+      'Floor & hard surface cleaning',
+      'Sink & tile sanitation demonstrations',
+      'Odor neutralization in wash areas',
+      'School biology & chemistry practicals',
     ],
     howItCreatesValue:
-      'Citrus peels from school canteens undergo anaerobic microbial fermentation over 90 days, releasing natural organic acids and plant enzymes that break down grease and surface grime.',
+      'Canteen citrus peels undergo 90-day anaerobic fermentation, producing organic acids and natural enzymes that break down grease and grime.',
     circularImpact:
-      'Diverts methane-generating citrus peels from landfills into a functional, non-toxic maintenance product for school spaces.',
+      'Prevents methane emissions from organic waste in dumps while replacing synthetic chemical cleaners with a locally fermented, biodegradable alternative.',
     image: '/images/products/bio-enzyme.jpg',
     fallbackImage: '/images/products/bio-enzyme.svg',
     indicativePrice: 'Campus batches / Price on enquiry',
     cautionNotice:
-      'Formulated for educational demonstrations and appropriate school surface maintenance. Does not make unsupported medical, disinfectant, or chemical performance claims.',
+      'Formulated for surface maintenance and educational demonstrations. Natural fermentation product, not evaluated for medical or clinical disinfectant claims.',
     featured: true,
-  },
-  {
-    slug: 'recycled-uniform-bags',
-    name: 'Recycled Uniform Bags',
-    category: 'Upcycled Textiles',
-    tagline: 'An old uniform gets a new life.',
-    description:
-      'Old school uniforms and suitable textile waste can be repurposed into reusable bags, extending the useful life of fabric that might otherwise be discarded.',
-    madeFrom: 'Old school uniforms / segregated textile waste',
-    applications: [
-      'Shopping & Groceries',
-      'School supplies & Book carry',
-      'Everyday reusable tote bags',
-      'Exhibition kit carriers',
-    ],
-    howItCreatesValue:
-      'Durable, high-tensile cotton-polyester school uniforms are collected during annual uniform turnover, sanitized, patterned, and tailored into sturdy multi-compartment utility bags.',
-    circularImpact:
-      'Keeps high-embodied-energy fabrics in active daily circulation for years while displacing single-use polythene bags across the school community.',
-    image: '/images/products/uniform-bag.jpg',
-    fallbackImage: '/images/products/uniform-bag.svg',
-    indicativePrice: 'Price on enquiry',
-    featured: true,
-  },
-  {
-    slug: 'eco-bricks',
-    name: 'Eco-Bricks',
-    category: 'Recycled Material Products',
-    tagline: 'Dense plastic encapsulation for landscaping and boundaries.',
-    description:
-      'Suitable plastic waste can be repurposed into eco-brick style units for non-structural applications and sustainability demonstrations.',
-    madeFrom: 'Clean, dry non-biodegradable soft plastics packed into PET bottles',
-    applications: [
-      'Landscaping & Planter edging',
-      'Garden boundaries & walkways',
-      'Demonstration structures',
-      'Awareness & STEM activities',
-    ],
-    howItCreatesValue:
-      'Non-recyclable wrappers, clean packaging films, and lightweight plastics are densely compacted into standardized PET bottles to achieve uniform structural rigidity.',
-    circularImpact:
-      'Safely encapsulates unrecyclable multi-layered plastics, keeping them out of open drains and waste streams while building functional garden borders.',
-    image: '/images/products/eco-bricks.jpg',
-    fallbackImage: '/images/products/eco-bricks.svg',
-    indicativePrice: 'Demonstration units / On enquiry',
-    cautionNotice:
-      'Designed strictly for non-structural landscaping borders, garden perimeter elements, and awareness installations. Not for load-bearing civil construction.',
-    featured: false,
-  },
-  {
-    slug: 'compost',
-    name: 'Organic Compost',
-    category: 'Organic Resource Recovery',
-    tagline: 'Organic waste becomes a useful resource.',
-    description:
-      'Biodegradable waste such as suitable food scraps and garden waste can be processed through composting to produce organic compost for soil and gardening applications.',
-    madeFrom: 'Canteen organic scraps, dry foliage, garden clippings, raw food waste',
-    applications: [
-      'School gardens & Botanical beds',
-      'Campus plantation drives',
-      'Soil conditioning & Landscaping',
-      'Community tree-care initiatives',
-    ],
-    howItCreatesValue:
-      'Balanced layering of nitrogen-rich green waste and carbon-rich dry leaves in aerated campus compost pits produces dark, rich humus filled with beneficial soil microbes.',
-    circularImpact:
-      'Eliminates organic waste transport emissions and completes the campus nutrient cycle by restoring fertility directly to school grounds without synthetic inputs.',
-    image: '/images/products/compost.jpg',
-    fallbackImage: '/images/products/compost.svg',
-    indicativePrice: 'Available per batch / Price on enquiry',
-    featured: true,
-  },
-  {
-    slug: 'vermicompost',
-    name: 'Vermicompost',
-    category: 'Organic Resource Recovery',
-    tagline: 'Nutrient-rich natural bio-fertilizer processed by earthworms.',
-    description:
-      'Organic waste can be processed using vermicomposting to produce nutrient-rich vermicompost for gardening and soil applications.',
-    madeFrom: 'Pre-composted biodegradable waste + specialized earthworms (Eisenia fetida)',
-    applications: [
-      'School gardens & herbal patches',
-      'Plant nurseries & Potted plants',
-      'Home gardening enthusiasts',
-      'Horticulture workshops',
-    ],
-    howItCreatesValue:
-      'Red worms ingest partially decomposed organic matter, excreting uniform micro-granular castings packed with plant-ready nitrogen, phosphorus, and potassium.',
-    circularImpact:
-      'Rapidly bio-converts campus organic residues into top-tier organic fertilizer, replacing chemical fertilizers with biologically active soil nutrition.',
-    image: '/images/products/vermicompost.jpg',
-    fallbackImage: '/images/products/vermicompost.svg',
-    indicativePrice: 'Available per kg / Price on enquiry',
-    featured: false,
-  },
-  {
-    slug: 'vertical-garden',
-    name: 'Vertical Garden Systems',
-    category: 'Green Campus Products',
-    tagline: 'Transforming barren walls into green micro-ecosystems.',
-    description:
-      'Recovered containers and suitable discarded materials can be repurposed into vertical gardening systems, combining waste reduction with greener school spaces.',
-    madeFrom: 'Recovered plastic containers, crates, discarded mounting frames',
-    applications: [
-      'School corridors & verandas',
-      'Campus boundary walls',
-      'Classroom balcony spaces',
-      'Small-space urban plantation',
-    ],
-    howItCreatesValue:
-      'Discarded containers are fitted with drainage, filled with ECOLOOP compost, and arranged modularly along walls to maximize foliage in compact footprint areas.',
-    circularImpact:
-      'Reclaims rigid plastics while expanding vertical green canopy, improving school microclimate and indoor air freshness.',
-    image: '/images/products/vertical-garden.jpg',
-    fallbackImage: '/images/products/vertical-garden.svg',
-    indicativePrice: 'Custom modular setups on enquiry',
-    featured: false,
-  },
-  {
-    slug: 'teaching-learning-aids',
-    name: 'Teaching-Learning Aids',
-    category: 'Educational Products',
-    tagline: 'Discarded materials transformed into tactile educational tools.',
-    description:
-      'Recovered and reusable materials can be transformed into educational aids, demonstrating how discarded materials can become useful resources for learning.',
-    madeFrom: 'Cardboard boxes, bottle caps, wire scraps, discarded plastics, wooden offcuts',
-    applications: [
-      'Classroom STEM demonstrations',
-      'Science exhibition models',
-      'Environmental education activities',
-      'Hands-on mathematics manipulatives',
-    ],
-    howItCreatesValue:
-      'Students design and assemble interactive pedagogical models, abacuses, pulley demonstrators, and geometric solids utilizing materials rescued from recycling bins.',
-    circularImpact:
-      'Replaces factory-manufactured plastic teaching kits with locally crafted, repairable educational instruments while cultivating practical maker skills.',
-    image: '/images/products/teaching-aids.jpg',
-    fallbackImage: '/images/products/teaching-aids.svg',
-    indicativePrice: 'Kit sets on enquiry',
-    featured: false,
-  },
-  {
-    slug: 'recycled-decorative-products',
-    name: 'Recycled Decorative Products',
-    category: 'Recycled Material Products',
-    tagline: 'Creative upcycling demonstrating aesthetic reuse.',
-    description:
-      'Suitable discarded materials can be redesigned into decorative and awareness products, demonstrating creative reuse and sustainable product design.',
-    madeFrom: 'Glass jars, fabric remnants, reclaimed paper rolls, jute twine',
-    applications: [
-      'Desk organizers & Pen stands',
-      'Exhibition & Event mementos',
-      'School reception eco-displays',
-      'Handcrafted home decor accents',
-    ],
-    howItCreatesValue:
-      'Discarded containers and scrap materials are redesigned with geometric texturing, eco-friendly finishes, and natural twines into premium functional desk pieces.',
-    circularImpact:
-      'Extends the utility of glass and rigid cardboard items by transitioning them from single-use packaging to permanent aesthetic fixtures.',
-    image: '/images/products/decorative-products.jpg',
-    fallbackImage: '/images/products/decorative-products.svg',
-    indicativePrice: 'Handmade sets on enquiry',
-    featured: false,
-  },
-  {
-    slug: 'recycled-furniture-stools',
-    name: 'Recycled Furniture / Stools',
-    category: 'Green Campus Products',
-    tagline: 'Extending material lifespan through functional furniture design.',
-    description:
-      'Suitable recovered materials can be repurposed into useful furniture or stool designs, demonstrating the possibility of extending material life through creative reuse.',
-    madeFrom: 'Recovered wooden pallets, discarded tire rings, reinforced textile padding',
-    applications: [
-      'Campus eco-corners & Reading nooks',
-      'Activity zones & Exhibition seating',
-      'Green classroom demonstration areas',
-      'Outdoor covered seating pavilions',
-    ],
-    howItCreatesValue:
-      'Heavy discarded components such as shipping pallets and clean rubber rings are sanded, structurally bound, and cushioned with upcycled uniform fabric to create modular seating.',
-    circularImpact:
-      'Prevents bulky durable materials from burning or dumping, demonstrating that institutional seating can be created without virgin timber or metal harvesting.',
-    image: '/images/products/furniture-stools.jpg',
-    fallbackImage: '/images/products/furniture-stools.svg',
-    indicativePrice: 'Demonstration prototypes on enquiry',
-    cautionNotice:
-      'Demonstration units built for creative reuse exploration in monitored, non-critical educational spaces. Not rated for commercial load-bearing.',
-    featured: false,
   },
 ];

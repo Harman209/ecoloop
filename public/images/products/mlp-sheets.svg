@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" fill="none">
+  <rect width="600" height="450" fill="#F4F6F3"/>
+  <circle cx="300" cy="210" r="140" fill="#EBF4EE"/>
+  
+  <!-- MLP Compressed Sheets Illustration -->
+  <g transform="translate(170, 95)">
+    <!-- Stack of compressed multilayer plastic boards/sheets -->
+    <!-- Sheet 3 (Bottom) -->
+    <polygon points="130,130 260,195 130,260 0,195" fill="#D5DDD7" stroke="#1F6B4F" stroke-width="2"/>
+    <polygon points="0,195 130,260 130,272 0,207" fill="#8EA897"/>
+    <polygon points="130,260 260,195 260,207 130,272" fill="#5D8A72"/>
+    
+    <!-- Sheet 2 (Middle) -->
+    <polygon points="130,95 260,160 130,225 0,160" fill="#E8EFEA" stroke="#1F6B4F" stroke-width="2"/>
+    <polygon points="0,160 130,225 130,237 0,172" fill="#8EA897"/>
+    <polygon points="130,225 260,160 260,172 130,237" fill="#5D8A72"/>
+
+    <!-- Sheet 1 (Top) with visible colorful speckles representing compressed shredded MLP waste -->
+    <polygon points="130,60 260,125 130,190 0,125" fill="#FFFFFF" stroke="#1F6B4F" stroke-width="2"/>
+    <polygon points="0,125 130,190 130,137 0,72" fill="#8EA897"/>
+    <polygon points="130,190 260,125 260,137 130,202" fill="#5D8A72"/>
+
+    <!-- Speckle patterns indicating compressed plastic chips -->
+    <circle cx="80" cy="120" r="4" fill="#E67E22" fill-opacity="0.7"/>
+    <circle cx="120" cy="100" r="5" fill="#3498DB" fill-opacity="0.7"/>
+    <circle cx="160" cy="115" r="4" fill="#E74C3C" fill-opacity="0.7"/>
+    <circle cx="140" cy="140" r="6" fill="#1F6B4F" fill-opacity="0.6"/>
+    <circle cx="190" cy="130" r="4" fill="#F1C40F" fill-opacity="0.8"/>
+    <circle cx="95" cy="145" r="5" fill="#9B59B6" fill-opacity="0.7"/>
+    <circle cx="130" cy="160" r="4" fill="#2ECC71" fill-opacity="0.7"/>
+  </g>
+  
+  <rect x="120" y="380" width="360" height="42" rx="21" fill="#FFFFFF" stroke="#E2E8E0"/>
+  <circle cx="145" cy="401" r="5" fill="#1F6B4F"/>
+  <text x="160" y="406" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="#171A18">MLP Sheets • Heat-Pressed Multi-Layer Plastic</text>
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" fill="none">
+  <rect width="600" height="450" fill="#F4F6F3"/>
+  <circle cx="300" cy="210" r="140" fill="#EBF4EE"/>
+  
+  <!-- Bottle Planters (Upcycled PET Bottles into Simple Planters) -->
+  <g transform="translate(190, 80)">
+    <!-- Hanging cord lines -->
+    <line x1="60" y1="20" x2="60" y2="90" stroke="#8D6E63" stroke-width="2" stroke-dasharray="4 2"/>
+    <line x1="160" y1="20" x2="160" y2="90" stroke="#8D6E63" stroke-width="2" stroke-dasharray="4 2"/>
+    
+    <!-- Top Horizontal Cut Bottle Planter -->
+    <rect x="35" y="85" width="150" height="55" rx="14" fill="#FFFFFF" stroke="#1F6B4F" stroke-width="2.5"/>
+    <!-- Bottle neck and cap -->
+    <rect x="185" y="98" width="16" height="28" rx="3" fill="#A4C2B0"/>
+    <rect x="201" y="102" width="8" height="20" rx="2" fill="#1F6B4F"/>
+    
+    <!-- Soil layer inside bottle -->
+    <rect x="42" y="108" width="136" height="24" rx="4" fill="#8D6E63" fill-opacity="0.35"/>
+    
+    <!-- Sprouting leaves / herbs -->
+    <path d="M60 88 Q40 50 25 65 Q50 85 60 88 Z" fill="#1F6B4F"/>
+    <path d="M85 88 Q85 45 105 50 Q100 80 85 88 Z" fill="#5D8A72"/>
+    <path d="M125 88 Q140 50 155 60 Q145 85 125 88 Z" fill="#1F6B4F"/>
+    <path d="M150 88 Q175 70 178 88 Q160 100 150 88 Z" fill="#5D8A72"/>
+    
+    <!-- Lower Vertical Cut Bottle Planter -->
+    <g transform="translate(45, 120)">
+      <path d="M20 50 L20 120 Q20 135 35 135 L55 135 Q70 135 70 120 L70 50 Z" fill="#FFFFFF" stroke="#1F6B4F" stroke-width="2.5"/>
+      <rect x="25" y="85" width="40" height="42" rx="4" fill="#8D6E63" fill-opacity="0.35"/>
+      <!-- Sprouting plant -->
+      <path d="M45 52 Q30 20 15 32 Q35 48 45 52 Z" fill="#5D8A72"/>
+      <path d="M45 52 Q60 18 75 30 Q55 48 45 52 Z" fill="#1F6B4F"/>
+      <path d="M45 52 Q45 10 42 5 Q48 10 45 52 Z" stroke="#1F6B4F" stroke-width="2"/>
+    </g>
+
+    <!-- Lower Vertical Cut Bottle Planter 2 -->
+    <g transform="translate(105, 120)">
+      <path d="M20 50 L20 120 Q20 135 35 135 L55 135 Q70 135 70 120 L70 50 Z" fill="#FFFFFF" stroke="#5D8A72" stroke-width="2.5"/>
+      <rect x="25" y="85" width="40" height="42" rx="4" fill="#8D6E63" fill-opacity="0.35"/>
+      <path d="M45 52 Q32 24 22 36 Q40 50 45 52 Z" fill="#1F6B4F"/>
+      <path d="M45 52 Q58 22 70 34 Q52 50 45 52 Z" fill="#5D8A72"/>
+    </g>
+  </g>
+  
+  <rect x="120" y="380" width="360" height="42" rx="21" fill="#FFFFFF" stroke="#E2E8E0"/>
+  <circle cx="145" cy="401" r="5" fill="#1F6B4F"/>
+  <text x="160" y="406" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="#171A18">Bottle Planters • Upcycled Plastic Containers</text>
+</svg>
