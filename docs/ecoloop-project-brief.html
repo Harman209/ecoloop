@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ECOLOOP — Project Brief</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 16mm 18mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 10pt;
+      line-height: 1.48;
+      color: #1a1a1a;
+      background: #ffffff;
+    }
+
+    header {
+      border-bottom: 1.5px solid #111111;
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 18pt;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #111111;
+      margin-bottom: 2px;
+      text-transform: lowercase;
+    }
+
+    .subtitle {
+      font-size: 10.5pt;
+      font-weight: 500;
+      color: #444444;
+      margin-bottom: 4px;
+      text-transform: lowercase;
+    }
+
+    .meta {
+      font-size: 8.5pt;
+      color: #666666;
+    }
+
+    section {
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      font-size: 11pt;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #111111;
+      border-bottom: 1px solid #eaeaea;
+      padding-bottom: 3px;
+      margin-bottom: 6px;
+      text-transform: lowercase;
+    }
+
+    p {
+      margin-bottom: 6px;
+      color: #222222;
+    }
+
+    .quote-box {
+      border-left: 2px solid #111111;
+      padding-left: 10px;
+      margin: 6px 0 8px 0;
+      font-size: 9.5pt;
+      color: #333333;
+    }
+
+    ul, ol {
+      margin-left: 18px;
+      margin-bottom: 6px;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    li strong {
+      color: #111111;
+    }
+
+    .page-break {
+      break-before: page;
+      page-break-before: always;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>ecoloop: project brief</h1>
+    <div class="subtitle">a student-led circular economy &amp; digital marketplace initiative</div>
+    <div class="meta">
+      swami sant dass public school &bull; jalandhar, punjab, india &bull; lead: harman (tech &amp; strategy)
+    </div>
+  </header>
+
+  <section>
+    <h2>1. overview &amp; the circular model</h2>
+    <p>
+      Most school environmental initiatives end at collection: students gather rubbish, place it into a bin, and hand it over to municipal disposal. In practice, that waste still ends up in open dumps or incinerators.
+    </p>
+    <div class="quote-box">
+      ECOLOOP flips this from waste disposal to a circular economy: turning waste from an ongoing expense into an input raw material, manufacturing functional everyday products, and running an active digital storefront to test real demand.
+    </div>
+    <p>
+      The goal is to demonstrate that environmental sustainability is an engineering and logistics problem that can be made self-sustaining rather than relying on one-off charity or temporary campaigns.
+    </p>
+  </section>
+
+  <section>
+    <h2>2. regional context: jalandhar &amp; punjab</h2>
+    <p>
+      The project was designed around real municipal waste bottlenecks in northern India:
+    </p>
+    <ul>
+      <li>
+        <strong>Multi-Layered Plastics (MLP):</strong> Food packaging, snack wrappers, and laminated films have virtually zero resale value for informal scrap collectors and cannot be processed by standard municipal recycling plants. They choke urban drainage and are frequently burned in open air.
+      </li>
+      <li>
+        <strong>Campus Organic &amp; Paper Scrap:</strong> Discarded notebooks, annual uniform turnover, and canteen food scraps generate high volumes of single-use waste that can easily be intercepted at source before reaching landfills.
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>3. the 6 verified products</h2>
+    <p>
+      Rather than conceptual craft or decorative art, ECOLOOP focuses strictly on 6 functional goods with practical utility:
+    </p>
+    <ol>
+      <li>
+        <strong>Eco-Bricks:</strong> Standardized PET bottles densely packed with clean, non-recyclable soft plastic wrappers. Used for durable, non-structural garden and planter perimeter borders.
+      </li>
+      <li>
+        <strong>MLP Sheets:</strong> Multi-layered packaging wrappers collected, shredded, and thermally compressed into rigid, weather-resistant utility panels and partition boards.
+      </li>
+      <li>
+        <strong>Bottle Planters:</strong> Recovered plastic beverage bottles washed, cut, and fitted with wicking cords to host classroom greens, herbs, and nursery seedlings.
+      </li>
+      <li>
+        <strong>Uniform Bags:</strong> Outgrown school uniforms and durable fabric offcuts collected during annual turnover, laundered, and tailored into heavy-duty everyday carry bags.
+      </li>
+      <li>
+        <strong>Seed Paper:</strong> Post-consumer student notebook and office paper pulped with water (without chemical bleaches), blended with native botanical seeds, and hand-pressed into plantable paper.
+      </li>
+      <li>
+        <strong>Bioenzymes:</strong> Citrus fruit peels and canteen scraps fermented anaerobically over 90 days with jaggery and water to produce natural, non-toxic cleaning solution for school surfaces.
+      </li>
+    </ol>
+  </section>
+
+  <div class="page-break"></div>
+
+  <section>
+    <h2>4. the digital layer: web marketplace &amp; lead engine</h2>
+    <p>
+      A physical recycling project is only sustainable if people know what is available and can request it. We built an active digital web platform to support the project:
+    </p>
+    <ul>
+      <li>
+        <strong>Frontend Architecture:</strong> Built using React 18, TypeScript, and Vite. Designed to be fast, responsive on mobile devices, and accessible.
+      </li>
+      <li>
+        <strong>Resilient Lead Intake:</strong> Integrated with Google Apps Script to route product inquiries and custom batch requests directly into an automated spreadsheet ledger. Includes local storage caching so inquiries are never lost during weak connectivity.
+      </li>
+      <li>
+        <strong>Transparent Catalog:</strong> Each product includes material origin, manufacturing process, practical applications, and clear caution notices (e.g. non-structural ratings for eco-bricks).
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. connection to the etwinning collaboration</h2>
+    <p>
+      Madame Grondin's students in Reunion Island, alongside partner schools in Belgium, Norway, and the Czech Republic, are actively engaged in cleanups (CNN Earth Day rubbish collections) and recording reflections for local radio podcasts.
+    </p>
+    <p>
+      This presentation bridges their local action with our digital model:
+    </p>
+    <ul>
+      <li>
+        <strong>From Cleanups to Raw Materials:</strong> How collected rubbish can be segregated into specific material streams rather than simply thrown away.
+      </li>
+      <li>
+        <strong>Digital Tooling for Students:</strong> How simple web applications, spreadsheets, and podcasts can give student initiatives structure and visibility.
+      </li>
+      <li>
+        <strong>Regional Comparison:</strong> Contrasting island waste management challenges in Reunion Island with continental urban challenges in Punjab, India.
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>6. proposed 1-hour session structure</h2>
+    <ul>
+      <li>
+        <strong>Part 1: Presentation &amp; Live Demo (20 to 25 minutes)</strong>
+        <br>
+        Walking through the problem in Punjab, the physical conversion methods for the 6 products, and a live demonstration of the React/TypeScript marketplace.
+      </li>
+      <li>
+        <strong>Part 2: Student Discussion &amp; Q&amp;A (30 to 35 minutes)</strong>
+        <br>
+        Direct open exchange with students: answering questions on building the tech, sorting waste, and how they can adapt circular principles to their own projects.
+      </li>
+    </ul>
+  </section>
+
+</body>
+</html>
