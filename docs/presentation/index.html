@@ -38,7 +38,7 @@
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       padding: 8px 18px;
-      border-radius: 30px;
+      border-radius: 8px;
       border: 1px solid rgba(255, 255, 255, 0.12);
       color: #f1f5f9;
       font-family: 'JetBrains Mono', monospace;
@@ -52,7 +52,7 @@
       color: #fff;
       border: 1px solid rgba(255, 255, 255, 0.16);
       padding: 6px 14px;
-      border-radius: 20px;
+      border-radius: 6px;
       cursor: pointer;
       font-family: inherit;
       font-size: 12px;
@@ -86,11 +86,11 @@
       position: absolute;
       top: 0;
       left: 0;
-      padding: 68px 80px 60px 80px;
+      padding: 56px 72px;
       display: none;
       flex-direction: column;
       justify-content: flex-start;
-      border-radius: 16px;
+      border-radius: 8px;
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
       overflow: hidden;
     }
@@ -99,24 +99,31 @@
       display: flex;
     }
 
+    /* Title Slide Specific Clean Layout */
+    .slide.title-slide {
+      justify-content: center;
+      align-items: flex-start;
+      padding: 90px 100px;
+    }
+
     /* Header styling */
     .slide-header {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      margin-bottom: 36px;
+      gap: 6px;
+      margin-bottom: 24px;
     }
 
     .slide-title {
-      font-size: 40px;
+      font-size: 36px;
       font-weight: 700;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.025em;
       color: #090a0f;
       line-height: 1.15;
     }
 
     .slide-subtitle {
-      font-size: 18px;
+      font-size: 17px;
       color: #64748b;
       font-weight: 400;
       letter-spacing: -0.01em;
@@ -127,21 +134,21 @@
     .slide-body {
       flex: 1;
       display: flex;
-      gap: 36px;
+      gap: 28px;
       align-items: stretch;
     }
 
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 36px;
+      gap: 28px;
       width: 100%;
     }
 
     .grid-4 {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      gap: 18px;
       width: 100%;
     }
 
@@ -149,12 +156,12 @@
     .card {
       background: #ffffff;
       border: 1px solid #e2e8f0;
-      border-radius: 14px;
-      padding: 32px;
+      border-radius: 8px;
+      padding: 24px 26px;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
     }
 
     .card.soft-bg {
@@ -163,15 +170,15 @@
     }
 
     .card-title {
-      font-size: 21px;
+      font-size: 19px;
       font-weight: 700;
       letter-spacing: -0.02em;
       color: #0f172a;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .card-p {
-      font-size: 16px;
+      font-size: 15px;
       color: #475569;
       line-height: 1.6;
     }
@@ -181,19 +188,19 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 14px;
     }
 
     .clean-list li {
       display: flex;
       align-items: flex-start;
-      gap: 14px;
+      gap: 12px;
     }
 
     .bullet-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
+      width: 6px;
+      height: 6px;
+      border-radius: 2px;
       background: #0284c7;
       margin-top: 8px;
       flex-shrink: 0;
@@ -202,7 +209,7 @@
     .list-text {
       font-size: 15px;
       color: #334155;
-      line-height: 1.55;
+      line-height: 1.5;
     }
 
     .list-text strong {
@@ -213,13 +220,12 @@
     /* Media Containers */
     .media-card {
       border: 1px solid #e2e8f0;
-      border-radius: 14px;
+      border-radius: 8px;
       overflow: hidden;
       background: #f8fafc;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
     }
 
     .media-card img {
@@ -229,37 +235,36 @@
       display: block;
     }
 
-    /* Placeholders */
+    /* Rectangular Placeholders (no circular curves) */
     .media-placeholder {
-      border: 2px dashed #cbd5e1;
-      border-radius: 14px;
+      border: 1.5px dashed #cbd5e1;
+      border-radius: 8px;
       background: #f8fafc;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 32px;
+      padding: 24px;
       text-align: center;
       width: 100%;
       height: 100%;
-      min-height: 240px;
     }
 
     .placeholder-tag {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 600;
-      color: #334155;
+      color: #1e293b;
       background: #e2e8f0;
-      padding: 6px 14px;
-      border-radius: 6px;
-      margin-top: 10px;
+      padding: 6px 12px;
+      border-radius: 4px;
+      margin-top: 8px;
     }
 
     .placeholder-hint {
       font-size: 13px;
-      color: #94a3b8;
-      margin-top: 8px;
+      color: #64748b;
+      margin-top: 6px;
     }
 
     /* Transition / Meme Specific Slides */
@@ -271,18 +276,18 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      gap: 24px;
+      gap: 18px;
     }
 
     .transition-header {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
 
     .transition-header h2 {
-      font-size: 34px;
+      font-size: 32px;
       font-weight: 700;
       letter-spacing: -0.025em;
       color: #0f172a;
@@ -290,12 +295,11 @@
 
     .transition-card {
       width: 640px;
-      max-height: 380px;
-      background: #ffffff;
+      height: 380px;
+      background: #f8fafc;
       border: 1px solid #e2e8f0;
-      border-radius: 16px;
-      padding: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+      border-radius: 8px;
+      padding: 12px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -304,13 +308,13 @@
 
     .transition-card img {
       max-width: 100%;
-      max-height: 320px;
-      border-radius: 10px;
+      max-height: 350px;
+      border-radius: 4px;
       object-fit: contain;
     }
 
     .transition-caption {
-      font-size: 16px;
+      font-size: 15px;
       color: #64748b;
       max-width: 620px;
       line-height: 1.5;
@@ -322,19 +326,18 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      gap: 20px;
+      gap: 16px;
     }
 
     .flow-step-box {
       flex: 1;
       background: #ffffff;
       border: 1px solid #e2e8f0;
-      border-radius: 14px;
-      padding: 26px 22px;
+      border-radius: 8px;
+      padding: 22px 20px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+      gap: 6px;
     }
 
     .flow-step-num {
@@ -345,19 +348,19 @@
     }
 
     .flow-step-title {
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 700;
       color: #0f172a;
     }
 
     .flow-step-desc {
-      font-size: 14px;
+      font-size: 13px;
       color: #64748b;
       line-height: 1.45;
     }
 
     .flow-arrow {
-      font-size: 22px;
+      font-size: 20px;
       color: #94a3b8;
       font-weight: bold;
     }
@@ -366,18 +369,18 @@
     .product-pills {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 14px;
+      gap: 12px;
       width: 100%;
     }
 
     .product-pill {
       background: #f8fafc;
       border: 1px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 16px 20px;
+      border-radius: 6px;
+      padding: 14px 16px;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 3px;
     }
 
     .product-pill strong {
@@ -389,22 +392,7 @@
     .product-pill span {
       font-size: 13px;
       color: #64748b;
-    }
-
-    /* School Pill on Title Slide */
-    .school-highlight {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #f8fafc;
-      border: 1px solid #cbd5e1;
-      padding: 10px 18px;
-      border-radius: 30px;
-      font-weight: 600;
-      font-size: 14px;
-      color: #0f172a;
-      margin-top: 14px;
-      align-self: flex-start;
+      line-height: 1.35;
     }
 
     /* Print & Headless PDF Rendering */
@@ -439,7 +427,11 @@
         margin: 0 !important;
         width: 1280px !important;
         height: 720px !important;
-        padding: 68px 80px 60px 80px !important;
+        padding: 56px 72px !important;
+      }
+
+      .slide.title-slide {
+        padding: 90px 100px !important;
       }
     }
   </style>
@@ -456,42 +448,16 @@
 
   <div class="slide-stage">
 
-    <!-- SLIDE 01: TITLE -->
-    <div class="slide active">
-      <div class="slide-header" style="margin-bottom: 24px;">
-        <h1 class="slide-title" style="font-size: 48px;">EcoLoop</h1>
-        <p class="slide-subtitle" style="font-size: 21px;">Circular material systems and zero-cost digital architecture.</p>
-        <div class="school-highlight">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-          </svg>
-          Swami Sant Dass Public School, Jalandhar
-        </div>
-      </div>
-
-      <div class="slide-body grid-2" style="align-items: center;">
-        <div class="card soft-bg">
-          <div class="card-title">Project Overview</div>
-          <p class="card-p">
-            A sustainability initiative combining verified upcycled materials with modern web infrastructure, designed and built using autonomous AI coding tools.
-          </p>
-          <div style="margin-top: 24px; display: flex; gap: 16px; font-size: 14px; color: #475569; font-weight: 500;">
-            <span>&bull; 6 Verified Physical Materials</span>
-            <span>&bull; React 18 &amp; TypeScript</span>
-            <span>&bull; $0 Operating Expenses</span>
-          </div>
-        </div>
-
-        <div class="media-placeholder">
-          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
-            <circle cx="9" cy="9" r="2"/>
-            <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
-          </svg>
-          <span class="placeholder-tag">[image for hero visual / platform preview]</span>
-          <span class="placeholder-hint">Project render or live application preview.</span>
-        </div>
+    <!-- SLIDE 01: TITLE (Clean, Confident, Zero Cards, Zero Images) -->
+    <div class="slide active title-slide">
+      <h1 style="font-size: 72px; font-weight: 700; letter-spacing: -0.04em; color: #090a0f; line-height: 1.05;">
+        EcoLoop
+      </h1>
+      <p style="font-size: 24px; color: #475569; font-weight: 400; margin-top: 18px; letter-spacing: -0.015em; max-width: 760px; line-height: 1.45;">
+        Circular material systems and zero-cost digital architecture.
+      </p>
+      <div style="font-size: 17px; font-weight: 600; color: #0284c7; margin-top: 48px; letter-spacing: -0.01em;">
+        Swami Sant Dass Public School, Jalandhar
       </div>
     </div>
 
@@ -520,6 +486,13 @@
                 Communities and schools generate clean packaging waste, but lack direct channels connecting them to verified upcycling alternatives.
               </div>
             </li>
+            <li>
+              <div class="bullet-dot" style="background: #ef4444;"></div>
+              <div class="list-text">
+                <strong>Information Asymmetry:</strong><br>
+                Consumers and institutions cannot verify whether their sorted recyclables are actually reprocessed or simply dumped.
+              </div>
+            </li>
           </ul>
         </div>
 
@@ -538,6 +511,13 @@
               <div class="list-text">
                 <strong>Digital Transparency:</strong><br>
                 Publishing exact material specifications, density metrics, and inventory through an open platform.
+              </div>
+            </li>
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>Closed Institutional Loops:</strong><br>
+                Partnering directly with campuses to collect, process, and return finished utility goods back to the source.
               </div>
             </li>
           </ul>
@@ -594,8 +574,8 @@
         </div>
 
         <div class="transition-card">
-          <div class="media-placeholder" style="border: none; background: transparent; min-height: 220px;">
-            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <div class="media-placeholder" style="border: none; background: transparent;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"/>
               <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
               <line x1="9" x2="9.01" y1="9" y2="9"/>
@@ -660,7 +640,7 @@
         <p class="slide-subtitle">Delivering full transactional workflows without servers or ongoing bills.</p>
       </div>
 
-      <div class="slide-body" style="flex-direction: column; justify-content: center; gap: 28px;">
+      <div class="slide-body" style="flex-direction: column; justify-content: center; gap: 24px;">
         <div class="flow-steps">
           <div class="flow-step-box">
             <span class="flow-step-num">STEP 01</span>
@@ -685,7 +665,7 @@
           </div>
         </div>
 
-        <div class="card soft-bg" style="padding: 22px 28px;">
+        <div class="card soft-bg" style="padding: 22px 26px;">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <div>
               <strong style="font-size: 17px; color: #0f172a;">Total Infrastructure Operating Cost</strong>
@@ -707,8 +687,8 @@
         </div>
 
         <div class="transition-card">
-          <div class="media-placeholder" style="border: none; background: transparent; min-height: 220px;">
-            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <div class="media-placeholder" style="border: none; background: transparent;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
             </svg>
             <span class="placeholder-tag">[Meme: Buff Doge vs Cheems - $450/month enterprise AWS vs $0 Google Sheets backend]</span>
@@ -817,8 +797,8 @@
         </div>
 
         <div class="transition-card">
-          <div class="media-placeholder" style="border: none; background: transparent; min-height: 220px;">
-            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <div class="media-placeholder" style="border: none; background: transparent;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
               <path d="M6 6h10"/>
               <path d="M6 10h10"/>
@@ -852,7 +832,7 @@
         <div class="card">
           <div class="card-title" style="font-size: 18px;">2. Autonomous Edit</div>
           <p class="card-p" style="font-size: 14px;">
-            The agent reads the existing files, creates new components, and updates the project across the folder.
+            The agent reads existing files, writes modular components, and links application routes.
           </p>
         </div>
 
@@ -909,7 +889,7 @@
 
         <div class="card soft-bg" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.6; color: #334155;">
           <div style="color: #64748b; margin-bottom: 12px;">// Quick Installation in 60 Seconds</div>
-          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin-bottom: 16px;">
+          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 16px; margin-bottom: 16px;">
             <span style="color: #0284c7;">$</span> npm install -g @opencode/cli<br>
             <span style="color: #0284c7;">$</span> cd ./my-project<br>
             <span style="color: #0284c7;">$</span> opencode
@@ -971,6 +951,13 @@
                 <code>qwen2.5-coder:7b</code> delivers outstanding coding logic on standard laptops with 8GB to 16GB of RAM.
               </div>
             </li>
+            <li>
+              <div class="bullet-dot" style="background: #16a34a;"></div>
+              <div class="list-text">
+                <strong>Zero Latency:</strong><br>
+                Instant responses directly on device with zero dependence on external network connectivity.
+              </div>
+            </li>
           </ul>
         </div>
       </div>
@@ -997,18 +984,18 @@
     <!-- SLIDE 15: MINIMAL THANK YOU & QR -->
     <div class="slide" style="justify-content: center; align-items: center; text-align: center;">
       <div style="max-width: 600px; display: flex; flex-direction: column; align-items: center; gap: 20px;">
-        <h1 style="font-size: 52px; font-weight: 700; letter-spacing: -0.03em; color: #090a0f;">
+        <h1 style="font-size: 56px; font-weight: 700; letter-spacing: -0.035em; color: #090a0f;">
           Thank You.
         </h1>
         <p style="font-size: 18px; color: #64748b; line-height: 1.5;">
           Scan the code to access the complete open-source repository, live demo, and student setup guide.
         </p>
 
-        <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 18px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04); margin-top: 8px;">
+        <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 16px; border-radius: 8px; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03); margin-top: 6px;">
           <img src="images/qr-ecoloop.png" alt="QR Code for EcoLoop GitHub" style="width: 170px; height: 170px; display: block;">
         </div>
 
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #0284c7; background: #eff6ff; padding: 8px 20px; border-radius: 20px; border: 1px solid #dbeafe;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #0284c7; background: #eff6ff; padding: 8px 20px; border-radius: 6px; border: 1px solid #dbeafe;">
           github.com/Harman209/ecoloop
         </div>
 
