@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OpenCode Student Setup Guide &bull; Free AI Coding</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      color: #0f172a;
+      background: #ffffff;
+      padding: 30px 36px;
+      line-height: 1.45;
+      font-size: 13px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .header {
+      border-bottom: 2px solid #0f172a;
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: #475569;
+      margin-top: 2px;
+    }
+
+    .meta {
+      text-align: right;
+      font-size: 11px;
+      color: #64748b;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    .section {
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0f172a;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+      padding-bottom: 3px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    p {
+      color: #334155;
+      margin-bottom: 6px;
+    }
+
+    .code-block {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+      color: #0f172a;
+      margin: 8px 0 10px 0;
+      line-height: 1.4;
+    }
+
+    .code-comment {
+      color: #64748b;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 10px 12px;
+    }
+
+    .card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+
+    .card-desc {
+      font-size: 12px;
+      color: #475569;
+      line-height: 1.4;
+    }
+
+    .list {
+      padding-left: 16px;
+      color: #334155;
+      margin: 6px 0;
+    }
+
+    .list li {
+      margin-bottom: 4px;
+    }
+
+    .footer {
+      margin-top: 20px;
+      padding-top: 10px;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #64748b;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 10mm;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div>
+      <h1 class="title">OpenCode Student Setup Guide</h1>
+      <p class="subtitle">Complete, zero-cost guide to autonomous AI coding in your terminal.</p>
+    </div>
+    <div class="meta">
+      Swami Sant Dass Public School<br>
+      github.com/Harman209/ecoloop
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">1. What is OpenCode?</h2>
+    <p>
+      OpenCode is an open-source terminal agent developed by Anomaly (GitHub: <code>anomalyco/opencode</code>).
+      Unlike typical chatbots where you copy and paste code back and forth, OpenCode inspects your project directory, edits files directly, and runs your compiler or tests to automatically fix errors.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">2. Quick Installation (60 Seconds)</h2>
+    <p>Open your terminal on Linux, macOS, or Windows (WSL / PowerShell) and run:</p>
+    <div class="code-block">
+      <span class="code-comment"># Install OpenCode globally via npm</span><br>
+      npm install -g @opencode/cli<br><br>
+      <span class="code-comment"># Alternatively, install via curl (macOS / Linux)</span><br>
+      curl -fsSL https://opencode.ai/install.sh | bash
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">3. Free AI Models: Zero Cost, No Credit Card Required</h2>
+    <p>You do not need paid subscriptions to use autonomous AI agents. Here are the best free options available to students today:</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Google Gemini API (Cloud, Free)</div>
+        <div class="card-desc">
+          Sign in to <strong>aistudio.google.com</strong> with your Google account and generate a free API key. Generous free limits for Gemini 1.5 Flash and Gemini 2.0.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Groq Cloud (Cloud, Free)</div>
+        <div class="card-desc">
+          Sign in to <strong>console.groq.com</strong>. Extremely fast token generation running open-weight models like Llama 3.3 70B for zero dollars.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">GitHub Models (Cloud, Free)</div>
+        <div class="card-desc">
+          Accessible directly from your GitHub student account. Test models like GPT-4o and Claude 3.5 Sonnet directly in VS Code or GitHub Codespaces.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Ollama (100% Offline, Private)</div>
+        <div class="card-desc">
+          Download <strong>ollama.com</strong>. Runs entirely on your laptop hardware without an internet connection. Recommended model: <code>qwen2.5-coder:7b</code>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">4. Recommended Daily Workflow</h2>
+    <ol class="list" style="padding-left: 20px;">
+      <li>
+        <strong>Navigate to your code:</strong> In your terminal, go to any project folder (e.g. <code>cd ~/my-app</code>).
+      </li>
+      <li>
+        <strong>Launch OpenCode:</strong> Type <code>opencode</code> and hit enter.
+      </li>
+      <li>
+        <strong>Choose your mode:</strong>
+        Use <code>plan</code> mode to survey files and review architectural options before any code changes.
+        Switch to <code>build</code> mode to let the agent apply changes across your repository.
+      </li>
+      <li>
+        <strong>Define clear rules:</strong> Create a short file called <code>AGENTS.md</code> in your project root. Document your tech stack, design guidelines, and constraints so the agent never goes off track.
+      </li>
+    </ol>
+  </div>
+
+  <div class="footer">
+    <span>EcoLoop Open Education Initiative</span>
+    <span>Source &amp; Demos: github.com/Harman209/ecoloop</span>
+  </div>
+
+</body>
+</html>
