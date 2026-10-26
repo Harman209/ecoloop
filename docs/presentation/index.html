@@ -2,36 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EcoLoop: Circular Systems &amp; Autonomous AI Coding</title>
-
-  <!-- Typography: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* ===========================================
-       FRONTEND SLIDES: MANDATORY FIXED 16:9 STAGE
-       Authored at 1920x1080. Scaled as a whole.
-       Based on zarazhangrui/frontend-slides
-       =========================================== */
-
     :root {
-      --stage-bg: #090a0f;
-      --slide-bg: #ffffff;
-      --text-primary: #0f172a;
-      --text-secondary: #475569;
-      --text-muted: #64748b;
-      --accent: #0284c7;
-      --accent-light: #eff6ff;
-      --line-color: #e2e8f0;
-      --card-bg: #f8fafc;
-      --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", sans-serif;
-      --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-      --duration-normal: 0.5s;
+      --color-primary-green: #1f6b4f;
+      --color-primary-green-light: #288563;
+      --color-secondary-green: #5d8a72;
+      --color-secondary-green-subtle: #e8efe9;
+      --color-dark: #171a18;
+      --color-muted: #526058;
+      --color-border: #e2e8e0;
+      --color-bg-card: #f9fbf9;
     }
 
     * {
@@ -40,386 +24,41 @@
       padding: 0;
     }
 
-    html,
     body {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      overflow: hidden;
-      background: var(--stage-bg);
-      font-family: var(--font-body);
-      color: var(--text-primary);
-      -webkit-font-smoothing: antialiased;
+      background: #0d110f;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Plus Jakarta Sans", "Helvetica Neue", sans-serif;
+      color: var(--color-dark);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow-x: hidden;
       user-select: none;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* 1. Full-window deck viewport */
-    .deck-viewport {
+    /* Floating Navigation Controls */
+    .deck-nav {
       position: fixed;
-      inset: 0;
-      overflow: hidden;
-      background: var(--stage-bg);
-    }
-
-    /* 2. Fixed 16:9 design canvas (1920x1080) */
-    .deck-stage {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 1920px;
-      height: 1080px;
-      overflow: hidden;
-      transform-origin: 0 0;
-      background: var(--slide-bg);
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
-    }
-
-    /* 3. Slide Layering & Visibility */
-    .slide {
-      position: absolute;
-      inset: 0;
-      width: 1920px;
-      height: 1080px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      padding: 96px 128px;
-      visibility: hidden;
-      opacity: 0;
-      pointer-events: none;
-      background: var(--slide-bg);
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-    }
-
-    .slide.active,
-    .slide.visible {
-      visibility: visible;
-      opacity: 1;
-      pointer-events: auto;
-      z-index: 1;
-    }
-
-    /* 4. Motion & Staggered Reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity var(--duration-normal) var(--ease-out-expo),
-                  transform var(--duration-normal) var(--ease-out-expo);
-    }
-
-    .slide.visible .reveal {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .reveal:nth-child(1) { transition-delay: 0.05s; }
-    .reveal:nth-child(2) { transition-delay: 0.12s; }
-    .reveal:nth-child(3) { transition-delay: 0.18s; }
-    .reveal:nth-child(4) { transition-delay: 0.24s; }
-
-    /* 5. Clean Slide Typography */
-    .slide-header {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 56px;
-    }
-
-    .slide-title {
-      font-family: var(--font-display);
-      font-size: 56px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      color: #090a0f;
-      line-height: 1.15;
-    }
-
-    .slide-subtitle {
-      font-size: 24px;
-      color: var(--text-muted);
-      font-weight: 400;
-      letter-spacing: -0.01em;
-      line-height: 1.45;
-    }
-
-    /* 6. Body Grid & Layouts (Pure Canvas Columns, No Artificial Boxes) */
-    .slide-body {
-      flex: 1;
-      display: flex;
-      gap: 64px;
-      align-items: flex-start;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      width: 100%;
-    }
-
-    .grid-4 {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 28px;
-      width: 100%;
-    }
-
-    .text-col {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .col-title {
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: #0f172a;
-      margin-bottom: 4px;
-    }
-
-    .clean-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 26px;
-    }
-
-    .clean-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 18px;
-    }
-
-    .bullet-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 3px;
-      background: var(--accent);
-      margin-top: 10px;
-      flex-shrink: 0;
-    }
-
-    .list-text {
-      font-size: 21px;
-      color: #334155;
-      line-height: 1.55;
-    }
-
-    .list-text strong {
-      color: #0f172a;
-      font-weight: 600;
-    }
-
-    /* 7. Media & Screenshot Containers */
-    .media-card {
-      border: 1px solid var(--line-color);
-      border-radius: 12px;
-      overflow: hidden;
-      background: var(--card-bg);
-      width: 100%;
-      height: 520px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    }
-
-    .media-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* Rectangular Placeholders (No circular curves) */
-    .media-placeholder {
-      border: 2px dashed #cbd5e1;
-      border-radius: 12px;
-      background: var(--card-bg);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 36px;
-      text-align: center;
-      width: 100%;
-      height: 480px;
-    }
-
-    .placeholder-tag {
-      font-family: var(--font-mono);
-      font-size: 16px;
-      font-weight: 600;
-      color: #1e293b;
-      background: #e2e8f0;
-      padding: 8px 18px;
-      border-radius: 6px;
-      margin-top: 14px;
-    }
-
-    .placeholder-hint {
-      font-size: 16px;
-      color: var(--text-muted);
-      margin-top: 8px;
-    }
-
-    /* 8. Transition / Meme Specific Slides */
-    .transition-wrap {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      gap: 28px;
-    }
-
-    .transition-header h2 {
-      font-family: var(--font-display);
-      font-size: 46px;
-      font-weight: 700;
-      letter-spacing: -0.025em;
-      color: #0f172a;
-    }
-
-    .transition-card {
-      max-width: 900px;
-      background: #ffffff;
-      border: 1px solid var(--line-color);
-      border-radius: 12px;
-      padding: 14px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .transition-card img {
-      max-width: 100%;
-      max-height: 500px;
-      border-radius: 6px;
-      object-fit: contain;
-      display: block;
-    }
-
-    .transition-caption {
-      font-size: 22px;
-      color: var(--text-muted);
-      max-width: 860px;
-      line-height: 1.5;
-    }
-
-    /* 9. Flow Steps */
-    .flow-steps {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      gap: 24px;
-    }
-
-    .flow-step-box {
-      flex: 1;
-      background: var(--card-bg);
-      border: 1px solid var(--line-color);
-      border-radius: 12px;
-      padding: 34px 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .flow-step-num {
-      font-family: var(--font-mono);
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    .flow-step-title {
-      font-size: 22px;
-      font-weight: 700;
-      color: #0f172a;
-    }
-
-    .flow-step-desc {
-      font-size: 17px;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    .flow-arrow {
-      font-size: 28px;
-      color: #94a3b8;
-      font-weight: bold;
-    }
-
-    .cost-banner {
-      width: 100%;
-      background: var(--card-bg);
-      border: 1px solid var(--line-color);
-      border-radius: 12px;
-      padding: 28px 36px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 14px;
-    }
-
-    /* 10. Compact Product Items for Slide 3 */
-    .product-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      width: 100%;
-    }
-
-    .product-row {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid #f1f5f9;
-    }
-
-    .product-row strong {
-      font-size: 22px;
-      color: #0f172a;
-      font-weight: 600;
-    }
-
-    .product-row span {
-      font-size: 18px;
-      color: var(--text-muted);
-      line-height: 1.4;
-    }
-
-    /* 11. Presentation Chrome (Outside the 1920x1080 Canvas) */
-    .deck-controls {
-      position: fixed;
-      left: 50%;
-      bottom: 24px;
-      transform: translateX(-50%);
-      z-index: 1000;
+      top: 18px;
       display: flex;
       align-items: center;
       gap: 16px;
-      background: rgba(18, 20, 29, 0.9);
+      background: rgba(23, 26, 24, 0.92);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       padding: 8px 18px;
       border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       color: #f1f5f9;
-      font-family: var(--font-mono);
+      font-family: 'JetBrains Mono', monospace;
       font-size: 13px;
+      z-index: 1000;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
     }
 
-    .deck-controls button {
+    .deck-nav button {
       background: rgba(255, 255, 255, 0.08);
       color: #fff;
       border: 1px solid rgba(255, 255, 255, 0.16);
@@ -432,739 +71,1049 @@
       transition: all 0.15s ease;
     }
 
-    .deck-controls button:hover {
-      background: rgba(255, 255, 255, 0.18);
-      border-color: rgba(255, 255, 255, 0.3);
+    .deck-nav button:hover {
+      background: var(--color-primary-green);
+      border-color: var(--color-primary-green-light);
     }
 
-    .deck-controls .counter {
-      color: #94a3b8;
+    .deck-nav .counter {
+      color: #9eb0a4;
       font-weight: 600;
       min-width: 65px;
       text-align: center;
     }
 
-    /* 12. Print / Headless PDF Generation */
+    /* 16:9 Presentation Canvas */
+    .slide-stage {
+      width: 1280px;
+      height: 720px;
+      position: relative;
+    }
+
+    .slide {
+      width: 1280px;
+      height: 720px;
+      background: #ffffff;
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 60px 84px;
+      display: none;
+      flex-direction: column;
+      justify-content: flex-start;
+      border-radius: 8px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
+      overflow: hidden;
+    }
+
+    .slide.active {
+      display: flex;
+    }
+
+    /* Title Slide Specific Clean Layout */
+    .slide.title-slide {
+      justify-content: center;
+      align-items: flex-start;
+      padding: 90px 104px;
+      background: radial-gradient(circle at 90% 15%, rgba(31, 107, 79, 0.05) 0%, transparent 60%), #ffffff;
+    }
+
+    /* Header styling */
+    .slide-header {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 32px;
+    }
+
+    .slide-title {
+      font-size: 38px;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--color-dark);
+      line-height: 1.15;
+    }
+
+    .slide-title span.accent-green {
+      color: var(--color-primary-green);
+    }
+
+    .slide-subtitle {
+      font-size: 17px;
+      color: var(--color-muted);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 1.4;
+    }
+
+    /* Body Layouts */
+    .slide-body {
+      flex: 1;
+      display: flex;
+      gap: 52px;
+      align-items: center;
+    }
+
+    .slide-body.top-aligned {
+      align-items: flex-start;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 52px;
+      width: 100%;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      width: 100%;
+    }
+
+    /* Pure Typography Columns */
+    .text-col {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .col-title {
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--color-dark);
+      margin-bottom: 4px;
+    }
+
+    .col-title.green {
+      color: var(--color-primary-green);
+    }
+
+    /* Clean Bullet List */
+    .clean-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .clean-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .bullet-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      background: var(--color-primary-green);
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+
+    .bullet-dot.red {
+      background: #dc2626;
+    }
+
+    .list-text {
+      font-size: 15px;
+      color: #334155;
+      line-height: 1.55;
+    }
+
+    .list-text strong {
+      color: var(--color-dark);
+      font-weight: 600;
+    }
+
+    /* Media Containers */
+    .media-card {
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--color-bg-card);
+      width: 100%;
+      height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(23, 26, 24, 0.04);
+    }
+
+    .media-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Rectangular Placeholders */
+    .media-placeholder {
+      border: 1.5px dashed var(--color-secondary-green);
+      border-radius: 8px;
+      background: var(--color-secondary-green-subtle);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+      width: 100%;
+      height: auto;
+    }
+
+    .placeholder-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-primary-green);
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      padding: 6px 14px;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+
+    .placeholder-hint {
+      font-size: 13px;
+      color: var(--color-muted);
+      margin-top: 6px;
+    }
+
+    /* Transition / Meme Specific Slides */
+    .transition-wrap {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 18px;
+    }
+
+    .transition-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .transition-header h2 {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--color-dark);
+    }
+
+    .transition-card {
+      max-width: 660px;
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px rgba(23, 26, 24, 0.04);
+    }
+
+    .transition-card img {
+      max-width: 100%;
+      max-height: 380px;
+      border-radius: 4px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .transition-caption {
+      font-size: 16px;
+      color: var(--color-muted);
+      max-width: 640px;
+      line-height: 1.5;
+    }
+
+    /* Flow Diagrams */
+    .flow-steps {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      gap: 18px;
+    }
+
+    .flow-step-box {
+      flex: 1;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-top: 3px solid var(--color-primary-green);
+      border-radius: 8px;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: 0 2px 8px rgba(23, 26, 24, 0.02);
+    }
+
+    .flow-step-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--color-primary-green);
+      letter-spacing: 0.05em;
+    }
+
+    .flow-step-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--color-dark);
+    }
+
+    .flow-step-desc {
+      font-size: 13.5px;
+      color: var(--color-muted);
+      line-height: 1.45;
+    }
+
+    .flow-arrow {
+      font-size: 20px;
+      color: var(--color-secondary-green);
+      font-weight: bold;
+    }
+
+    /* Product Stack */
+    .product-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .product-row {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .product-row strong {
+      font-size: 16px;
+      color: var(--color-dark);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .product-row strong::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: var(--color-primary-green);
+      border-radius: 2px;
+    }
+
+    .product-row span {
+      font-size: 13.5px;
+      color: var(--color-muted);
+      line-height: 1.4;
+      padding-left: 14px;
+    }
+
+    /* Cost Banner */
+    .cost-banner {
+      width: 100%;
+      background: var(--color-secondary-green-subtle);
+      border: 1px solid var(--color-secondary-green);
+      border-radius: 8px;
+      padding: 22px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    /* School Highlight */
+    .school-highlight {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-primary-green);
+      margin-top: 36px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    /* Print & Headless PDF Rendering */
     @media print {
-      html,
+      @page {
+        size: 1280px 720px;
+        margin: 0;
+      }
+
       body {
-        width: 1920px;
-        height: auto;
-        overflow: visible;
         background: #ffffff;
+        padding: 0;
+        margin: 0;
       }
 
-      .deck-viewport {
-        position: static;
-        overflow: visible;
-        background: #ffffff;
-      }
-
-      .deck-stage {
-        position: static;
-        width: auto;
-        height: auto;
-        transform: none !important;
-        background: none;
-        box-shadow: none !important;
-      }
-
-      .slide {
-        position: relative !important;
-        width: 1920px !important;
-        height: 1080px !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        display: flex !important;
-        page-break-after: always;
-        break-after: page;
-        padding: 96px 128px !important;
-      }
-
-      .reveal {
-        opacity: 1 !important;
-        transform: none !important;
-      }
-
-      .deck-controls {
+      .deck-nav {
         display: none !important;
       }
 
-      @page {
-        size: 1920px 1080px;
-        margin: 0;
+      .slide-stage {
+        width: 1280px;
+        height: auto;
+      }
+
+      .slide {
+        display: flex !important;
+        position: relative !important;
+        page-break-after: always;
+        break-after: page;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+        width: 1280px !important;
+        height: 720px !important;
+        padding: 60px 84px !important;
+      }
+
+      .slide.title-slide {
+        padding: 90px 104px !important;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="deck-viewport">
-    <main class="deck-stage" id="deckStage">
+  <!-- Floating Nav Controls -->
+  <div class="deck-nav">
+    <button onclick="prevSlide()">Prev (&larr;)</button>
+    <div class="counter" id="slide-counter">01 / 15</div>
+    <button onclick="nextSlide()">Next (&rarr;)</button>
+    <button onclick="toggleFullScreen()">Fullscreen (F)</button>
+  </div>
 
-      <!-- SLIDE 01: TITLE (Clean, Confident Typography, Zero Cards, Zero Images) -->
-      <section class="slide active visible" style="justify-content: center; align-items: flex-start; padding: 140px 160px;">
-        <h1 class="reveal" style="font-size: 108px; font-weight: 700; letter-spacing: -0.04em; color: #090a0f; line-height: 1.05;">
-          EcoLoop
-        </h1>
-        <p class="reveal" style="font-size: 34px; color: #475569; font-weight: 400; margin-top: 24px; letter-spacing: -0.015em; max-width: 1100px; line-height: 1.45;">
-          Circular material systems and zero-cost digital architecture.
+  <div class="slide-stage">
+
+    <!-- SLIDE 01: TITLE -->
+    <div class="slide active title-slide">
+      <h1 style="font-size: 72px; font-weight: 800; letter-spacing: -0.04em; color: var(--color-dark); line-height: 1.05;">
+        Eco<span style="color: var(--color-primary-green);">Loop</span>
+      </h1>
+      <p style="font-size: 24px; color: var(--color-muted); font-weight: 400; margin-top: 18px; letter-spacing: -0.015em; max-width: 760px; line-height: 1.45;">
+        Circular material systems and zero-cost digital architecture.
+      </p>
+      <div class="school-highlight">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+        </svg>
+        Swami Sant Dass Public School, Jalandhar
+      </div>
+    </div>
+
+    <!-- SLIDE 02: THE LINEAR TRAP -->
+    <div class="slide">
+      <div class="slide-header">
+        <h2 class="slide-title">The Linear Packaging Problem</h2>
+        <p class="slide-subtitle">Why conventional municipal recycling fails on modern multi-layer packaging.</p>
+      </div>
+
+      <div class="slide-body grid-2 top-aligned">
+        <div class="text-col">
+          <div class="col-title" style="color: #b91c1c;">The Material Reality</div>
+          <ul class="clean-list">
+            <li>
+              <div class="bullet-dot red"></div>
+              <div class="list-text">
+                <strong>Multi-Layer Packaging (MLP):</strong><br>
+                Chips and snack packaging fuse plastic films with aluminum foil. Standard recyclers cannot separate these layers cost-effectively, diverting millions of tons directly to landfills.
+              </div>
+            </li>
+            <li>
+              <div class="bullet-dot red"></div>
+              <div class="list-text">
+                <strong>Fragmented Logistics:</strong><br>
+                Communities and schools generate clean packaging waste, but lack direct channels connecting them to verified upcycling alternatives.
+              </div>
+            </li>
+            <li>
+              <div class="bullet-dot red"></div>
+              <div class="list-text">
+                <strong>Information Asymmetry:</strong><br>
+                Consumers and institutions cannot verify whether their sorted recyclables are actually reprocessed or simply dumped.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="text-col">
+          <div class="col-title green">The EcoLoop Approach</div>
+          <ul class="clean-list">
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>Mechanical Upcycling:</strong><br>
+                Heat-compressing clean multi-layer plastics into structural sheets that replace traditional plywood and particle boards.
+              </div>
+            </li>
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>Digital Transparency:</strong><br>
+                Publishing exact material specifications, density metrics, and inventory through an open platform.
+              </div>
+            </li>
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>Closed Institutional Loops:</strong><br>
+                Partnering directly with campuses to collect, process, and return finished utility goods back to the source.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 03: THE PHYSICAL LOOP -->
+    <div class="slide">
+      <div class="slide-header">
+        <h2 class="slide-title">The Physical Loop: <span class="accent-green">Verified Materials</span></h2>
+        <p class="slide-subtitle">Six circular products systematically diverted from waste streams.</p>
+      </div>
+
+      <div class="slide-body grid-2">
+        <div class="product-stack">
+          <div class="product-row">
+            <strong>Eco-Bricks</strong>
+            <span>High-density PET containers packed with clean flexible plastics.</span>
+          </div>
+          <div class="product-row">
+            <strong>MLP Sheets</strong>
+            <span>Heat-pressed multi-layer packaging replacing standard plywood.</span>
+          </div>
+          <div class="product-row">
+            <strong>Bottle Planters</strong>
+            <span>Upcycled PET containers for nursery and hydroponic gardening.</span>
+          </div>
+          <div class="product-row">
+            <strong>Uniform Bags</strong>
+            <span>Heavyweight tote bags repurposed from discarded school uniforms.</span>
+          </div>
+          <div class="product-row">
+            <strong>Seed Paper</strong>
+            <span>Zero-bleach handmade paper embedded with native plant seeds.</span>
+          </div>
+          <div class="product-row" style="border-bottom: none;">
+            <strong>Bioenzymes</strong>
+            <span>Citrus-fermented organic cleaning concentrates.</span>
+          </div>
+        </div>
+
+        <div class="media-card">
+          <img src="images/sample-mlp.jpg" alt="Sample heat-pressed MLP sheet">
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 04: TRANSITION MEME 01 -->
+    <div class="slide">
+      <div class="transition-wrap">
+        <div class="transition-header">
+          <h2>Reality Check: How It Started vs How It Is Going</h2>
+        </div>
+
+        <div class="transition-card">
+          <div class="media-placeholder" style="border: none; background: transparent;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+              <line x1="9" x2="9.01" y1="9" y2="9"/>
+              <line x1="15" x2="15.01" y1="9" y2="9"/>
+            </svg>
+            <span class="placeholder-tag">[Meme: Me explaining to school teachers that collecting plastic wrappers requires a serverless cloud architecture]</span>
+            <span class="placeholder-hint">Clown applying makeup / Roll Safe / SpongeBob presentation</span>
+          </div>
+        </div>
+
+        <p class="transition-caption">
+          Started by collecting empty snack wrappers in school. Ended up building an automated cloud software platform.
         </p>
-        <div class="reveal" style="font-size: 24px; font-weight: 600; color: #0284c7; margin-top: 64px; letter-spacing: -0.01em;">
+      </div>
+    </div>
+
+    <!-- SLIDE 05: THE DIGITAL LAYER -->
+    <div class="slide">
+      <div class="slide-header">
+        <h2 class="slide-title">Why Physical Projects Need Software</h2>
+        <p class="slide-subtitle">Moving from static school displays to an open, operational platform.</p>
+      </div>
+
+      <div class="slide-body grid-2">
+        <div class="text-col">
+          <div class="col-title green">Platform Capabilities</div>
+          <ul class="clean-list">
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>Engineering Specifications:</strong><br>
+                Every product includes physical dimensions, density metrics, thermal characteristics, and production lead times.
+              </div>
+            </li>
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>Direct Transaction Routing:</strong><br>
+                Schools and community partners can query stock, request material samples, and submit institutional orders.
+              </div>
+            </li>
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>Modern Frontend Stack:</strong><br>
+                React 18 with TypeScript and Vite for fast client-side navigation and strict type safety.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="media-card">
+          <img src="images/screen-products.png" alt="EcoLoop product catalog interface">
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 06: ZERO-COST BACKEND -->
+    <div class="slide">
+      <div class="slide-header">
+        <h2 class="slide-title">The Zero-Cost Serverless Backend</h2>
+        <p class="slide-subtitle">Delivering full transactional workflows without servers or ongoing bills.</p>
+      </div>
+
+      <div class="slide-body" style="flex-direction: column; justify-content: center; gap: 24px;">
+        <div class="flow-steps">
+          <div class="flow-step-box">
+            <span class="flow-step-num">STEP 01</span>
+            <span class="flow-step-title">React Client</span>
+            <span class="flow-step-desc">The user submits an inquiry; client-side validation ensures clean data before transmission.</span>
+          </div>
+
+          <div class="flow-arrow">&rarr;</div>
+
+          <div class="flow-step-box">
+            <span class="flow-step-num">STEP 02</span>
+            <span class="flow-step-title">Apps Script Webhook</span>
+            <span class="flow-step-desc">A stateless Google Apps Script endpoint receives and parses the JSON payload securely.</span>
+          </div>
+
+          <div class="flow-arrow">&rarr;</div>
+
+          <div class="flow-step-box">
+            <span class="flow-step-num">STEP 03</span>
+            <span class="flow-step-title">Sheets Datastore</span>
+            <span class="flow-step-desc">Appends structured records, updates inventory tracking, and triggers automated alerts.</span>
+          </div>
+        </div>
+
+        <div class="cost-banner">
+          <div>
+            <strong style="font-size: 17px; color: var(--color-dark);">Total Infrastructure Operating Cost</strong>
+            <div style="font-size: 14px; color: var(--color-muted); margin-top: 2px;">No credit card required. No servers to maintain. 99.9% uptime.</div>
+          </div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 700; color: var(--color-primary-green);">
+            $0.00 / month
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 07: TRANSITION MEME 02 -->
+    <div class="slide">
+      <div class="transition-wrap">
+        <div class="transition-header">
+          <h2>Reality Check: The Cloud Bill Dilemma</h2>
+        </div>
+
+        <div class="transition-card">
+          <div class="media-placeholder" style="border: none; background: transparent;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
+            </svg>
+            <span class="placeholder-tag">[Meme: Buff Doge vs Cheems - $450/month enterprise AWS vs $0 Google Sheets backend]</span>
+            <span class="placeholder-hint">Buff Doge vs Cheems / Who would win</span>
+          </div>
+        </div>
+
+        <p class="transition-caption">
+          Enterprise developers arguing about Kubernetes microservices while two high schoolers run production on Google Sheets.
+        </p>
+      </div>
+    </div>
+
+    <!-- SLIDE 08: INTERACTIVE INQUIRIES -->
+    <div class="slide">
+      <div class="slide-header">
+        <h2 class="slide-title">Interactive Inquiry Engine</h2>
+        <p class="slide-subtitle">Handling institutional orders and sample requests with context preservation.</p>
+      </div>
+
+      <div class="slide-body grid-2">
+        <div class="text-col">
+          <div class="col-title green">Order &amp; Sample Workflow</div>
+          <ul class="clean-list">
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>Contextual Pre-Filling:</strong><br>
+                Selecting an item automatically binds its product ID, specifications, and suggested order minimums into form state.
+              </div>
+            </li>
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>Client-Side Validation:</strong><br>
+                Immediate feedback flags incomplete or invalid entries before triggering network dispatches.
+              </div>
+            </li>
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>Confirmation &amp; Logging:</strong><br>
+                A clean confirmation modal displays expected turnaround times while logging data directly to the spreadsheet.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="media-card">
+          <img src="images/screen-enquire.png" alt="Inquiry modal interface">
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 09: THE PARADIGM SHIFT -->
+    <div class="slide">
+      <div class="slide-header">
+        <h2 class="slide-title">The Paradigm Shift: Developer as Architect</h2>
+        <p class="slide-subtitle">How autonomous workflows shift focus from repetitive syntax to system design.</p>
+      </div>
+
+      <div class="slide-body grid-2 top-aligned">
+        <div class="text-col">
+          <div class="col-title" style="color: var(--color-muted);">Traditional Coding</div>
+          <ul class="clean-list">
+            <li>
+              <div class="bullet-dot" style="background: #94a3b8;"></div>
+              <div class="list-text">Manually typing repetitive component boilerplate and state handlers.</div>
+            </li>
+            <li>
+              <div class="bullet-dot" style="background: #94a3b8;"></div>
+              <div class="list-text">Spending hours searching forum threads to diagnose broken dependencies.</div>
+            </li>
+            <li>
+              <div class="bullet-dot" style="background: #94a3b8;"></div>
+              <div class="list-text">Getting stuck on typos and syntax bugs instead of building user features.</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="text-col">
+          <div class="col-title green">Autonomous AI Coding</div>
+          <ul class="clean-list">
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">You define the goals, system constraints, and visual design rules.</div>
+            </li>
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">The AI agent explores your files, writes components, and links routes.</div>
+            </li>
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">Automated tools test the code, surface errors, and repair bugs instantly.</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 10: TRANSITION MEME 03 -->
+    <div class="slide">
+      <div class="transition-wrap">
+        <div class="transition-header">
+          <h2>Reality Check: Learning to Code in 2026</h2>
+        </div>
+
+        <div class="transition-card">
+          <div class="media-placeholder" style="border: none; background: transparent;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+              <path d="M6 6h10"/>
+              <path d="M6 10h10"/>
+            </svg>
+            <span class="placeholder-tag">[Meme: Drake Hotline Bling - Reading 400 pages of framework documentation vs Writing clear specs and letting AI build]</span>
+            <span class="placeholder-hint">Drake Hotline / Galaxy Brain</span>
+          </div>
+        </div>
+
+        <p class="transition-caption">
+          Reading 200 pages of manual documentation at 3:00 AM is officially a thing of the past. Define the requirements and let the tools execute.
+        </p>
+      </div>
+    </div>
+
+    <!-- SLIDE 11: THE PRACTICAL LOOP -->
+    <div class="slide">
+      <div class="slide-header">
+        <h2 class="slide-title">How the Autonomous Coding Loop Works</h2>
+        <p class="slide-subtitle">Not a chatbot copying snippets, but an automated cycle that creates and tests code.</p>
+      </div>
+
+      <div class="slide-body grid-4">
+        <div class="flow-step-box">
+          <span class="flow-step-num">STAGE 01</span>
+          <span class="flow-step-title">Define the Goal</span>
+          <span class="flow-step-desc">Write clear requirements, design rules, and data structures in a simple specification document.</span>
+        </div>
+
+        <div class="flow-step-box">
+          <span class="flow-step-num">STAGE 02</span>
+          <span class="flow-step-title">Autonomous Edit</span>
+          <span class="flow-step-desc">The agent reads existing files, writes modular components, and links application routes.</span>
+        </div>
+
+        <div class="flow-step-box">
+          <span class="flow-step-num">STAGE 03</span>
+          <span class="flow-step-title">Automated Check</span>
+          <span class="flow-step-desc">Automated tools build the code. If an error appears, the agent reads the terminal output and fixes it.</span>
+        </div>
+
+        <div class="flow-step-box">
+          <span class="flow-step-num">STAGE 04</span>
+          <span class="flow-step-title">Safe History</span>
+          <span class="flow-step-desc">Every successful step is saved into version control, allowing you to experiment freely with zero risk.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 12: OPENCODE -->
+    <div class="slide">
+      <div class="slide-header">
+        <h2 class="slide-title">Introducing <span class="accent-green">OpenCode</span></h2>
+        <p class="slide-subtitle">An open-source autonomous coding agent that runs directly in your terminal.</p>
+      </div>
+
+      <div class="slide-body grid-2">
+        <div class="text-col">
+          <div class="col-title green">Why OpenCode?</div>
+          <ul class="clean-list">
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>100% Open Source:</strong><br>
+                Maintained by Anomaly (GitHub: <code>anomalyco/opencode</code>). Free to use with zero vendor lock-in.
+              </div>
+            </li>
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>Dual Execution Modes:</strong><br>
+                <code>Plan Mode</code> surveys your project architecture without editing; <code>Build Mode</code> autonomously edits files and runs tests.
+              </div>
+            </li>
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>Connects to Any Model:</strong><br>
+                Works with free cloud endpoints or completely private offline models on your personal computer.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div style="background: var(--color-bg-card); border: 1px solid var(--color-border); border-left: 4px solid var(--color-primary-green); border-radius: 8px; padding: 24px; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.6; color: var(--color-dark); width: 100%;">
+          <div style="color: var(--color-muted); margin-bottom: 14px;">// Quick Installation in 60 Seconds</div>
+          <div style="background: #ffffff; border: 1px solid var(--color-border); border-radius: 6px; padding: 16px; margin-bottom: 16px;">
+            <span style="color: var(--color-primary-green);">$</span> npm install -g @opencode/cli<br>
+            <span style="color: var(--color-primary-green);">$</span> cd ./my-project<br>
+            <span style="color: var(--color-primary-green);">$</span> opencode
+          </div>
+          <div style="color: var(--color-muted); font-size: 12px;">Runs on macOS, Linux, and Windows WSL.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 13: FREE AI MODELS FOR STUDENTS -->
+    <div class="slide">
+      <div class="slide-header">
+        <h2 class="slide-title">Free AI Models: <span class="accent-green">Zero Cost for Students</span></h2>
+        <p class="slide-subtitle">Practical options you can use tonight without paying for subscriptions.</p>
+      </div>
+
+      <div class="slide-body grid-2 top-aligned">
+        <div class="text-col">
+          <div class="col-title green">Free Cloud APIs</div>
+          <ul class="clean-list">
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>Google Gemini API:</strong><br>
+                Sign in to <code>aistudio.google.com</code> for a free key. Generous free tiers with Gemini 1.5 Flash and Gemini 2.0.
+              </div>
+            </li>
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>Groq Cloud:</strong><br>
+                Ultra-fast token generation on open-weight models like Llama 3.3 via <code>console.groq.com</code>.
+              </div>
+            </li>
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>GitHub Models:</strong><br>
+                Free student access to models like GPT-4o and Claude inside VS Code and GitHub Codespaces.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="text-col">
+          <div class="col-title green">100% Offline with Ollama</div>
+          <ul class="clean-list">
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>Completely Private &amp; Local:</strong><br>
+                Install from <code>ollama.com</code>. Runs entirely on your laptop hardware without needing an internet connection.
+              </div>
+            </li>
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>Recommended Model:</strong><br>
+                <code>qwen2.5-coder:7b</code> delivers outstanding coding logic on standard laptops with 8GB to 16GB of RAM.
+              </div>
+            </li>
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>Zero Latency:</strong><br>
+                Instant responses directly on device with zero dependence on external network connectivity.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 14: TRANSITION MEME 04 -->
+    <div class="slide">
+      <div class="transition-wrap">
+        <div class="transition-header">
+          <h2>Reality Check: The Compiler Never Lies</h2>
+        </div>
+
+        <div class="transition-card">
+          <img src="images/spiderman.jpg" alt="Spider-Man pointing meme">
+        </div>
+
+        <p class="transition-caption">
+          "I fixed all the bugs," says the AI model.<br>
+          The compiler: 47 errors found in 3 files.
+        </p>
+      </div>
+    </div>
+
+    <!-- SLIDE 15: MINIMAL THANK YOU & QR -->
+    <div class="slide" style="justify-content: center; align-items: center; text-align: center;">
+      <div style="max-width: 600px; display: flex; flex-direction: column; align-items: center; gap: 20px;">
+        <h1 style="font-size: 56px; font-weight: 800; letter-spacing: -0.035em; color: var(--color-dark);">
+          Thank <span style="color: var(--color-primary-green);">You.</span>
+        </h1>
+        <p style="font-size: 18px; color: var(--color-muted); line-height: 1.5;">
+          Scan the code to access the complete open-source repository, live demo, and student setup guide.
+        </p>
+
+        <div style="background: #ffffff; border: 1.5px solid var(--color-secondary-green-subtle); padding: 16px; border-radius: 8px; box-shadow: 0 4px 14px rgba(31, 107, 79, 0.08); margin-top: 6px;">
+          <img src="images/qr-ecoloop.png" alt="QR Code for EcoLoop GitHub" style="width: 170px; height: 170px; display: block;">
+        </div>
+
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--color-primary-green); background: var(--color-secondary-green-subtle); padding: 8px 22px; border-radius: 6px; border: 1px solid var(--color-secondary-green); font-weight: 600;">
+          github.com/Harman209/ecoloop
+        </div>
+
+        <div style="font-size: 14px; font-weight: 700; color: var(--color-dark); margin-top: 6px;">
           Swami Sant Dass Public School, Jalandhar
         </div>
-      </section>
+      </div>
+    </div>
 
-      <!-- SLIDE 02: THE LINEAR TRAP (Pure Two-Column Layout) -->
-      <section class="slide">
-        <div class="slide-header reveal">
-          <h2 class="slide-title">The Linear Packaging Problem</h2>
-          <p class="slide-subtitle">Why conventional municipal recycling fails on modern multi-layer packaging.</p>
-        </div>
-
-        <div class="slide-body grid-2">
-          <div class="text-col reveal">
-            <div class="col-title">The Material Reality</div>
-            <ul class="clean-list">
-              <li>
-                <div class="bullet-dot" style="background: #ef4444;"></div>
-                <div class="list-text">
-                  <strong>Multi-Layer Packaging (MLP):</strong><br>
-                  Chips and snack packaging fuse plastic films with aluminum foil. Standard recyclers cannot separate these layers cost-effectively, diverting millions of tons directly to landfills.
-                </div>
-              </li>
-              <li>
-                <div class="bullet-dot" style="background: #ef4444;"></div>
-                <div class="list-text">
-                  <strong>Fragmented Logistics:</strong><br>
-                  Communities and schools generate clean packaging waste, but lack direct channels connecting them to verified upcycling alternatives.
-                </div>
-              </li>
-              <li>
-                <div class="bullet-dot" style="background: #ef4444;"></div>
-                <div class="list-text">
-                  <strong>Information Asymmetry:</strong><br>
-                  Consumers and institutions cannot verify whether their sorted recyclables are actually reprocessed or simply dumped.
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          <div class="text-col reveal">
-            <div class="col-title">The EcoLoop Approach</div>
-            <ul class="clean-list">
-              <li>
-                <div class="bullet-dot"></div>
-                <div class="list-text">
-                  <strong>Mechanical Upcycling:</strong><br>
-                  Heat-compressing clean multi-layer plastics into structural sheets that replace traditional plywood and particle boards.
-                </div>
-              </li>
-              <li>
-                <div class="bullet-dot"></div>
-                <div class="list-text">
-                  <strong>Digital Transparency:</strong><br>
-                  Publishing exact material specifications, density metrics, and inventory through an open platform.
-                </div>
-              </li>
-              <li>
-                <div class="bullet-dot"></div>
-                <div class="list-text">
-                  <strong>Closed Institutional Loops:</strong><br>
-                  Partnering directly with campuses to collect, process, and return finished utility goods back to the source.
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- SLIDE 03: THE PHYSICAL LOOP (Clean Stack on Left, Real Photo on Right) -->
-      <section class="slide">
-        <div class="slide-header reveal">
-          <h2 class="slide-title">The Physical Loop: Verified Materials</h2>
-          <p class="slide-subtitle">Six circular products systematically diverted from waste streams.</p>
-        </div>
-
-        <div class="slide-body grid-2" style="align-items: center;">
-          <div class="product-stack reveal">
-            <div class="product-row">
-              <strong>Eco-Bricks</strong>
-              <span>High-density PET containers packed with clean flexible plastics.</span>
-            </div>
-            <div class="product-row">
-              <strong>MLP Sheets</strong>
-              <span>Heat-pressed multi-layer packaging replacing standard plywood.</span>
-            </div>
-            <div class="product-row">
-              <strong>Bottle Planters</strong>
-              <span>Upcycled PET containers for nursery and hydroponic gardening.</span>
-            </div>
-            <div class="product-row">
-              <strong>Uniform Bags</strong>
-              <span>Heavyweight tote bags repurposed from discarded school uniforms.</span>
-            </div>
-            <div class="product-row">
-              <strong>Seed Paper</strong>
-              <span>Zero-bleach handmade paper embedded with native plant seeds.</span>
-            </div>
-            <div class="product-row" style="border-bottom: none;">
-              <strong>Bioenzymes</strong>
-              <span>Citrus-fermented organic cleaning concentrates.</span>
-            </div>
-          </div>
-
-          <div class="media-card reveal">
-            <img src="images/sample-mlp.jpg" alt="Sample heat-pressed MLP sheet">
-          </div>
-        </div>
-      </section>
-
-      <!-- SLIDE 04: TRANSITION MEME 01 -->
-      <section class="slide">
-        <div class="transition-wrap reveal">
-          <div class="transition-header">
-            <h2>Reality Check: How It Started vs How It Is Going</h2>
-          </div>
-
-          <div class="transition-card">
-            <div class="media-placeholder" style="border: none; background: transparent; height: auto;">
-              <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-                <line x1="9" x2="9.01" y1="9" y2="9"/>
-                <line x1="15" x2="15.01" y1="9" y2="9"/>
-              </svg>
-              <span class="placeholder-tag">[Meme: Me explaining to school teachers that collecting plastic wrappers requires a serverless cloud architecture]</span>
-              <span class="placeholder-hint">Clown applying makeup / Roll Safe / SpongeBob presentation</span>
-            </div>
-          </div>
-
-          <p class="transition-caption">
-            Started by collecting empty snack wrappers in school. Ended up building an automated cloud software platform.
-          </p>
-        </div>
-      </section>
-
-      <!-- SLIDE 05: THE DIGITAL LAYER -->
-      <section class="slide">
-        <div class="slide-header reveal">
-          <h2 class="slide-title">Why Physical Projects Need Software</h2>
-          <p class="slide-subtitle">Moving from static school displays to an open, operational platform.</p>
-        </div>
-
-        <div class="slide-body grid-2" style="align-items: center;">
-          <div class="text-col reveal">
-            <div class="col-title">Platform Capabilities</div>
-            <ul class="clean-list">
-              <li>
-                <div class="bullet-dot"></div>
-                <div class="list-text">
-                  <strong>Engineering Specifications:</strong><br>
-                  Every product includes physical dimensions, density metrics, thermal characteristics, and production lead times.
-                </div>
-              </li>
-              <li>
-                <div class="bullet-dot"></div>
-                <div class="list-text">
-                  <strong>Direct Transaction Routing:</strong><br>
-                  Schools and community partners can query stock, request material samples, and submit institutional orders.
-                </div>
-              </li>
-              <li>
-                <div class="bullet-dot"></div>
-                <div class="list-text">
-                  <strong>Modern Frontend Stack:</strong><br>
-                  React 18 with TypeScript and Vite for fast client-side navigation and strict type safety.
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          <div class="media-card reveal">
-            <img src="images/screen-products.png" alt="EcoLoop product catalog interface">
-          </div>
-        </div>
-      </section>
-
-      <!-- SLIDE 06: ZERO-COST BACKEND -->
-      <section class="slide">
-        <div class="slide-header reveal">
-          <h2 class="slide-title">The Zero-Cost Serverless Backend</h2>
-          <p class="slide-subtitle">Delivering full transactional workflows without servers or ongoing bills.</p>
-        </div>
-
-        <div class="slide-body" style="flex-direction: column; justify-content: center; gap: 36px;">
-          <div class="flow-steps reveal">
-            <div class="flow-step-box">
-              <span class="flow-step-num">STEP 01</span>
-              <span class="flow-step-title">React Client</span>
-              <span class="flow-step-desc">The user submits an inquiry; client-side validation ensures clean data before transmission.</span>
-            </div>
-
-            <div class="flow-arrow">&rarr;</div>
-
-            <div class="flow-step-box">
-              <span class="flow-step-num">STEP 02</span>
-              <span class="flow-step-title">Apps Script Webhook</span>
-              <span class="flow-step-desc">A stateless Google Apps Script endpoint receives and parses the JSON payload securely.</span>
-            </div>
-
-            <div class="flow-arrow">&rarr;</div>
-
-            <div class="flow-step-box">
-              <span class="flow-step-num">STEP 03</span>
-              <span class="flow-step-title">Sheets Datastore</span>
-              <span class="flow-step-desc">Appends structured records, updates inventory tracking, and triggers automated alerts.</span>
-            </div>
-          </div>
-
-          <div class="cost-banner reveal">
-            <div>
-              <strong style="font-size: 24px; color: #0f172a;">Total Infrastructure Operating Cost</strong>
-              <div style="font-size: 18px; color: var(--text-muted); margin-top: 4px;">No credit card required. No servers to maintain. 99.9% uptime.</div>
-            </div>
-            <div style="font-family: var(--font-mono); font-size: 38px; font-weight: 700; color: #16a34a;">
-              $0.00 / month
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SLIDE 07: TRANSITION MEME 02 -->
-      <section class="slide">
-        <div class="transition-wrap reveal">
-          <div class="transition-header">
-            <h2>Reality Check: The Cloud Bill Dilemma</h2>
-          </div>
-
-          <div class="transition-card">
-            <div class="media-placeholder" style="border: none; background: transparent; height: auto;">
-              <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
-              </svg>
-              <span class="placeholder-tag">[Meme: Buff Doge vs Cheems - $450/month enterprise AWS vs $0 Google Sheets backend]</span>
-              <span class="placeholder-hint">Buff Doge vs Cheems / Who would win</span>
-            </div>
-          </div>
-
-          <p class="transition-caption">
-            Enterprise developers arguing about Kubernetes microservices while two high schoolers run production on Google Sheets.
-          </p>
-        </div>
-      </section>
-
-      <!-- SLIDE 08: INTERACTIVE INQUIRIES -->
-      <section class="slide">
-        <div class="slide-header reveal">
-          <h2 class="slide-title">Interactive Inquiry Engine</h2>
-          <p class="slide-subtitle">Handling institutional orders and sample requests with context preservation.</p>
-        </div>
-
-        <div class="slide-body grid-2" style="align-items: center;">
-          <div class="text-col reveal">
-            <div class="col-title">Order &amp; Sample Workflow</div>
-            <ul class="clean-list">
-              <li>
-                <div class="bullet-dot"></div>
-                <div class="list-text">
-                  <strong>Contextual Pre-Filling:</strong><br>
-                  Selecting an item automatically binds its product ID, specifications, and suggested order minimums into form state.
-                </div>
-              </li>
-              <li>
-                <div class="bullet-dot"></div>
-                <div class="list-text">
-                  <strong>Client-Side Validation:</strong><br>
-                  Immediate feedback flags incomplete or invalid entries before triggering network dispatches.
-                </div>
-              </li>
-              <li>
-                <div class="bullet-dot"></div>
-                <div class="list-text">
-                  <strong>Confirmation &amp; Logging:</strong><br>
-                  A clean confirmation modal displays expected turnaround times while logging data directly to the spreadsheet.
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          <div class="media-card reveal">
-            <img src="images/screen-enquire.png" alt="Inquiry modal interface">
-          </div>
-        </div>
-      </section>
-
-      <!-- SLIDE 09: THE PARADIGM SHIFT -->
-      <section class="slide">
-        <div class="slide-header reveal">
-          <h2 class="slide-title">The Paradigm Shift: Developer as Architect</h2>
-          <p class="slide-subtitle">How autonomous workflows shift focus from repetitive syntax to system design.</p>
-        </div>
-
-        <div class="slide-body grid-2">
-          <div class="text-col reveal">
-            <div class="col-title" style="color: #64748b;">Traditional Coding</div>
-            <ul class="clean-list">
-              <li>
-                <div class="bullet-dot" style="background: #94a3b8;"></div>
-                <div class="list-text">Manually typing repetitive component boilerplate and state handlers.</div>
-              </li>
-              <li>
-                <div class="bullet-dot" style="background: #94a3b8;"></div>
-                <div class="list-text">Spending hours searching forum threads to diagnose broken dependencies.</div>
-              </li>
-              <li>
-                <div class="bullet-dot" style="background: #94a3b8;"></div>
-                <div class="list-text">Getting stuck on typos and syntax bugs instead of building user features.</div>
-              </li>
-            </ul>
-          </div>
-
-          <div class="text-col reveal">
-            <div class="col-title" style="color: #0f172a;">Autonomous AI Coding</div>
-            <ul class="clean-list">
-              <li>
-                <div class="bullet-dot"></div>
-                <div class="list-text">You define the goals, system constraints, and visual design rules.</div>
-              </li>
-              <li>
-                <div class="bullet-dot"></div>
-                <div class="list-text">The AI agent explores your files, writes components, and links routes.</div>
-              </li>
-              <li>
-                <div class="bullet-dot"></div>
-                <div class="list-text">Automated tools test the code, surface errors, and repair bugs instantly.</div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- SLIDE 10: TRANSITION MEME 03 -->
-      <section class="slide">
-        <div class="transition-wrap reveal">
-          <div class="transition-header">
-            <h2>Reality Check: Learning to Code in 2026</h2>
-          </div>
-
-          <div class="transition-card">
-            <div class="media-placeholder" style="border: none; background: transparent; height: auto;">
-              <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
-                <path d="M6 6h10"/>
-                <path d="M6 10h10"/>
-              </svg>
-              <span class="placeholder-tag">[Meme: Drake Hotline Bling - Reading 400 pages of framework documentation vs Writing clear specs and letting AI build]</span>
-              <span class="placeholder-hint">Drake Hotline / Galaxy Brain</span>
-            </div>
-          </div>
-
-          <p class="transition-caption">
-            Reading 200 pages of manual documentation at 3:00 AM is officially a thing of the past. Define the requirements and let the tools execute.
-          </p>
-        </div>
-      </section>
-
-      <!-- SLIDE 11: THE PRACTICAL LOOP -->
-      <section class="slide">
-        <div class="slide-header reveal">
-          <h2 class="slide-title">How the Autonomous Coding Loop Works</h2>
-          <p class="slide-subtitle">Not a chatbot copying snippets, but an automated cycle that creates and tests code.</p>
-        </div>
-
-        <div class="slide-body grid-4">
-          <div class="flow-step-box reveal">
-            <span class="flow-step-num">STAGE 01</span>
-            <span class="flow-step-title">Define the Goal</span>
-            <span class="flow-step-desc">Write clear requirements, design rules, and data structures in a simple specification document.</span>
-          </div>
-
-          <div class="flow-step-box reveal">
-            <span class="flow-step-num">STAGE 02</span>
-            <span class="flow-step-title">Autonomous Edit</span>
-            <span class="flow-step-desc">The agent reads existing files, writes modular components, and links application routes.</span>
-          </div>
-
-          <div class="flow-step-box reveal">
-            <span class="flow-step-num">STAGE 03</span>
-            <span class="flow-step-title">Automated Check</span>
-            <span class="flow-step-desc">Automated tools build the code. If an error appears, the agent reads the terminal output and fixes it.</span>
-          </div>
-
-          <div class="flow-step-box reveal">
-            <span class="flow-step-num">STAGE 04</span>
-            <span class="flow-step-title">Safe History</span>
-            <span class="flow-step-desc">Every successful step is saved into version control, allowing you to experiment freely with zero risk.</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- SLIDE 12: OPENCODE -->
-      <section class="slide">
-        <div class="slide-header reveal">
-          <h2 class="slide-title">Introducing OpenCode</h2>
-          <p class="slide-subtitle">An open-source autonomous coding agent that runs directly in your terminal.</p>
-        </div>
-
-        <div class="slide-body grid-2" style="align-items: center;">
-          <div class="text-col reveal">
-            <div class="col-title">Why OpenCode?</div>
-            <ul class="clean-list">
-              <li>
-                <div class="bullet-dot"></div>
-                <div class="list-text">
-                  <strong>100% Open Source:</strong><br>
-                  Maintained by Anomaly (GitHub: <code>anomalyco/opencode</code>). Free to use with zero vendor lock-in.
-                </div>
-              </li>
-              <li>
-                <div class="bullet-dot"></div>
-                <div class="list-text">
-                  <strong>Dual Execution Modes:</strong><br>
-                  <code>Plan Mode</code> surveys your project architecture without editing; <code>Build Mode</code> autonomously edits files and runs tests.
-                </div>
-              </li>
-              <li>
-                <div class="bullet-dot"></div>
-                <div class="list-text">
-                  <strong>Connects to Any Model:</strong><br>
-                  Works with free cloud endpoints or completely private offline models on your personal computer.
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          <div class="reveal" style="background: var(--card-bg); border: 1px solid var(--line-color); border-radius: 12px; padding: 36px; font-family: var(--font-mono); font-size: 18px; line-height: 1.6; color: #334155; width: 100%;">
-            <div style="color: #64748b; margin-bottom: 18px;">// Quick Installation in 60 Seconds</div>
-            <div style="background: #ffffff; border: 1px solid var(--line-color); border-radius: 8px; padding: 22px; margin-bottom: 22px;">
-              <span style="color: #0284c7;">$</span> npm install -g @opencode/cli<br>
-              <span style="color: #0284c7;">$</span> cd ./my-project<br>
-              <span style="color: #0284c7;">$</span> opencode
-            </div>
-            <div style="color: #64748b; font-size: 16px;">Runs on macOS, Linux, and Windows WSL.</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SLIDE 13: FREE AI MODELS FOR STUDENTS -->
-      <section class="slide">
-        <div class="slide-header reveal">
-          <h2 class="slide-title">Free AI Models: Zero Cost for Students</h2>
-          <p class="slide-subtitle">Practical options you can use tonight without paying for subscriptions.</p>
-        </div>
-
-        <div class="slide-body grid-2">
-          <div class="text-col reveal">
-            <div class="col-title">Free Cloud APIs</div>
-            <ul class="clean-list">
-              <li>
-                <div class="bullet-dot"></div>
-                <div class="list-text">
-                  <strong>Google Gemini API:</strong><br>
-                  Sign in to <code>aistudio.google.com</code> for a free key. Generous free tiers with Gemini 1.5 Flash and Gemini 2.0.
-                </div>
-              </li>
-              <li>
-                <div class="bullet-dot"></div>
-                <div class="list-text">
-                  <strong>Groq Cloud:</strong><br>
-                  Ultra-fast token generation on open-weight models like Llama 3.3 via <code>console.groq.com</code>.
-                </div>
-              </li>
-              <li>
-                <div class="bullet-dot"></div>
-                <div class="list-text">
-                  <strong>GitHub Models:</strong><br>
-                  Free student access to models like GPT-4o and Claude inside VS Code and GitHub Codespaces.
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          <div class="text-col reveal">
-            <div class="col-title">100% Offline with Ollama</div>
-            <ul class="clean-list">
-              <li>
-                <div class="bullet-dot" style="background: #16a34a;"></div>
-                <div class="list-text">
-                  <strong>Completely Private &amp; Local:</strong><br>
-                  Install from <code>ollama.com</code>. Runs entirely on your laptop hardware without needing an internet connection.
-                </div>
-              </li>
-              <li>
-                <div class="bullet-dot" style="background: #16a34a;"></div>
-                <div class="list-text">
-                  <strong>Recommended Model:</strong><br>
-                  <code>qwen2.5-coder:7b</code> delivers outstanding coding logic on standard laptops with 8GB to 16GB of RAM.
-                </div>
-              </li>
-              <li>
-                <div class="bullet-dot" style="background: #16a34a;"></div>
-                <div class="list-text">
-                  <strong>Zero Latency:</strong><br>
-                  Instant responses directly on device with zero dependence on external network connectivity.
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- SLIDE 14: TRANSITION MEME 04 -->
-      <section class="slide">
-        <div class="transition-wrap reveal">
-          <div class="transition-header">
-            <h2>Reality Check: The Compiler Never Lies</h2>
-          </div>
-
-          <div class="transition-card">
-            <img src="images/spiderman.jpg" alt="Spider-Man pointing meme">
-          </div>
-
-          <p class="transition-caption">
-            "I fixed all the bugs," says the AI model.<br>
-            The compiler: 47 errors found in 3 files.
-          </p>
-        </div>
-      </section>
-
-      <!-- SLIDE 15: MINIMAL THANK YOU & QR -->
-      <section class="slide" style="justify-content: center; align-items: center; text-align: center;">
-        <div class="reveal" style="max-width: 800px; display: flex; flex-direction: column; align-items: center; gap: 28px;">
-          <h1 style="font-size: 80px; font-weight: 700; letter-spacing: -0.035em; color: #090a0f;">
-            Thank You.
-          </h1>
-          <p style="font-size: 26px; color: var(--text-muted); line-height: 1.5;">
-            Scan the code to access the complete open-source repository, live demo, and student setup guide.
-          </p>
-
-          <div style="background: #ffffff; border: 1px solid var(--line-color); padding: 24px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); margin-top: 8px;">
-            <img src="images/qr-ecoloop.png" alt="QR Code for EcoLoop GitHub" style="width: 240px; height: 240px; display: block;">
-          </div>
-
-          <div style="font-family: var(--font-mono); font-size: 20px; color: #0284c7; background: #eff6ff; padding: 12px 28px; border-radius: 8px; border: 1px solid #dbeafe;">
-            github.com/Harman209/ecoloop
-          </div>
-
-          <div style="font-size: 20px; font-weight: 600; color: #334155; margin-top: 8px;">
-            Swami Sant Dass Public School, Jalandhar
-          </div>
-        </div>
-      </section>
-
-    </main>
   </div>
 
-  <!-- Deck Presentation Chrome -->
-  <div class="deck-controls">
-    <button onclick="presentation.prevSlide()">Prev (&larr;)</button>
-    <div class="counter" id="slideCounter">01 / 15</div>
-    <button onclick="presentation.nextSlide()">Next (&rarr;)</button>
-    <button onclick="presentation.toggleFullScreen()">Fullscreen (F)</button>
-  </div>
-
-  <!-- Frontend Slides Standard Controller -->
   <script>
-    class SlidePresentation {
-      constructor() {
-        this.slides = document.querySelectorAll('.slide');
-        this.currentSlide = 0;
-        this.stage = document.getElementById('deckStage');
-        this.counter = document.getElementById('slideCounter');
+    let currentSlide = 1;
+    const totalSlides = 15;
 
-        this.setupStageScale();
-        this.setupKeyboardNav();
-        this.setupTouchNav();
-        this.showSlide(0);
-      }
+    function showSlide(index) {
+      if (index < 1) index = 1;
+      if (index > totalSlides) index = totalSlides;
+      currentSlide = index;
 
-      setupStageScale() {
-        const scale = () => {
-          const factor = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
-          const x = (window.innerWidth - 1920 * factor) / 2;
-          const y = (window.innerHeight - 1080 * factor) / 2;
-          this.stage.style.transform = `translate(${x}px, ${y}px) scale(${factor})`;
-        };
-        scale();
-        window.addEventListener('resize', scale);
-      }
+      document.querySelectorAll('.slide').forEach((el, idx) => {
+        el.classList.toggle('active', idx + 1 === currentSlide);
+      });
 
-      setupKeyboardNav() {
-        window.addEventListener('keydown', (e) => {
-          if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
-            e.preventDefault();
-            this.nextSlide();
-          } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
-            e.preventDefault();
-            this.prevSlide();
-          } else if (e.key === 'f' || e.key === 'F') {
-            this.toggleFullScreen();
-          } else if (e.key === 'Home') {
-            this.showSlide(0);
-          } else if (e.key === 'End') {
-            this.showSlide(this.slides.length - 1);
-          }
+      const numStr = currentSlide < 10 ? '0' + currentSlide : currentSlide;
+      document.getElementById('slide-counter').textContent = `${numStr} / ${totalSlides}`;
+    }
+
+    function prevSlide() {
+      showSlide(currentSlide - 1);
+    }
+
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+    }
+
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+          console.error(err);
         });
-      }
-
-      setupTouchNav() {
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        window.addEventListener('touchstart', (e) => {
-          touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
-        window.addEventListener('touchend', (e) => {
-          touchEndX = e.changedTouches[0].screenX;
-          if (touchStartX - touchEndX > 50) {
-            this.nextSlide();
-          } else if (touchEndX - touchStartX > 50) {
-            this.prevSlide();
-          }
-        }, { passive: true });
-      }
-
-      showSlide(index) {
-        if (index < 0) index = 0;
-        if (index >= this.slides.length) index = this.slides.length - 1;
-        this.currentSlide = index;
-
-        this.slides.forEach((slide, i) => {
-          const isActive = i === this.currentSlide;
-          slide.classList.toggle('active', isActive);
-          slide.classList.toggle('visible', isActive);
-        });
-
-        const numStr = this.currentSlide + 1 < 10 ? '0' + (this.currentSlide + 1) : (this.currentSlide + 1);
-        if (this.counter) {
-          this.counter.textContent = `${numStr} / ${this.slides.length}`;
-        }
-      }
-
-      prevSlide() {
-        this.showSlide(this.currentSlide - 1);
-      }
-
-      nextSlide() {
-        this.showSlide(this.currentSlide + 1);
-      }
-
-      toggleFullScreen() {
-        if (!document.fullscreenElement) {
-          document.documentElement.requestFullscreen().catch(err => {
-            console.error(err);
-          });
-        } else {
-          if (document.exitFullscreen) {
-            document.exitFullscreen();
-          }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
         }
       }
     }
 
-    const presentation = new SlidePresentation();
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key === 'f' || e.key === 'F') {
+        toggleFullScreen();
+      } else if (e.key === 'Home') {
+        showSlide(1);
+      } else if (e.key === 'End') {
+        showSlide(totalSlides);
+      }
+    });
   </script>
 </body>
 </html>
