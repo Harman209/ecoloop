@@ -86,7 +86,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      padding: 56px 72px;
+      padding: 64px 88px;
       display: none;
       flex-direction: column;
       justify-content: flex-start;
@@ -110,12 +110,12 @@
     .slide-header {
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      margin-bottom: 24px;
+      gap: 8px;
+      margin-bottom: 32px;
     }
 
     .slide-title {
-      font-size: 36px;
+      font-size: 38px;
       font-weight: 700;
       letter-spacing: -0.025em;
       color: #090a0f;
@@ -123,64 +123,48 @@
     }
 
     .slide-subtitle {
-      font-size: 17px;
+      font-size: 18px;
       color: #64748b;
       font-weight: 400;
       letter-spacing: -0.01em;
       line-height: 1.4;
     }
 
-    /* Body Layouts */
+    /* Body Layouts: natural heights, no stretching empty space */
     .slide-body {
       flex: 1;
       display: flex;
-      gap: 28px;
-      align-items: stretch;
+      gap: 48px;
+      align-items: flex-start;
     }
 
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 28px;
+      gap: 48px;
       width: 100%;
     }
 
     .grid-4 {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
+      gap: 20px;
       width: 100%;
     }
 
-    /* Cards */
-    .card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      padding: 24px 26px;
+    /* Pure Typography Columns (No artificial boxes or hollow empty borders) */
+    .text-col {
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+      gap: 16px;
     }
 
-    .card.soft-bg {
-      background: #f8fafc;
-      border-color: #e2e8f0;
-    }
-
-    .card-title {
-      font-size: 19px;
+    .col-title {
+      font-size: 21px;
       font-weight: 700;
       letter-spacing: -0.02em;
       color: #0f172a;
-      margin-bottom: 14px;
-    }
-
-    .card-p {
-      font-size: 15px;
-      color: #475569;
-      line-height: 1.6;
+      margin-bottom: 6px;
     }
 
     /* Clean Bullet List */
@@ -188,18 +172,18 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 20px;
     }
 
     .clean-list li {
       display: flex;
       align-items: flex-start;
-      gap: 12px;
+      gap: 14px;
     }
 
     .bullet-dot {
-      width: 6px;
-      height: 6px;
+      width: 7px;
+      height: 7px;
       border-radius: 2px;
       background: #0284c7;
       margin-top: 8px;
@@ -207,9 +191,9 @@
     }
 
     .list-text {
-      font-size: 15px;
+      font-size: 16px;
       color: #334155;
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     .list-text strong {
@@ -217,12 +201,14 @@
       font-weight: 600;
     }
 
-    /* Media Containers */
+    /* Media Containers: shrink-wrapped to image */
     .media-card {
       border: 1px solid #e2e8f0;
       border-radius: 8px;
       overflow: hidden;
       background: #f8fafc;
+      width: 100%;
+      height: 380px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -244,10 +230,10 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 24px;
+      padding: 28px;
       text-align: center;
       width: 100%;
-      height: 100%;
+      height: 360px;
     }
 
     .placeholder-tag {
@@ -256,9 +242,9 @@
       font-weight: 600;
       color: #1e293b;
       background: #e2e8f0;
-      padding: 6px 12px;
+      padding: 6px 14px;
       border-radius: 4px;
-      margin-top: 8px;
+      margin-top: 10px;
     }
 
     .placeholder-hint {
@@ -276,7 +262,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      gap: 18px;
+      gap: 20px;
     }
 
     .transition-header {
@@ -287,19 +273,18 @@
     }
 
     .transition-header h2 {
-      font-size: 32px;
+      font-size: 34px;
       font-weight: 700;
       letter-spacing: -0.025em;
       color: #0f172a;
     }
 
     .transition-card {
-      width: 640px;
-      height: 380px;
-      background: #f8fafc;
+      max-width: 680px;
+      background: #ffffff;
       border: 1px solid #e2e8f0;
       border-radius: 8px;
-      padding: 12px;
+      padding: 10px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -308,15 +293,16 @@
 
     .transition-card img {
       max-width: 100%;
-      max-height: 350px;
+      max-height: 380px;
       border-radius: 4px;
       object-fit: contain;
+      display: block;
     }
 
     .transition-caption {
-      font-size: 15px;
+      font-size: 16px;
       color: #64748b;
-      max-width: 620px;
+      max-width: 640px;
       line-height: 1.5;
     }
 
@@ -326,18 +312,18 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      gap: 16px;
+      gap: 20px;
     }
 
     .flow-step-box {
       flex: 1;
-      background: #ffffff;
+      background: #f8fafc;
       border: 1px solid #e2e8f0;
       border-radius: 8px;
-      padding: 22px 20px;
+      padding: 24px 22px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
     }
 
     .flow-step-num {
@@ -348,51 +334,62 @@
     }
 
     .flow-step-title {
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 700;
       color: #0f172a;
     }
 
     .flow-step-desc {
-      font-size: 13px;
+      font-size: 14px;
       color: #64748b;
       line-height: 1.45;
     }
 
     .flow-arrow {
-      font-size: 20px;
+      font-size: 22px;
       color: #94a3b8;
       font-weight: bold;
     }
 
-    /* Product Grid Pills */
-    .product-pills {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
+    /* Compact Product Items for Slide 3 */
+    .product-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
       width: 100%;
     }
 
-    .product-pill {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 6px;
-      padding: 14px 16px;
+    .product-row {
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 2px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #f1f5f9;
     }
 
-    .product-pill strong {
-      font-size: 15px;
+    .product-row strong {
+      font-size: 16px;
       color: #0f172a;
       font-weight: 600;
     }
 
-    .product-pill span {
-      font-size: 13px;
+    .product-row span {
+      font-size: 14px;
       color: #64748b;
-      line-height: 1.35;
+      line-height: 1.4;
+    }
+
+    /* Compact Horizontal Cost Banner */
+    .cost-banner {
+      width: 100%;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 20px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
     }
 
     /* Print & Headless PDF Rendering */
@@ -427,7 +424,7 @@
         margin: 0 !important;
         width: 1280px !important;
         height: 720px !important;
-        padding: 56px 72px !important;
+        padding: 64px 88px !important;
       }
 
       .slide.title-slide {
@@ -448,7 +445,7 @@
 
   <div class="slide-stage">
 
-    <!-- SLIDE 01: TITLE (Clean, Confident, Zero Cards, Zero Images) -->
+    <!-- SLIDE 01: TITLE (Clean, Confident Typography, Zero Cards, Zero Images) -->
     <div class="slide active title-slide">
       <h1 style="font-size: 72px; font-weight: 700; letter-spacing: -0.04em; color: #090a0f; line-height: 1.05;">
         EcoLoop
@@ -461,7 +458,7 @@
       </div>
     </div>
 
-    <!-- SLIDE 02: THE LINEAR TRAP -->
+    <!-- SLIDE 02: THE LINEAR TRAP (Pure Two-Column Layout, No Empty Box Containers) -->
     <div class="slide">
       <div class="slide-header">
         <h2 class="slide-title">The Linear Packaging Problem</h2>
@@ -469,8 +466,8 @@
       </div>
 
       <div class="slide-body grid-2">
-        <div class="card">
-          <div class="card-title">The Material Reality</div>
+        <div class="text-col">
+          <div class="col-title">The Material Reality</div>
           <ul class="clean-list">
             <li>
               <div class="bullet-dot" style="background: #ef4444;"></div>
@@ -496,8 +493,8 @@
           </ul>
         </div>
 
-        <div class="card soft-bg">
-          <div class="card-title">The EcoLoop Approach</div>
+        <div class="text-col">
+          <div class="col-title">The EcoLoop Approach</div>
           <ul class="clean-list">
             <li>
               <div class="bullet-dot"></div>
@@ -525,36 +522,36 @@
       </div>
     </div>
 
-    <!-- SLIDE 03: THE PHYSICAL LOOP -->
+    <!-- SLIDE 03: THE PHYSICAL LOOP (Clean Stack on Left, Real Photo on Right) -->
     <div class="slide">
       <div class="slide-header">
         <h2 class="slide-title">The Physical Loop: Verified Materials</h2>
         <p class="slide-subtitle">Six circular products systematically diverted from waste streams.</p>
       </div>
 
-      <div class="slide-body grid-2">
-        <div class="product-pills">
-          <div class="product-pill">
+      <div class="slide-body grid-2" style="align-items: center;">
+        <div class="product-stack">
+          <div class="product-row">
             <strong>Eco-Bricks</strong>
             <span>High-density PET containers packed with clean flexible plastics.</span>
           </div>
-          <div class="product-pill">
+          <div class="product-row">
             <strong>MLP Sheets</strong>
             <span>Heat-pressed multi-layer packaging replacing standard plywood.</span>
           </div>
-          <div class="product-pill">
+          <div class="product-row">
             <strong>Bottle Planters</strong>
             <span>Upcycled PET containers for nursery and hydroponic gardening.</span>
           </div>
-          <div class="product-pill">
+          <div class="product-row">
             <strong>Uniform Bags</strong>
             <span>Heavyweight tote bags repurposed from discarded school uniforms.</span>
           </div>
-          <div class="product-pill">
+          <div class="product-row">
             <strong>Seed Paper</strong>
             <span>Zero-bleach handmade paper embedded with native plant seeds.</span>
           </div>
-          <div class="product-pill">
+          <div class="product-row" style="border-bottom: none;">
             <strong>Bioenzymes</strong>
             <span>Citrus-fermented organic cleaning concentrates.</span>
           </div>
@@ -574,7 +571,7 @@
         </div>
 
         <div class="transition-card">
-          <div class="media-placeholder" style="border: none; background: transparent;">
+          <div class="media-placeholder" style="border: none; background: transparent; height: auto;">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"/>
               <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
@@ -592,16 +589,16 @@
       </div>
     </div>
 
-    <!-- SLIDE 05: THE DIGITAL LAYER -->
+    <!-- SLIDE 05: THE DIGITAL LAYER (Text on Left, Real App Screenshot on Right) -->
     <div class="slide">
       <div class="slide-header">
         <h2 class="slide-title">Why Physical Projects Need Software</h2>
         <p class="slide-subtitle">Moving from static school displays to an open, operational platform.</p>
       </div>
 
-      <div class="slide-body grid-2">
-        <div class="card">
-          <div class="card-title">Platform Capabilities</div>
+      <div class="slide-body grid-2" style="align-items: center;">
+        <div class="text-col">
+          <div class="col-title">Platform Capabilities</div>
           <ul class="clean-list">
             <li>
               <div class="bullet-dot"></div>
@@ -633,7 +630,7 @@
       </div>
     </div>
 
-    <!-- SLIDE 06: ZERO-COST BACKEND -->
+    <!-- SLIDE 06: ZERO-COST BACKEND (Flow Steps + Cost Banner) -->
     <div class="slide">
       <div class="slide-header">
         <h2 class="slide-title">The Zero-Cost Serverless Backend</h2>
@@ -665,15 +662,13 @@
           </div>
         </div>
 
-        <div class="card soft-bg" style="padding: 22px 26px;">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <div>
-              <strong style="font-size: 17px; color: #0f172a;">Total Infrastructure Operating Cost</strong>
-              <div style="font-size: 14px; color: #64748b; margin-top: 2px;">No credit card required. No servers to maintain. 99.9% uptime.</div>
-            </div>
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 700; color: #16a34a;">
-              $0.00 / month
-            </div>
+        <div class="cost-banner">
+          <div>
+            <strong style="font-size: 17px; color: #0f172a;">Total Infrastructure Operating Cost</strong>
+            <div style="font-size: 14px; color: #64748b; margin-top: 2px;">No credit card required. No servers to maintain. 99.9% uptime.</div>
+          </div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 700; color: #16a34a;">
+            $0.00 / month
           </div>
         </div>
       </div>
@@ -687,7 +682,7 @@
         </div>
 
         <div class="transition-card">
-          <div class="media-placeholder" style="border: none; background: transparent;">
+          <div class="media-placeholder" style="border: none; background: transparent; height: auto;">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
             </svg>
@@ -709,9 +704,9 @@
         <p class="slide-subtitle">Handling institutional orders and sample requests with context preservation.</p>
       </div>
 
-      <div class="slide-body grid-2">
-        <div class="card">
-          <div class="card-title">Order &amp; Sample Workflow</div>
+      <div class="slide-body grid-2" style="align-items: center;">
+        <div class="text-col">
+          <div class="col-title">Order &amp; Sample Workflow</div>
           <ul class="clean-list">
             <li>
               <div class="bullet-dot"></div>
@@ -743,7 +738,7 @@
       </div>
     </div>
 
-    <!-- SLIDE 09: THE PARADIGM SHIFT -->
+    <!-- SLIDE 09: THE PARADIGM SHIFT (Pure Two Columns on Canvas) -->
     <div class="slide">
       <div class="slide-header">
         <h2 class="slide-title">The Paradigm Shift: Developer as Architect</h2>
@@ -751,8 +746,8 @@
       </div>
 
       <div class="slide-body grid-2">
-        <div class="card soft-bg">
-          <div class="card-title" style="color: #64748b;">Traditional Coding</div>
+        <div class="text-col">
+          <div class="col-title" style="color: #64748b;">Traditional Coding</div>
           <ul class="clean-list">
             <li>
               <div class="bullet-dot" style="background: #94a3b8;"></div>
@@ -769,8 +764,8 @@
           </ul>
         </div>
 
-        <div class="card">
-          <div class="card-title" style="color: #0f172a;">Autonomous AI Coding</div>
+        <div class="text-col">
+          <div class="col-title" style="color: #0f172a;">Autonomous AI Coding</div>
           <ul class="clean-list">
             <li>
               <div class="bullet-dot"></div>
@@ -797,7 +792,7 @@
         </div>
 
         <div class="transition-card">
-          <div class="media-placeholder" style="border: none; background: transparent;">
+          <div class="media-placeholder" style="border: none; background: transparent; height: auto;">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
               <path d="M6 6h10"/>
@@ -814,54 +809,50 @@
       </div>
     </div>
 
-    <!-- SLIDE 11: THE PRACTICAL LOOP -->
+    <!-- SLIDE 11: THE PRACTICAL LOOP (4 Crisp Step Blocks) -->
     <div class="slide">
       <div class="slide-header">
         <h2 class="slide-title">How the Autonomous Coding Loop Works</h2>
         <p class="slide-subtitle">Not a chatbot copying snippets, but an automated cycle that creates and tests code.</p>
       </div>
 
-      <div class="slide-body grid-4" style="align-items: stretch;">
-        <div class="card">
-          <div class="card-title" style="font-size: 18px;">1. Define the Goal</div>
-          <p class="card-p" style="font-size: 14px;">
-            Write clear requirements, design rules, and data structures in a simple specification document.
-          </p>
+      <div class="slide-body grid-4">
+        <div class="flow-step-box">
+          <span class="flow-step-num">STAGE 01</span>
+          <span class="flow-step-title">Define the Goal</span>
+          <span class="flow-step-desc">Write clear requirements, design rules, and data structures in a simple specification document.</span>
         </div>
 
-        <div class="card">
-          <div class="card-title" style="font-size: 18px;">2. Autonomous Edit</div>
-          <p class="card-p" style="font-size: 14px;">
-            The agent reads existing files, writes modular components, and links application routes.
-          </p>
+        <div class="flow-step-box">
+          <span class="flow-step-num">STAGE 02</span>
+          <span class="flow-step-title">Autonomous Edit</span>
+          <span class="flow-step-desc">The agent reads existing files, writes modular components, and links application routes.</span>
         </div>
 
-        <div class="card">
-          <div class="card-title" style="font-size: 18px;">3. Automated Check</div>
-          <p class="card-p" style="font-size: 14px;">
-            Automated tools build the code. If an error appears, the agent reads the terminal output and fixes it.
-          </p>
+        <div class="flow-step-box">
+          <span class="flow-step-num">STAGE 03</span>
+          <span class="flow-step-title">Automated Check</span>
+          <span class="flow-step-desc">Automated tools build the code. If an error appears, the agent reads the terminal output and fixes it.</span>
         </div>
 
-        <div class="card">
-          <div class="card-title" style="font-size: 18px;">4. Safe History</div>
-          <p class="card-p" style="font-size: 14px;">
-            Every successful step is saved into version control, allowing you to experiment freely with zero risk.
-          </p>
+        <div class="flow-step-box">
+          <span class="flow-step-num">STAGE 04</span>
+          <span class="flow-step-title">Safe History</span>
+          <span class="flow-step-desc">Every successful step is saved into version control, allowing you to experiment freely with zero risk.</span>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 12: OPENCODE -->
+    <!-- SLIDE 12: OPENCODE (Left Text, Right Clean Terminal) -->
     <div class="slide">
       <div class="slide-header">
         <h2 class="slide-title">Introducing OpenCode</h2>
         <p class="slide-subtitle">An open-source autonomous coding agent that runs directly in your terminal.</p>
       </div>
 
-      <div class="slide-body grid-2">
-        <div class="card">
-          <div class="card-title">Why OpenCode?</div>
+      <div class="slide-body grid-2" style="align-items: center;">
+        <div class="text-col">
+          <div class="col-title">Why OpenCode?</div>
           <ul class="clean-list">
             <li>
               <div class="bullet-dot"></div>
@@ -887,8 +878,8 @@
           </ul>
         </div>
 
-        <div class="card soft-bg" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.6; color: #334155;">
-          <div style="color: #64748b; margin-bottom: 12px;">// Quick Installation in 60 Seconds</div>
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.6; color: #334155; width: 100%;">
+          <div style="color: #64748b; margin-bottom: 14px;">// Quick Installation in 60 Seconds</div>
           <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 16px; margin-bottom: 16px;">
             <span style="color: #0284c7;">$</span> npm install -g @opencode/cli<br>
             <span style="color: #0284c7;">$</span> cd ./my-project<br>
@@ -907,8 +898,8 @@
       </div>
 
       <div class="slide-body grid-2">
-        <div class="card">
-          <div class="card-title">Free Cloud APIs</div>
+        <div class="text-col">
+          <div class="col-title">Free Cloud APIs</div>
           <ul class="clean-list">
             <li>
               <div class="bullet-dot"></div>
@@ -934,8 +925,8 @@
           </ul>
         </div>
 
-        <div class="card soft-bg">
-          <div class="card-title">100% Offline with Ollama</div>
+        <div class="text-col">
+          <div class="col-title">100% Offline with Ollama</div>
           <ul class="clean-list">
             <li>
               <div class="bullet-dot" style="background: #16a34a;"></div>
