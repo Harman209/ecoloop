@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ECOLOOP — Digital Platform & Agentic Workflow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #0f1115;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #111111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+      user-select: none;
+    }
+
+    /* Presentation Navigation Bar */
+    .deck-nav {
+      position: fixed;
+      top: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(24, 27, 34, 0.95);
+      backdrop-filter: blur(8px);
+      padding: 8px 18px;
+      border-radius: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #eee;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      z-index: 1000;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .deck-nav button {
+      background: #2a2e39;
+      color: #fff;
+      border: 1px solid #444c5c;
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 500;
+      transition: all 0.15s ease;
+    }
+
+    .deck-nav button:hover {
+      background: #3b4252;
+      border-color: #5d677d;
+    }
+
+    .deck-nav .counter {
+      color: #8892b0;
+      font-weight: 600;
+      min-width: 65px;
+      text-align: center;
+    }
+
+    /* 16:9 Presentation Canvas */
+    .slide-stage {
+      width: 1280px;
+      height: 720px;
+      position: relative;
+    }
+
+    .slide {
+      width: 1280px;
+      height: 720px;
+      background: #ffffff;
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 52px 64px 44px 64px;
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: 12px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
+      overflow: hidden;
+    }
+
+    .slide.active {
+      display: flex;
+    }
+
+    /* Header */
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 22px;
+    }
+
+    .slide-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 38px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #111111;
+      line-height: 1.15;
+    }
+
+    .slide-title .accent-green {
+      color: #1F6B4F;
+    }
+
+    .slide-title .accent-blue {
+      color: #2563EB;
+    }
+
+    .slide-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #666666;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border: 1.5px solid #111111;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: #fdfdfd;
+      box-shadow: 2px 2px 0px #111111;
+    }
+
+    /* Body */
+    .slide-body {
+      flex: 1;
+      display: grid;
+      gap: 24px;
+      position: relative;
+    }
+
+    .grid-2 {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .grid-3 {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .grid-left-wide {
+      grid-template-columns: 1.15fr 0.85fr;
+    }
+
+    .grid-right-wide {
+      grid-template-columns: 0.85fr 1.15fr;
+    }
+
+    /* Stanford / CS106L Card Style */
+    .card {
+      background: #ffffff;
+      border: 1.5px solid #111111;
+      box-shadow: 3.5px 3.5px 0px #111111;
+      border-radius: 8px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 16px;
+      position: relative;
+    }
+
+    .card.bg-light {
+      background: #fbfcfb;
+    }
+
+    .card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #111111;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      letter-spacing: -0.01em;
+    }
+
+    .card-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: #f3f4f6;
+      color: #374151;
+      border: 1px solid #d1d5db;
+      text-transform: lowercase;
+    }
+
+    .card-badge.green {
+      background: #E8F5E9;
+      color: #1F6B4F;
+      border-color: #A3D9B8;
+    }
+
+    .card-badge.blue {
+      background: #EFF6FF;
+      color: #1D4ED8;
+      border-color: #BFDBFE;
+    }
+
+    /* Lists */
+    ul.item-list, ol.item-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .item-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 14px;
+      line-height: 1.45;
+      color: #222222;
+    }
+
+    .bullet-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 11.5px;
+      background: #111111;
+      color: #ffffff;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .bullet-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      font-size: 11px;
+      background: #eef2ef;
+      color: #1F6B4F;
+      padding: 2px 7px;
+      border-radius: 4px;
+      border: 1px solid #d0ded4;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .item-content strong {
+      color: #000000;
+      font-weight: 600;
+    }
+
+    .item-content span {
+      display: block;
+      color: #555555;
+      font-size: 12.5px;
+      margin-top: 2px;
+    }
+
+    /* Real Screenshot Display */
+    .screenshot-frame {
+      border: 1.5px solid #111111;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .screenshot-toolbar {
+      background: #f0f0f0;
+      border-bottom: 1px solid #ddd;
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #666;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #ccc;
+    }
+
+    .dot.red { background: #ef4444; }
+    .dot.yellow { background: #f59e0b; }
+    .dot.green { background: #10b981; }
+
+    .screenshot-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    /* Terminal & Code Boxes */
+    .terminal-box {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      background: #0d1117;
+      color: #c9d1d9;
+      padding: 16px;
+      border-radius: 6px;
+      line-height: 1.55;
+      border: 1px solid #30363d;
+      overflow-x: auto;
+    }
+
+    .terminal-box .cmd {
+      color: #58a6ff;
+    }
+
+    .terminal-box .ok {
+      color: #3fb950;
+    }
+
+    .terminal-box .dim {
+      color: #8b949e;
+    }
+
+    /* Big Idea Callout Card */
+    .big-idea-card {
+      background: #ffffff;
+      border: 2.5px solid #111111;
+      box-shadow: 6px 6px 0px #111111;
+      border-radius: 10px;
+      padding: 38px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 16px;
+    }
+
+    .big-idea-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: #111111;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: #f0fdf4;
+      border: 1.5px solid #1F6B4F;
+      padding: 6px 18px;
+      border-radius: 30px;
+    }
+
+    .big-idea-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 30px;
+      font-weight: 700;
+      color: #111111;
+      line-height: 1.35;
+      max-width: 900px;
+    }
+
+    .big-idea-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: #555555;
+      max-width: 760px;
+      line-height: 1.5;
+    }
+
+    /* Modular Meme Slot (Harman's Custom Inset) */
+    .meme-slot {
+      border: 1.5px dashed #b0b0b0;
+      background: #fafafa;
+      border-radius: 6px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 120px;
+      position: relative;
+    }
+
+    .meme-slot img {
+      max-width: 100%;
+      max-height: 160px;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
+    .meme-slot .caption {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #666666;
+      margin-top: 6px;
+    }
+
+    /* Footer */
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #ebebeb;
+      padding-top: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #888888;
+    }
+
+    /* Print / PDF Mode */
+    @media print {
+      @page {
+        size: 1280px 720px;
+        margin: 0;
+      }
+
+      body {
+        background: #ffffff;
+        padding: 0;
+        margin: 0;
+      }
+
+      .deck-nav {
+        display: none !important;
+      }
+
+      .slide-stage {
+        width: 1280px;
+        height: auto;
+      }
+
+      .slide {
+        display: flex !important;
+        position: relative !important;
+        page-break-after: always;
+        break-after: page;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+        width: 1280px !important;
+        height: 720px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Controls Bar -->
+  <div class="deck-nav">
+    <button onclick="prevSlide()">&larr; Prev</button>
+    <div class="counter" id="slide-counter">01 / 12</div>
+    <button onclick="nextSlide()">Next &rarr;</button>
+    <span style="color: #444c5c;">|</span>
+    <button onclick="toggleFullScreen()">Full Screen [F]</button>
+  </div>
+
+  <div class="slide-stage">
+
+    <!-- ==========================================
+         SLIDE 01: TITLE
+         ========================================== -->
+    <div class="slide active" id="slide-1">
+      <div class="slide-header">
+        <div>
+          <div class="slide-title">ECOLOOP: From Waste to <span class="accent-green">Worth</span></div>
+          <div style="font-size: 16px; color: #555; margin-top: 4px;">A Student-Led Circular Economy &amp; Digital Platform Initiative</div>
+        </div>
+        <div class="slide-meta">Slide 01 / 12 &bull; Overview</div>
+      </div>
+
+      <div class="slide-body grid-2">
+        <div class="card">
+          <div>
+            <div class="card-title">
+              <span>The 6,000 km Bridge</span>
+              <span class="card-badge green">exchange context</span>
+            </div>
+            <ul class="item-list">
+              <li>
+                <span class="bullet-tag">SSDPS</span>
+                <div class="item-content">
+                  <strong>Swami Sant Dass Public School &bull; Jalandhar, Punjab, India</strong>
+                  <span>Continental urban center tackling high-density packaging and school waste.</span>
+                </div>
+              </li>
+              <li>
+                <span class="bullet-tag">Lycée</span>
+                <div class="item-content">
+                  <strong>Reunion Island High School &bull; French Territory, Indian Ocean</strong>
+                  <span>Island ecosystem collaborating via eTwinning (Belgium, Norway, Czech Republic).</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div style="border-top: 1px dashed #ddd; padding-top: 12px; font-size: 13px; color: #444;">
+            <strong>Core Premise:</strong> Two distant high school communities applying technology and engineering to solve localized waste bottlenecks.
+          </div>
+        </div>
+
+        <div class="card bg-light">
+          <div class="card-title">
+            <span>Presentation Scope</span>
+            <span class="card-badge">agenda</span>
+          </div>
+          <ul class="item-list">
+            <li>
+              <span class="bullet-num">01</span>
+              <div class="item-content">
+                <strong>Physical Raw Material Interception</strong>
+                <span>Transforming campus packaging into 6 verified functional goods.</span>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-num">02</span>
+              <div class="item-content">
+                <strong>The Zero-Cost Digital Marketplace</strong>
+                <span>React 18 + serverless lead synchronization for $0.00/month.</span>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-num">03</span>
+              <div class="item-content">
+                <strong>The Agentic AI Workflow</strong>
+                <span>Using open-source terminal agents (OpenCode) to ship full-stack code in 48 hours.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Swami Sant Dass Public School &bull; Jalandhar, Punjab, India</span>
+        <span>Reunion Island eTwinning Collaboration</span>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 02: THE PHYSICAL INGREDIENTS
+         ========================================== -->
+    <div class="slide" id="slide-2">
+      <div class="slide-header">
+        <div class="slide-title">The Physical Foundation: <span class="accent-green">6 Verified Goods</span></div>
+        <div class="slide-meta">Slide 02 / 12 &bull; Material Stream</div>
+      </div>
+
+      <div class="slide-body grid-3">
+        <!-- Card 1: Plastics -->
+        <div class="card">
+          <div class="card-title">
+            <span>Plastics &amp; Packaging</span>
+            <span class="card-badge green">recycled plastics</span>
+          </div>
+          <ul class="item-list">
+            <li>
+              <span class="bullet-tag">01</span>
+              <div class="item-content">
+                <strong>Eco-Bricks</strong>
+                <span>Standardized PET bottles packed with clean soft plastics for non-structural garden borders.</span>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-tag">02</span>
+              <div class="item-content">
+                <strong>MLP Sheets</strong>
+                <span>Multi-layered plastic wrappers thermally compressed into weather-proof partition boards.</span>
+              </div>
+            </li>
+          </ul>
+          <div style="font-size: 11.5px; color: #666; margin-top: 10px; border-top: 1px dashed #eee; padding-top: 8px;">
+            Targets non-recyclable metallized chip/snack packaging.
+          </div>
+        </div>
+
+        <!-- Card 2: Textiles & Paper -->
+        <div class="card">
+          <div class="card-title">
+            <span>Textiles &amp; Cellulose</span>
+            <span class="card-badge green">upcycled materials</span>
+          </div>
+          <ul class="item-list">
+            <li>
+              <span class="bullet-tag">03</span>
+              <div class="item-content">
+                <strong>Uniform Bags</strong>
+                <span>Outgrown school uniforms laundered and stitched into heavy-duty carry totes.</span>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-tag">04</span>
+              <div class="item-content">
+                <strong>Seed Paper</strong>
+                <span>Post-consumer notebook paper pulped and embedded with native germinable seeds.</span>
+              </div>
+            </li>
+          </ul>
+          <div style="font-size: 11.5px; color: #666; margin-top: 10px; border-top: 1px dashed #eee; padding-top: 8px;">
+            Intercepts annual uniform and notebook turnover.
+          </div>
+        </div>
+
+        <!-- Card 3: Biology & Upcycling -->
+        <div class="card">
+          <div class="card-title">
+            <span>Biology &amp; Upcycling</span>
+            <span class="card-badge green">organic recovery</span>
+          </div>
+          <ul class="item-list">
+            <li>
+              <span class="bullet-tag">05</span>
+              <div class="item-content">
+                <strong>Bioenzymes</strong>
+                <span>Canteen citrus peels fermented over 90 days into non-toxic cleaning solution.</span>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-tag">06</span>
+              <div class="item-content">
+                <strong>Bottle Planters</strong>
+                <span>Recovered PET beverage bottles fitted with wicking cords for classroom herbs.</span>
+              </div>
+            </li>
+          </ul>
+          <div style="font-size: 11.5px; color: #666; margin-top: 10px; border-top: 1px dashed #eee; padding-top: 8px;">
+            Diverts methane-producing organic waste from dumps.
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Strict Criterion: Practical functional utility only. Zero decorative craft items.</span>
+        <span>ECOLOOP Product Portfolio</span>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 03: THE SCIENCE FAIR TRAP
+         ========================================== -->
+    <div class="slide" id="slide-3">
+      <div class="slide-header">
+        <div class="slide-title">The Challenge: The <span class="accent-green">Science Fair Trap</span></div>
+        <div class="slide-meta">Slide 03 / 12 &bull; Problem Diagnosis</div>
+      </div>
+
+      <div class="slide-body">
+        <div class="big-idea-card">
+          <div class="big-idea-title">The Recurring Failure Mode</div>
+          <div class="big-idea-text">
+            "99% of school environmental projects build great prototypes, win an exhibition certificate, and then rot in a dusty display cabinet forever."
+          </div>
+          <div class="big-idea-sub">
+            Without an active digital inventory, transparent material data, and an inquiry routing pipeline, a physical recycling project cannot sustain itself beyond exhibition day.
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Why Software Matters: Transforming temporary demonstration projects into persistent systems.</span>
+        <span>The Digital Imperative</span>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 04: LIVE PLATFORM: CATALOG
+         ========================================== -->
+    <div class="slide" id="slide-4">
+      <div class="slide-header">
+        <div class="slide-title">The Platform: <span class="accent-blue">Live Web Catalog</span></div>
+        <div class="slide-meta">Slide 04 / 12 &bull; Software Execution</div>
+      </div>
+
+      <div class="slide-body grid-right-wide">
+        <!-- Left: Engineering Highlights -->
+        <div class="card">
+          <div class="card-title">
+            <span>Marketplace Catalog</span>
+            <span class="card-badge blue">client layer</span>
+          </div>
+          <ul class="item-list">
+            <li>
+              <span class="bullet-num">01</span>
+              <div class="item-content">
+                <strong>Dynamic Category Filtering</strong>
+                <span>Instant client-side sorting across Recycled Plastics, Textiles, and Organic Recovery.</span>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-num">02</span>
+              <div class="item-content">
+                <strong>Real-Time Query Search</strong>
+                <span>Searches by input material, product name, or campus application.</span>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-num">03</span>
+              <div class="item-content">
+                <strong>Mobile-First Responsive Layout</strong>
+                <span>Optimized touch interaction for students browsing on smartphones.</span>
+              </div>
+            </li>
+          </ul>
+          <div style="font-size: 12px; color: #666; border-top: 1px dashed #ddd; padding-top: 10px;">
+            Built with React 18, TypeScript, and Vite.
+          </div>
+        </div>
+
+        <!-- Right: Real Screenshot -->
+        <div class="screenshot-frame">
+          <div class="screenshot-toolbar">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <span>ecoloop-ssdps.vercel.app/products</span>
+          </div>
+          <img src="images/screen-products.png" alt="ECOLOOP Products Catalog" class="screenshot-img">
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Production Web Application &bull; Live React Frontend</span>
+        <span>Screen 01: Product Catalog</span>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 05: MATERIAL TRANSPARENCY
+         ========================================== -->
+    <div class="slide" id="slide-5">
+      <div class="slide-header">
+        <div class="slide-title">Material Transparency &amp; <span class="accent-blue">Honesty</span></div>
+        <div class="slide-meta">Slide 05 / 12 &bull; Product Specification</div>
+      </div>
+
+      <div class="slide-body grid-left-wide">
+        <!-- Left: Real Screenshot of MLP Detail Page -->
+        <div class="screenshot-frame">
+          <div class="screenshot-toolbar">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <span>ecoloop-ssdps.vercel.app/products/mlp-sheets</span>
+          </div>
+          <img src="images/screen-mlp.png" alt="MLP Sheets Specification Detail" class="screenshot-img">
+        </div>
+
+        <!-- Right: Verification Architecture -->
+        <div class="card">
+          <div class="card-title">
+            <span>Rigorous Specifications</span>
+            <span class="card-badge green">verified data</span>
+          </div>
+          <ul class="item-list">
+            <li>
+              <span class="bullet-tag">input</span>
+              <div class="item-content">
+                <strong>Recovered Material Sourcing</strong>
+                <span>Every product explicitly names its input waste stream (e.g. post-consumer MLP packaging).</span>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-tag">caution</span>
+              <div class="item-content">
+                <strong>Strict Safety &amp; Caution Notices</strong>
+                <span>Mandatory disclosures: e.g. Eco-bricks are non-structural; Bioenzymes are non-clinical.</span>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-tag">impact</span>
+              <div class="item-content">
+                <strong>Circular Lifecycle Tracking</strong>
+                <span>Transparent explanation of value creation without exaggerated environmental claims.</span>
+              </div>
+            </li>
+          </ul>
+          <div style="font-size: 12px; color: #555; border-top: 1px dashed #ddd; padding-top: 10px;">
+            Zero greenwashing. Complete engineering honesty.
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Product Detail Page &bull; Dedicated Specifications and Safety Disclosures</span>
+        <span>Screen 02: Specification Transparency</span>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 06: ARCHITECTURE ($0 BUDGET)
+         ========================================== -->
+    <div class="slide" id="slide-6">
+      <div class="slide-header">
+        <div class="slide-title">The <span class="accent-blue">$0.00</span> Serverless Architecture</div>
+        <div class="slide-meta">Slide 06 / 12 &bull; System Design</div>
+      </div>
+
+      <div class="slide-body grid-2">
+        <div class="card">
+          <div class="card-title">
+            <span>Decoupled Data Pipeline</span>
+            <span class="card-badge blue">resilience</span>
+          </div>
+          <ul class="item-list">
+            <li>
+              <span class="bullet-num">01</span>
+              <div class="item-content">
+                <strong>React 18 + TypeScript Frontend</strong>
+                <span>Single Page Application compiled to static assets and deployed to edge CDN (Vercel).</span>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-num">02</span>
+              <div class="item-content">
+                <strong>Client-Side LocalStorage Buffer</strong>
+                <span>Caches product inquiries locally so submissions never drop during weak campus Wi-Fi.</span>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-num">03</span>
+              <div class="item-content">
+                <strong>Google Apps Script Serverless Webhook</strong>
+                <span>HTTP POST endpoint receives payload and authenticates submission with zero server maintenance.</span>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-num">04</span>
+              <div class="item-content">
+                <strong>Google Sheets Live Datastore</strong>
+                <span>Acts as a real-time collaborative database accessible to faculty and student leads.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card bg-light">
+          <div class="card-title">
+            <span>Operating Cost Ledger</span>
+            <span class="card-badge green">budget: 0.00 &euro;</span>
+          </div>
+          <div class="terminal-box">
+            <span class="dim">// Monthly Infrastructure Invoice</span><br>
+            Frontend Edge Hosting:  <span class="ok">$0.00</span> (Vercel Tier)<br>
+            Backend API Computing:  <span class="ok">$0.00</span> (Google Apps Script)<br>
+            Database Storage:       <span class="ok">$0.00</span> (Google Sheets)<br>
+            SSL Certificate &amp; CDN:  <span class="ok">$0.00</span> (Included)<br>
+            --------------------------------------<br>
+            <span class="cmd">TOTAL MONTHLY OVERHEAD: $0.00 / month</span>
+          </div>
+          <div style="font-size: 12.5px; color: #444; margin-top: 14px;">
+            <strong>Takeaway for Students:</strong> You do not need funding or enterprise cloud subscriptions to launch a production-grade digital platform.
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Resilient Architecture &bull; Local Cache + Serverless Webhook + Cloud Sheet</span>
+        <span>Zero Cost Infrastructure</span>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 07: BEYOND CHATBOTS: THE HARNESS
+         ========================================== -->
+    <div class="slide" id="slide-7">
+      <div class="slide-header">
+        <div class="slide-title">Beyond Chatbots: The <span class="accent-blue">Agentic Harness</span></div>
+        <div class="slide-meta">Slide 07 / 12 &bull; Engineering Paradigm</div>
+      </div>
+
+      <div class="slide-body grid-2">
+        <!-- Consumer Mode -->
+        <div class="card">
+          <div class="card-title">
+            <span>01 / The Consumer Approach</span>
+            <span class="card-badge" style="background: #fee2e2; color: #b91c1c;">isolated chatbox</span>
+          </div>
+          <div style="font-size: 13.5px; color: #444; margin-bottom: 10px;">
+            Treating AI as an automated essay or text generator:
+          </div>
+          <div class="terminal-box" style="background: #f8fafc; color: #1e293b; border-color: #cbd5e1;">
+            <span class="dim">// Typical Student Prompt:</span><br>
+            "Write a 400-word paragraph about recycling plastic wrappers with a strong introduction..."
+          </div>
+          <ul class="item-list" style="margin-top: 16px;">
+            <li><span class="bullet-num">&times;</span><div class="item-content"><strong>Zero Software Output:</strong> Produces throwaway words, not software.</div></li>
+            <li><span class="bullet-num">&times;</span><div class="item-content"><strong>Zero Engineering Feedback:</strong> No compiler verification, no runtime testing.</div></li>
+          </ul>
+        </div>
+
+        <!-- Agentic Harness -->
+        <div class="card bg-light">
+          <div class="card-title">
+            <span>02 / The Agentic Coding Harness</span>
+            <span class="card-badge blue">autonomous loop</span>
+          </div>
+          <div style="font-size: 13.5px; color: #444; margin-bottom: 10px;">
+            Pair-programming with an autonomous software agent:
+          </div>
+          <div class="terminal-box">
+            <span class="dim">// The Three Pillars of a Harness:</span><br>
+            1. <span class="cmd">Model (The Brain):</span> LLM reasoning engine.<br>
+            2. <span class="cmd">Tools (The Hands):</span> Reads files, edits diffs, runs terminal.<br>
+            3. <span class="cmd">Environment:</span> Local repo, compiler, linter, and git.
+          </div>
+          <ul class="item-list" style="margin-top: 16px;">
+            <li><span class="bullet-num">&check;</span><div class="item-content"><strong>Self-Correcting:</strong> Agent reads compiler errors and fixes bugs itself.</div></li>
+            <li><span class="bullet-num">&check;</span><div class="item-content"><strong>Direct Production:</strong> Edits components, compiles bundles, pushes commits.</div></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>The Paradigm Shift: From passive prompt-answering to active workspace manipulation.</span>
+        <span>Agentic Architecture</span>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 08: THE AGENTIC FEEDBACK LOOP
+         ========================================== -->
+    <div class="slide" id="slide-8">
+      <div class="slide-header">
+        <div class="slide-title">The <span class="accent-blue">Feedback Loop</span>: How We Shipped Fast</div>
+        <div class="slide-meta">Slide 08 / 12 &bull; Workflow Mechanics</div>
+      </div>
+
+      <div class="slide-body grid-2">
+        <div class="card">
+          <div class="card-title">
+            <span>The 5-Step Autonomous Cycle</span>
+            <span class="card-badge blue">execution engine</span>
+          </div>
+          <ul class="item-list">
+            <li>
+              <span class="bullet-num">01</span>
+              <div class="item-content">
+                <strong>Specification (AGENTS.md)</strong>
+                <span>Engineer defines product data, brand constraints, and routing architecture in Markdown.</span>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-num">02</span>
+              <div class="item-content">
+                <strong>Autonomous Code Generation</strong>
+                <span>Agent edits React TypeScript components and updates CSS design tokens.</span>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-num">03</span>
+              <div class="item-content">
+                <strong>Local Compiler Execution</strong>
+                <span>Agent executes `tsc &amp;&amp; vite build` directly in the project workspace.</span>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-num">04</span>
+              <div class="item-content">
+                <strong>Autonomous Self-Correction</strong>
+                <span>If TypeScript throws a type mismatch, the agent inspects stderr and repairs the file.</span>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-num">05</span>
+              <div class="item-content">
+                <strong>Git Persistence</strong>
+                <span>Agent stages modified files and commits clean, version-controlled checkpoints.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card bg-light">
+          <div class="card-title">
+            <span>Compiler Verification Terminal</span>
+            <span class="card-badge green">production build</span>
+          </div>
+          <div class="terminal-box" style="font-size: 12px;">
+            <span class="cmd">&gt; ecoloop-marketplace@1.0.0 build</span><br>
+            <span class="cmd">&gt; tsc &amp;&amp; vite build</span><br><br>
+            vite v6.4.3 building for production...<br>
+            <span class="dim">&check; 1607 modules transformed.</span><br><br>
+            dist/index.html            1.72 kB | gzip: 0.76 kB<br>
+            dist/assets/index.css     19.25 kB | gzip: 4.04 kB<br>
+            dist/assets/index.js     260.57 kB | gzip: 75.94 kB<br><br>
+            <span class="ok">&check; built in 1.90s with zero errors</span>
+          </div>
+          <div style="font-size: 12.5px; color: #444; margin-top: 12px;">
+            <strong>Human Role:</strong> Architect, product designer, and quality verifier.<br>
+            <strong>Agent Role:</strong> Syntax executor, boilerplate writer, and compiler troubleshooter.
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Engineering Reality &bull; Human specifies; AI agent executes, compiles, and verifies</span>
+        <span>The Agentic Cycle</span>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 09: OPENCODE INTRODUCTION
+         ========================================== -->
+    <div class="slide" id="slide-9">
+      <div class="slide-header">
+        <div class="slide-title">OpenCode: <span class="accent-blue">Free &amp; Open Source</span> Agent</div>
+        <div class="slide-meta">Slide 09 / 12 &bull; Student Tooling</div>
+      </div>
+
+      <div class="slide-body grid-2">
+        <div class="card">
+          <div class="card-title">
+            <span>What is OpenCode?</span>
+            <span class="card-badge blue">opencode.ai</span>
+          </div>
+          <ul class="item-list">
+            <li>
+              <span class="bullet-num">01</span>
+              <div class="item-content">
+                <strong>Open Source Terminal &amp; Desktop Agent</strong>
+                <span>A fully open-source AI coding harness developed for terminal TUIs and desktop environments.</span>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-num">02</span>
+              <div class="item-content">
+                <strong>Zero Financial Requirement</strong>
+                <span>100% free software. Does not require paid IDE subscriptions or enterprise accounts.</span>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-num">03</span>
+              <div class="item-content">
+                <strong>Two Specialized Operating Modes</strong>
+                <span>`plan` mode explores code safely; `build` mode executes full autonomous edits.</span>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-num">04</span>
+              <div class="item-content">
+                <strong>GitHub Actions Integration</strong>
+                <span>Comment `/opencode` on GitHub PRs and issues to automate cloud coding for free.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card bg-light">
+          <div class="card-title">
+            <span>Installation &amp; Setup</span>
+            <span class="card-badge green">1-minute setup</span>
+          </div>
+          <div class="terminal-box">
+            <span class="dim"># Install OpenCode globally via npm</span><br>
+            <span class="cmd">npm install -g @opencode/cli@latest</span><br><br>
+            <span class="dim"># Or install via standalone script</span><br>
+            <span class="cmd">curl -fsSL https://opencode.ai/v2/install | bash</span><br><br>
+            <span class="dim"># Launch in any project directory</span><br>
+            <span class="cmd">opencode</span>
+          </div>
+          <div style="font-size: 12.5px; color: #444; margin-top: 12px;">
+            Runs natively on Linux, macOS, and Windows.
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Accessible Tooling &bull; Open-source agent available at github.com/anomalyco/opencode</span>
+        <span>OpenCode Architecture</span>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 10: RUNNING ON $0 (MODELS & LOCAL LLMS)
+         ========================================== -->
+    <div class="slide" id="slide-10">
+      <div class="slide-header">
+        <div class="slide-title">Running on <span class="accent-blue">$0</span>: Free Models &amp; Local LLMs</div>
+        <div class="slide-meta">Slide 10 / 12 &bull; Zero Budget Strategy</div>
+      </div>
+
+      <div class="slide-body grid-2">
+        <!-- Option 1: Free Cloud Tiers -->
+        <div class="card">
+          <div class="card-title">
+            <span>Approach 1: Free Cloud Tiers</span>
+            <span class="card-badge blue">high speed</span>
+          </div>
+          <ul class="item-list">
+            <li>
+              <span class="bullet-tag">Groq</span>
+              <div class="item-content">
+                <strong>High-Speed Free Inference</strong>
+                <span>Generous free rate limits running Llama 3 models at 300+ tokens/second.</span>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-tag">Router</span>
+              <div class="item-content">
+                <strong>OpenRouter Free Endpoints</strong>
+                <span>Access dozens of competitive open-weight coding models with zero credit card entry.</span>
+              </div>
+            </li>
+          </ul>
+          <div style="font-size: 12px; color: #555; margin-top: 14px; border-top: 1px dashed #ddd; padding-top: 10px;">
+            Ideal for laptops with standard specifications and active internet connection.
+          </div>
+        </div>
+
+        <!-- Option 2: 100% Offline Local Models -->
+        <div class="card bg-light">
+          <div class="card-title">
+            <span>Approach 2: Offline Local LLMs (Ollama)</span>
+            <span class="card-badge green">100% offline</span>
+          </div>
+          <ul class="item-list">
+            <li>
+              <span class="bullet-tag">Ollama</span>
+              <div class="item-content">
+                <strong>Local Model Execution</strong>
+                <span>Run models directly on your hardware without transmitting code over the internet.</span>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-tag">Models</span>
+              <div class="item-content">
+                <strong>Top Free Coding Weights</strong>
+                <span>`qwen2.5-coder:7b`, `llama3.1:8b`, or `deepseek-coder` run on consumer laptops.</span>
+              </div>
+            </li>
+          </ul>
+          <div class="terminal-box" style="margin-top: 14px; font-size: 11.5px;">
+            <span class="cmd">ollama run qwen2.5-coder:7b</span><br>
+            <span class="dim"># Point OpenCode to local Ollama host:</span><br>
+            <span class="cmd">export OPENCODE_PROVIDER=ollama</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Complete Financial Accessibility &bull; Cloud Free Tiers or Local On-Device Compute</span>
+        <span>Cost-Free Inference</span>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 11: REUNION ISLAND BLUEPRINT
+         ========================================== -->
+    <div class="slide" id="slide-11">
+      <div class="slide-header">
+        <div class="slide-title">The Reunion Island Blueprint: <span class="accent-green">48-Hour Plan</span></div>
+        <div class="slide-meta">Slide 11 / 12 &bull; Actionable Next Steps</div>
+      </div>
+
+      <div class="slide-body grid-3">
+        <!-- Step 1 -->
+        <div class="card">
+          <div class="card-title">
+            <span>Step 1: Data Structuring</span>
+            <span class="card-badge green">input</span>
+          </div>
+          <ul class="item-list">
+            <li>
+              <span class="bullet-num">01</span>
+              <div class="item-content">
+                <strong>Index Cleanup Volume</strong>
+                <span>Log kilograms of bottles, wrappers, and beach plastic gathered during cleanups.</span>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-num">02</span>
+              <div class="item-content">
+                <strong>Gather Radio Podcast Audio</strong>
+                <span>Consolidate audio files and student reflection links into a clean Markdown table.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="card">
+          <div class="card-title">
+            <span>Step 2: Agentic Scaffolding</span>
+            <span class="card-badge blue">build</span>
+          </div>
+          <ul class="item-list">
+            <li>
+              <span class="bullet-num">03</span>
+              <div class="item-content">
+                <strong>Initialize OpenCode</strong>
+                <span>Run `opencode` inside a new Vite web repository.</span>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-num">04</span>
+              <div class="item-content">
+                <strong>Autonomous UI Generation</strong>
+                <span>Prompt agent to scaffold a podcast audio player and live rubbish metric dashboard.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="card">
+          <div class="card-title">
+            <span>Step 3: Global Deployment</span>
+            <span class="card-badge green">ship</span>
+          </div>
+          <ul class="item-list">
+            <li>
+              <span class="bullet-num">05</span>
+              <div class="item-content">
+                <strong>Deploy to GitHub Pages / Vercel</strong>
+                <span>Push repo to GitHub; automated actions deploy live site in under 60 seconds.</span>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-num">06</span>
+              <div class="item-content">
+                <strong>Public International Hub</strong>
+                <span>Partner schools in Belgium, Norway, and Czech Republic can stream episodes and view stats.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Concrete Execution Protocol &bull; From Beach Cleanups and Radio Podcasts to a Live Web Hub</span>
+        <span>The 48-Hour Roadmap</span>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 12: QUESTIONS & DISCUSSION
+         ========================================== -->
+    <div class="slide" id="slide-12">
+      <div class="slide-header">
+        <div class="slide-title">Open Discussion &amp; <span class="accent-green">Technical Q&amp;A</span></div>
+        <div class="slide-meta">Slide 12 / 12 &bull; Interactive Session</div>
+      </div>
+
+      <div class="slide-body grid-2">
+        <div class="card">
+          <div class="card-title">
+            <span>Discussion Prompts</span>
+            <span class="card-badge green">open floor</span>
+          </div>
+          <ul class="item-list">
+            <li>
+              <span class="bullet-tag">material</span>
+              <div class="item-content">
+                <strong>Plastics &amp; Processing</strong>
+                <span>Questions on multi-layered plastic thermal compression, density, or bioenzyme fermentation.</span>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-tag">software</span>
+              <div class="item-content">
+                <strong>Digital Architecture</strong>
+                <span>Questions on React 18, Google Apps Script serverless routing, or Google Sheets datastores.</span>
+              </div>
+            </li>
+            <li>
+              <span class="bullet-tag">ai agent</span>
+              <div class="item-content">
+                <strong>OpenCode &amp; Agentic Workflows</strong>
+                <span>Questions on setting up open-source coding harnesses, local LLMs, or prompt specifications.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card bg-light" style="justify-content: center; align-items: center; text-align: center;">
+          <div style="font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700; color: #111;">
+            Thank You.
+          </div>
+          <div style="font-size: 14px; color: #555; max-width: 380px; margin-top: 8px; line-height: 1.5;">
+            Looking forward to hearing about your local environmental initiatives and software experiments.
+          </div>
+          <div style="margin-top: 20px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #1F6B4F; background: #e8f5e9; padding: 6px 14px; border-radius: 20px; border: 1px solid #c8e6c9;">
+            Swami Sant Dass Public School &bull; Jalandhar, India
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>Live Q&amp;A &bull; 30 Minutes Discussion and Experience Exchange</span>
+        <span>Session Concluded</span>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 12;
+
+    function showSlide(index) {
+      if (index < 1) index = 1;
+      if (index > totalSlides) index = totalSlides;
+      currentSlide = index;
+
+      document.querySelectorAll('.slide').forEach((el, idx) => {
+        el.classList.toggle('active', idx + 1 === currentSlide);
+      });
+
+      const numStr = currentSlide < 10 ? '0' + currentSlide : currentSlide;
+      document.getElementById('slide-counter').textContent = `${numStr} / ${totalSlides}`;
+    }
+
+    function prevSlide() {
+      showSlide(currentSlide - 1);
+    }
+
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+    }
+
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+          console.error(err);
+        });
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key === 'f' || e.key === 'F') {
+        toggleFullScreen();
+      } else if (e.key === 'Home') {
+        showSlide(1);
+      } else if (e.key === 'End') {
+        showSlide(totalSlides);
+      }
+    });
+  </script>
+</body>
+</html>
