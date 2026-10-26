@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ECOLOOP — Digital Platform & Agentic Workflow</title>
+  <title>ecoloop: circular systems &amp; agentic software</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -14,9 +14,9 @@
     }
 
     body {
-      background: #0f1115;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: #111111;
+      background: #090a0f;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "Inter", sans-serif;
+      color: #0f172a;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -24,31 +24,33 @@
       min-height: 100vh;
       overflow-x: hidden;
       user-select: none;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* Presentation Navigation Bar */
+    /* Floating Navigation Controls */
     .deck-nav {
       position: fixed;
-      top: 16px;
+      top: 18px;
       display: flex;
       align-items: center;
       gap: 16px;
-      background: rgba(24, 27, 34, 0.95);
-      backdrop-filter: blur(8px);
+      background: rgba(18, 20, 29, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       padding: 8px 18px;
-      border-radius: 40px;
+      border-radius: 30px;
       border: 1px solid rgba(255, 255, 255, 0.12);
-      color: #eee;
+      color: #f1f5f9;
       font-family: 'JetBrains Mono', monospace;
       font-size: 13px;
       z-index: 1000;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
     }
 
     .deck-nav button {
-      background: #2a2e39;
+      background: rgba(255, 255, 255, 0.08);
       color: #fff;
-      border: 1px solid #444c5c;
+      border: 1px solid rgba(255, 255, 255, 0.16);
       padding: 6px 14px;
       border-radius: 20px;
       cursor: pointer;
@@ -59,12 +61,12 @@
     }
 
     .deck-nav button:hover {
-      background: #3b4252;
-      border-color: #5d677d;
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.3);
     }
 
     .deck-nav .counter {
-      color: #8892b0;
+      color: #94a3b8;
       font-weight: 600;
       min-width: 65px;
       text-align: center;
@@ -84,11 +86,11 @@
       position: absolute;
       top: 0;
       left: 0;
-      padding: 52px 64px 44px 64px;
+      padding: 56px 72px 48px 72px;
       display: none;
       flex-direction: column;
       justify-content: space-between;
-      border-radius: 12px;
+      border-radius: 16px;
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
       overflow: hidden;
     }
@@ -97,315 +99,321 @@
       display: flex;
     }
 
-    /* Header */
+    /* Header styling */
     .slide-header {
       display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 22px;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .slide-badge {
+      align-self: flex-start;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: #f1f5f9;
+      color: #475569;
+    }
+
+    .slide-badge.accent {
+      background: #eff6ff;
+      color: #0284c7;
+    }
+
+    .slide-badge.meme {
+      background: #fef3c7;
+      color: #b45309;
     }
 
     .slide-title {
-      font-family: 'Space Grotesk', sans-serif;
       font-size: 38px;
       font-weight: 700;
-      letter-spacing: -0.02em;
-      color: #111111;
+      letter-spacing: -0.03em;
+      color: #090a0f;
       line-height: 1.15;
     }
 
-    .slide-title .accent-green {
-      color: #1F6B4F;
+    .slide-subtitle {
+      font-size: 17px;
+      color: #64748b;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      margin-top: 2px;
     }
 
-    .slide-title .accent-blue {
-      color: #2563EB;
-    }
-
-    .slide-meta {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11.5px;
-      font-weight: 600;
-      color: #666666;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      border: 1.5px solid #111111;
-      padding: 4px 10px;
-      border-radius: 4px;
-      background: #fdfdfd;
-      box-shadow: 2px 2px 0px #111111;
-    }
-
-    /* Body */
+    /* Body Layouts */
     .slide-body {
       flex: 1;
-      display: grid;
-      gap: 24px;
-      position: relative;
+      display: flex;
+      margin: 28px 0;
+      gap: 32px;
     }
 
     .grid-2 {
+      display: grid;
       grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      width: 100%;
     }
 
     .grid-3 {
-      grid-template-columns: 1fr 1fr 1fr;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      width: 100%;
     }
 
-    .grid-left-wide {
-      grid-template-columns: 1.15fr 0.85fr;
-    }
-
-    .grid-right-wide {
-      grid-template-columns: 0.85fr 1.15fr;
-    }
-
-    /* Stanford / CS106L Card Style */
+    /* Cards */
     .card {
       background: #ffffff;
-      border: 1.5px solid #111111;
-      box-shadow: 3.5px 3.5px 0px #111111;
-      border-radius: 8px;
-      padding: 24px;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 28px 30px;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      gap: 16px;
-      position: relative;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
     }
 
-    .card.bg-light {
-      background: #fbfcfb;
+    .card.soft-bg {
+      background: #f8fafc;
+      border-color: #e2e8f0;
     }
 
     .card-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 17px;
+      font-size: 20px;
       font-weight: 700;
-      color: #111111;
-      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+      margin-bottom: 14px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      letter-spacing: -0.01em;
+      justify-content: space-between;
     }
 
-    .card-badge {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10.5px;
-      font-weight: 600;
-      padding: 3px 8px;
-      border-radius: 4px;
-      background: #f3f4f6;
-      color: #374151;
-      border: 1px solid #d1d5db;
-      text-transform: lowercase;
+    .card-p {
+      font-size: 15px;
+      color: #475569;
+      line-height: 1.6;
     }
 
-    .card-badge.green {
-      background: #E8F5E9;
-      color: #1F6B4F;
-      border-color: #A3D9B8;
-    }
-
-    .card-badge.blue {
-      background: #EFF6FF;
-      color: #1D4ED8;
-      border-color: #BFDBFE;
-    }
-
-    /* Lists */
-    ul.item-list, ol.item-list {
+    /* Clean Bullet List */
+    .clean-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 11px;
-    }
-
-    .item-list li {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      font-size: 14px;
-      line-height: 1.45;
-      color: #222222;
-    }
-
-    .bullet-num {
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 700;
-      font-size: 11.5px;
-      background: #111111;
-      color: #ffffff;
-      padding: 2px 6px;
-      border-radius: 4px;
-      margin-top: 2px;
-      flex-shrink: 0;
-    }
-
-    .bullet-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 600;
-      font-size: 11px;
-      background: #eef2ef;
-      color: #1F6B4F;
-      padding: 2px 7px;
-      border-radius: 4px;
-      border: 1px solid #d0ded4;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .item-content strong {
-      color: #000000;
-      font-weight: 600;
-    }
-
-    .item-content span {
-      display: block;
-      color: #555555;
-      font-size: 12.5px;
-      margin-top: 2px;
-    }
-
-    /* Real Screenshot Display */
-    .screenshot-frame {
-      border: 1.5px solid #111111;
-      border-radius: 6px;
-      overflow: hidden;
-      background: #f4f4f4;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-
-    .screenshot-toolbar {
-      background: #f0f0f0;
-      border-bottom: 1px solid #ddd;
-      padding: 6px 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: #666;
-    }
-
-    .dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: #ccc;
-    }
-
-    .dot.red { background: #ef4444; }
-    .dot.yellow { background: #f59e0b; }
-    .dot.green { background: #10b981; }
-
-    .screenshot-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top;
-    }
-
-    /* Terminal & Code Boxes */
-    .terminal-box {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12.5px;
-      background: #0d1117;
-      color: #c9d1d9;
-      padding: 16px;
-      border-radius: 6px;
-      line-height: 1.55;
-      border: 1px solid #30363d;
-      overflow-x: auto;
-    }
-
-    .terminal-box .cmd {
-      color: #58a6ff;
-    }
-
-    .terminal-box .ok {
-      color: #3fb950;
-    }
-
-    .terminal-box .dim {
-      color: #8b949e;
-    }
-
-    /* Big Idea Callout Card */
-    .big-idea-card {
-      background: #ffffff;
-      border: 2.5px solid #111111;
-      box-shadow: 6px 6px 0px #111111;
-      border-radius: 10px;
-      padding: 38px 48px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
       gap: 16px;
     }
 
-    .big-idea-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 26px;
-      font-weight: 700;
-      color: #111111;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      background: #f0fdf4;
-      border: 1.5px solid #1F6B4F;
-      padding: 6px 18px;
-      border-radius: 30px;
+    .clean-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
     }
 
-    .big-idea-text {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 30px;
-      font-weight: 700;
-      color: #111111;
-      line-height: 1.35;
-      max-width: 900px;
+    .bullet-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #0284c7;
+      margin-top: 8px;
+      flex-shrink: 0;
     }
 
-    .big-idea-sub {
-      font-family: 'Inter', sans-serif;
-      font-size: 16px;
-      color: #555555;
-      max-width: 760px;
+    .list-text {
+      font-size: 15px;
+      color: #334155;
       line-height: 1.5;
     }
 
-    /* Modular Meme Slot (Harman's Custom Inset) */
-    .meme-slot {
-      border: 1.5px dashed #b0b0b0;
-      background: #fafafa;
+    .list-text strong {
+      color: #0f172a;
+      font-weight: 600;
+    }
+
+    /* Media Containers */
+    .media-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+    }
+
+    .media-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Placeholders */
+    .media-placeholder {
+      border: 2px dashed #cbd5e1;
+      border-radius: 14px;
+      background: #f8fafc;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      text-align: center;
+      width: 100%;
+      height: 100%;
+      min-height: 240px;
+    }
+
+    .placeholder-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      color: #334155;
+      background: #e2e8f0;
+      padding: 6px 14px;
       border-radius: 6px;
-      padding: 10px;
+      margin-top: 10px;
+    }
+
+    .placeholder-hint {
+      font-size: 13px;
+      color: #94a3b8;
+      margin-top: 8px;
+    }
+
+    /* Transition / Meme Specific Slides */
+    .transition-wrap {
+      width: 100%;
+      height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      min-height: 120px;
-      position: relative;
+      gap: 20px;
     }
 
-    .meme-slot img {
+    .transition-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .transition-header h2 {
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: #0f172a;
+    }
+
+    .transition-card {
+      width: 640px;
+      max-height: 380px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .transition-card img {
       max-width: 100%;
-      max-height: 160px;
+      max-height: 320px;
+      border-radius: 10px;
       object-fit: contain;
-      border-radius: 4px;
     }
 
-    .meme-slot .caption {
+    .transition-caption {
+      font-size: 15px;
+      color: #64748b;
+      max-width: 580px;
+      line-height: 1.5;
+    }
+
+    /* Flow Diagrams */
+    .flow-steps {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      gap: 16px;
+    }
+
+    .flow-step-box {
+      flex: 1;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 22px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    }
+
+    .flow-step-num {
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
-      color: #666666;
-      margin-top: 6px;
+      font-weight: 600;
+      color: #0284c7;
+    }
+
+    .flow-step-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .flow-step-desc {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.45;
+    }
+
+    .flow-arrow {
+      font-size: 20px;
+      color: #94a3b8;
+      font-weight: bold;
+    }
+
+    /* Product Grid Pills */
+    .product-pills {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      width: 100%;
+    }
+
+    .product-pill {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .product-pill strong {
+      font-size: 15px;
+      color: #0f172a;
+      font-weight: 600;
+    }
+
+    .product-pill span {
+      font-size: 13px;
+      color: #64748b;
     }
 
     /* Footer */
@@ -413,14 +421,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-top: 1px solid #ebebeb;
-      padding-top: 12px;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 14px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
-      color: #888888;
+      color: #94a3b8;
     }
 
-    /* Print / PDF Mode */
+    /* Print & Headless PDF Rendering */
     @media print {
       @page {
         size: 1280px 720px;
@@ -458,842 +466,705 @@
 </head>
 <body>
 
-  <!-- Controls Bar -->
+  <!-- Floating Nav Controls -->
   <div class="deck-nav">
-    <button onclick="prevSlide()">&larr; Prev</button>
-    <div class="counter" id="slide-counter">01 / 12</div>
-    <button onclick="nextSlide()">Next &rarr;</button>
-    <span style="color: #444c5c;">|</span>
-    <button onclick="toggleFullScreen()">Full Screen [F]</button>
+    <button onclick="prevSlide()">Prev (&larr;)</button>
+    <div class="counter" id="slide-counter">01 / 15</div>
+    <button onclick="nextSlide()">Next (&rarr;)</button>
+    <button onclick="toggleFullScreen()">Fullscreen (F)</button>
   </div>
 
   <div class="slide-stage">
 
-    <!-- ==========================================
-         SLIDE 01: TITLE
-         ========================================== -->
-    <div class="slide active" id="slide-1">
+    <!-- SLIDE 01: TITLE -->
+    <div class="slide active">
       <div class="slide-header">
-        <div>
-          <div class="slide-title">ECOLOOP: From Waste to <span class="accent-green">Worth</span></div>
-          <div style="font-size: 16px; color: #555; margin-top: 4px;">A Student-Led Circular Economy &amp; Digital Platform Initiative</div>
+        <span class="slide-badge accent">international session</span>
+        <h1 class="slide-title" style="font-size: 46px; margin-top: 12px;">ecoloop</h1>
+        <p class="slide-subtitle" style="font-size: 20px;">circular material systems &amp; zero-cost digital architecture</p>
+      </div>
+
+      <div class="slide-body grid-2" style="align-items: center;">
+        <div class="card soft-bg">
+          <div class="card-title">overview</div>
+          <p class="card-p">
+            a physical sustainability project combining verified upcycled materials with modern web infrastructure, built autonomously using agentic coding tools.
+          </p>
+          <div style="margin-top: 24px; display: flex; gap: 10px;">
+            <span class="slide-badge">6 verified products</span>
+            <span class="slide-badge">react 18 + ts</span>
+            <span class="slide-badge">$0 cloud costs</span>
+          </div>
         </div>
-        <div class="slide-meta">Slide 01 / 12 &bull; Overview</div>
+
+        <div class="media-placeholder">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
+            <circle cx="9" cy="9" r="2"/>
+            <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+          </svg>
+          <span class="placeholder-tag">[image for hero visual / platform preview]</span>
+          <span class="placeholder-hint">clean logo, project render, or ecoloop preview</span>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>swami sant dass public school &bull; jalandhar, india</span>
+        <span>reunion island e-twinning collaboration &bull; 2026</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 02: THE LINEAR TRAP -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-badge">the problem</span>
+        <h2 class="slide-title">the linear packaging trap</h2>
+        <p class="slide-subtitle">why conventional municipal recycling breaks down on complex packaging</p>
       </div>
 
       <div class="slide-body grid-2">
         <div class="card">
-          <div>
-            <div class="card-title">
-              <span>The 6,000 km Bridge</span>
-              <span class="card-badge green">exchange context</span>
+          <div class="card-title">
+            <span>material reality</span>
+            <span class="slide-badge" style="background: #fee2e2; color: #b91c1c;">linear</span>
+          </div>
+          <ul class="clean-list">
+            <li>
+              <div class="bullet-dot" style="background: #ef4444;"></div>
+              <div class="list-text">
+                <strong>multi-layer packaging (mlp)</strong><br>
+                chips and snack wrappers bond plastic and aluminum together. recyclers cannot separate them profitably, so they go directly to landfills.
+              </div>
+            </li>
+            <li>
+              <div class="bullet-dot" style="background: #ef4444;"></div>
+              <div class="list-text">
+                <strong>zero supply tracking</strong><br>
+                schools and communities generate tons of clean packaging waste without verified channels to divert materials into local production loops.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card soft-bg">
+          <div class="card-title">
+            <span>the ecoloop objective</span>
+            <span class="slide-badge accent">circular</span>
+          </div>
+          <ul class="clean-list">
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>direct mechanical upcycling</strong><br>
+                heat-press multi-layer plastics into structural sheets that replace plywood and acoustic boards.
+              </div>
+            </li>
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>digital transparency</strong><br>
+                publish physical specifications, density metrics, and inventory through an open platform.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>02 / 15 &bull; problem statement</span>
+        <span>ecoloop materials</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 03: THE PHYSICAL LOOP -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-badge accent">material catalog</span>
+        <h2 class="slide-title">the physical loop</h2>
+        <p class="slide-subtitle">six verified circular materials diverted from waste streams</p>
+      </div>
+
+      <div class="slide-body grid-2">
+        <div class="product-pills">
+          <div class="product-pill">
+            <strong>eco-bricks</strong>
+            <span>high-density pet bottles packed with clean flexible plastics</span>
+          </div>
+          <div class="product-pill">
+            <strong>mlp sheets</strong>
+            <span>heat-pressed snack wrappers replacing construction plywood</span>
+          </div>
+          <div class="product-pill">
+            <strong>bottle planters</strong>
+            <span>upcycled containers for nursery and hydroponic gardening</span>
+          </div>
+          <div class="product-pill">
+            <strong>uniform bags</strong>
+            <span>heavyweight tote bags repurposed from discarded school uniforms</span>
+          </div>
+          <div class="product-pill">
+            <strong>seed paper</strong>
+            <span>zero-bleach handmade paper embedded with native seeds</span>
+          </div>
+          <div class="product-pill">
+            <strong>bioenzymes</strong>
+            <span>citrus-fermented multipurpose natural cleaning solutions</span>
+          </div>
+        </div>
+
+        <div class="media-card">
+          <img src="images/sample-mlp.jpg" alt="sample heat pressed mlp sheet">
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>03 / 15 &bull; physical catalog</span>
+        <span>verified sustainable production</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 04: TRANSITION MEME 01 -->
+    <div class="slide">
+      <div class="transition-wrap">
+        <div class="transition-header">
+          <span class="slide-badge meme">reality check // 01</span>
+          <h2>how it started vs how it's going</h2>
+        </div>
+
+        <div class="transition-card">
+          <div class="media-placeholder" style="border: none; background: transparent; min-height: 220px;">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+              <line x1="9" x2="9.01" y1="9" y2="9"/>
+              <line x1="15" x2="15.01" y1="9" y2="9"/>
+            </svg>
+            <span class="placeholder-tag">[meme: me explaining to teachers that collecting plastic wrappers requires a serverless cloud architecture]</span>
+            <span class="placeholder-hint">clown applying makeup / roll safe / spongeBob presentation</span>
+          </div>
+        </div>
+
+        <p class="transition-caption">
+          started as collecting empty chips wrappers in school. ended up designing automated distributed cloud infrastructure.
+        </p>
+      </div>
+
+      <div class="slide-footer">
+        <span>04 / 15 &bull; transition</span>
+        <span>pivoting to software</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 05: THE DIGITAL LAYER -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-badge accent">digital layer</span>
+        <h2 class="slide-title">why physical projects need software</h2>
+        <p class="slide-subtitle">moving from static school exhibits to an open, operational platform</p>
+      </div>
+
+      <div class="slide-body grid-2">
+        <div class="card">
+          <div class="card-title">platform capabilities</div>
+          <ul class="clean-list">
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>engineering specifications</strong><br>
+                every product includes density, dimensions, thermal ratings, and manufacturing lead times.
+              </div>
+            </li>
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>interactive transaction routing</strong><br>
+                partners can query inventory, request institutional samples, and place bulk orders seamlessly.
+              </div>
+            </li>
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>modern frontend stack</strong><br>
+                react 18 + typescript + vite for sub-50ms navigation and zero compile-time errors.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="media-card">
+          <img src="images/screen-products.png" alt="ecoloop product catalog screen">
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>05 / 15 &bull; software architecture</span>
+        <span>react 18 + typescript</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 06: ZERO-COST BACKEND -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-badge accent">serverless infrastructure</span>
+        <h2 class="slide-title">the zero-cost backend</h2>
+        <p class="slide-subtitle">delivering full transactional workflows without servers or monthly bills</p>
+      </div>
+
+      <div class="slide-body" style="flex-direction: column; justify-content: center; gap: 24px;">
+        <div class="flow-steps">
+          <div class="flow-step-box">
+            <span class="flow-step-num">STEP 01</span>
+            <span class="flow-step-title">react client</span>
+            <span class="flow-step-desc">user submits an inquiry; client validates types and dispatches json payload</span>
+          </div>
+
+          <div class="flow-arrow">&rarr;</div>
+
+          <div class="flow-step-box">
+            <span class="flow-step-num">STEP 02</span>
+            <span class="flow-step-title">apps script webhook</span>
+            <span class="flow-step-desc">stateless cloud endpoint parses payload, handles cors, and formats data</span>
+          </div>
+
+          <div class="flow-arrow">&rarr;</div>
+
+          <div class="flow-step-box">
+            <span class="flow-step-num">STEP 03</span>
+            <span class="flow-step-title">sheets datastore</span>
+            <span class="flow-step-desc">appends structured records, updates inventory counters, triggers email notifications</span>
+          </div>
+        </div>
+
+        <div class="card soft-bg" style="padding: 20px 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <strong style="font-size: 16px; color: #0f172a;">total infrastructure cost</strong>
+              <div style="font-size: 13px; color: #64748b; margin-top: 2px;">no credit cards, no servers to maintain, 99.9% uptime</div>
             </div>
-            <ul class="item-list">
-              <li>
-                <span class="bullet-tag">SSDPS</span>
-                <div class="item-content">
-                  <strong>Swami Sant Dass Public School &bull; Jalandhar, Punjab, India</strong>
-                  <span>Continental urban center tackling high-density packaging and school waste.</span>
-                </div>
-              </li>
-              <li>
-                <span class="bullet-tag">Lycée</span>
-                <div class="item-content">
-                  <strong>Reunion Island High School &bull; French Territory, Indian Ocean</strong>
-                  <span>Island ecosystem collaborating via eTwinning (Belgium, Norway, Czech Republic).</span>
-                </div>
-              </li>
-            </ul>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 700; color: #16a34a;">
+              $0.00 / month
+            </div>
           </div>
-          <div style="border-top: 1px dashed #ddd; padding-top: 12px; font-size: 13px; color: #444;">
-            <strong>Core Premise:</strong> Two distant high school communities applying technology and engineering to solve localized waste bottlenecks.
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>06 / 15 &bull; backend design</span>
+        <span>google apps script + sheets</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 07: TRANSITION MEME 02 -->
+    <div class="slide">
+      <div class="transition-wrap">
+        <div class="transition-header">
+          <span class="slide-badge meme">reality check // 02</span>
+          <h2>the cloud bill dilemma</h2>
+        </div>
+
+        <div class="transition-card">
+          <div class="media-placeholder" style="border: none; background: transparent; min-height: 220px;">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
+            </svg>
+            <span class="placeholder-tag">[meme: buff doge vs cheems - $450/mo enterprise aws vs $0 google sheets backend]</span>
+            <span class="placeholder-hint">buff doge vs cheems / who would win</span>
           </div>
         </div>
 
-        <div class="card bg-light">
+        <p class="transition-caption">
+          enterprise developers arguing about kubernetes microservices vs two high schoolers using google sheets as a relational database.
+        </p>
+      </div>
+
+      <div class="slide-footer">
+        <span>07 / 15 &bull; transition</span>
+        <span>cost engineering</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 08: INTERACTIVE INQUIRIES -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-badge accent">user experience</span>
+        <h2 class="slide-title">interactive inquiry flow</h2>
+        <p class="slide-subtitle">handling inquiries and institutional orders with context preservation</p>
+      </div>
+
+      <div class="slide-body grid-2">
+        <div class="card">
+          <div class="card-title">order &amp; sample lifecycle</div>
+          <ul class="clean-list">
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>contextual prefill</strong><br>
+                clicking inquire automatically binds product id, material specs, and default unit quantities into form state.
+              </div>
+            </li>
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>zero-friction validation</strong><br>
+                client-side schema validation flags incomplete entries before initiating network requests.
+              </div>
+            </li>
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>instant feedback</strong><br>
+                live confirmation modal informs users of lead times and logs inquiries to our central spreadsheet.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="media-card">
+          <img src="images/screen-enquire.png" alt="inquiry modal interactive screenshot">
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>08 / 15 &bull; live transactions</span>
+        <span>react modal flow</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 09: THE PARADIGM SHIFT -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-badge accent">engineering methodology</span>
+        <h2 class="slide-title">the shift: developer as architect</h2>
+        <p class="slide-subtitle">how agentic workflows replace manual syntax wrestling with system design</p>
+      </div>
+
+      <div class="slide-body grid-2">
+        <div class="card soft-bg">
           <div class="card-title">
-            <span>Presentation Scope</span>
-            <span class="card-badge">agenda</span>
+            <span>traditional coding</span>
+            <span class="slide-badge" style="background: #f1f5f9; color: #64748b;">legacy</span>
           </div>
-          <ul class="item-list">
+          <ul class="clean-list">
             <li>
-              <span class="bullet-num">01</span>
-              <div class="item-content">
-                <strong>Physical Raw Material Interception</strong>
-                <span>Transforming campus packaging into 6 verified functional goods.</span>
-              </div>
+              <div class="bullet-dot" style="background: #94a3b8;"></div>
+              <div class="list-text">manual typing of boilerplate and repetitious component state.</div>
             </li>
             <li>
-              <span class="bullet-num">02</span>
-              <div class="item-content">
-                <strong>The Zero-Cost Digital Marketplace</strong>
-                <span>React 18 + serverless lead synchronization for $0.00/month.</span>
-              </div>
+              <div class="bullet-dot" style="background: #94a3b8;"></div>
+              <div class="list-text">spending 3 hours searching documentation to fix broken npm imports.</div>
             </li>
             <li>
-              <span class="bullet-num">03</span>
-              <div class="item-content">
-                <strong>The Agentic AI Workflow</strong>
-                <span>Using open-source terminal agents (OpenCode) to ship full-stack code in 48 hours.</span>
-              </div>
+              <div class="bullet-dot" style="background: #94a3b8;"></div>
+              <div class="list-text">debugging subtle syntax errors instead of focusing on user experience.</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-title">
+            <span>agentic coding</span>
+            <span class="slide-badge accent">modern</span>
+          </div>
+          <ul class="clean-list">
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">developer defines strict specifications, system constraints, and types.</div>
+            </li>
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">autonomous agents read repo structure, modify files, and run builds.</div>
+            </li>
+            <li>
+              <div class="bullet-dot"></div>
+              <div class="list-text">the compiler validates changes; developer reviews diffs and commits.</div>
             </li>
           </ul>
         </div>
       </div>
 
       <div class="slide-footer">
-        <span>Swami Sant Dass Public School &bull; Jalandhar, Punjab, India</span>
-        <span>Reunion Island eTwinning Collaboration</span>
+        <span>09 / 15 &bull; methodology</span>
+        <span>agentic coding shift</span>
       </div>
     </div>
 
-    <!-- ==========================================
-         SLIDE 02: THE PHYSICAL INGREDIENTS
-         ========================================== -->
-    <div class="slide" id="slide-2">
-      <div class="slide-header">
-        <div class="slide-title">The Physical Foundation: <span class="accent-green">6 Verified Goods</span></div>
-        <div class="slide-meta">Slide 02 / 12 &bull; Material Stream</div>
+    <!-- SLIDE 10: TRANSITION MEME 03 -->
+    <div class="slide">
+      <div class="transition-wrap">
+        <div class="transition-header">
+          <span class="slide-badge meme">reality check // 03</span>
+          <h2>documentation in 2026</h2>
+        </div>
+
+        <div class="transition-card">
+          <div class="media-placeholder" style="border: none; background: transparent; min-height: 220px;">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+              <path d="M6 6h10"/>
+              <path d="M6 10h10"/>
+            </svg>
+            <span class="placeholder-tag">[meme: drake hotline bling - reading 400 pages of framework documentation vs writing an AGENTS.md spec and letting the agent compile]</span>
+            <span class="placeholder-hint">drake hotline / galaxy brain</span>
+          </div>
+        </div>
+
+        <p class="transition-caption">
+          reading 200 pages of api documentation at 3 am is officially obsolete. write clean constraints and let the tools execute.
+        </p>
       </div>
 
-      <div class="slide-body grid-3">
-        <!-- Card 1: Plastics -->
-        <div class="card">
-          <div class="card-title">
-            <span>Plastics &amp; Packaging</span>
-            <span class="card-badge green">recycled plastics</span>
-          </div>
-          <ul class="item-list">
-            <li>
-              <span class="bullet-tag">01</span>
-              <div class="item-content">
-                <strong>Eco-Bricks</strong>
-                <span>Standardized PET bottles packed with clean soft plastics for non-structural garden borders.</span>
-              </div>
-            </li>
-            <li>
-              <span class="bullet-tag">02</span>
-              <div class="item-content">
-                <strong>MLP Sheets</strong>
-                <span>Multi-layered plastic wrappers thermally compressed into weather-proof partition boards.</span>
-              </div>
-            </li>
-          </ul>
-          <div style="font-size: 11.5px; color: #666; margin-top: 10px; border-top: 1px dashed #eee; padding-top: 8px;">
-            Targets non-recyclable metallized chip/snack packaging.
-          </div>
-        </div>
+      <div class="slide-footer">
+        <span>10 / 15 &bull; transition</span>
+        <span>ai coding reality</span>
+      </div>
+    </div>
 
-        <!-- Card 2: Textiles & Paper -->
-        <div class="card">
-          <div class="card-title">
-            <span>Textiles &amp; Cellulose</span>
-            <span class="card-badge green">upcycled materials</span>
-          </div>
-          <ul class="item-list">
-            <li>
-              <span class="bullet-tag">03</span>
-              <div class="item-content">
-                <strong>Uniform Bags</strong>
-                <span>Outgrown school uniforms laundered and stitched into heavy-duty carry totes.</span>
-              </div>
-            </li>
-            <li>
-              <span class="bullet-tag">04</span>
-              <div class="item-content">
-                <strong>Seed Paper</strong>
-                <span>Post-consumer notebook paper pulped and embedded with native germinable seeds.</span>
-              </div>
-            </li>
-          </ul>
-          <div style="font-size: 11.5px; color: #666; margin-top: 10px; border-top: 1px dashed #eee; padding-top: 8px;">
-            Intercepts annual uniform and notebook turnover.
-          </div>
-        </div>
+    <!-- SLIDE 11: THE AGENTIC LOOP -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-badge accent">the engine</span>
+        <h2 class="slide-title">the closed-feedback agentic loop</h2>
+        <p class="slide-subtitle">it is not copy-pasting answers; it is an automated engineering cycle</p>
+      </div>
 
-        <!-- Card 3: Biology & Upcycling -->
-        <div class="card">
-          <div class="card-title">
-            <span>Biology &amp; Upcycling</span>
-            <span class="card-badge green">organic recovery</span>
+      <div class="slide-body" style="flex-direction: column; justify-content: center; gap: 24px;">
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-title">
+              <span>1. specification</span>
+              <span class="slide-badge">rules</span>
+            </div>
+            <p class="card-p">
+              define boundaries in <code>AGENTS.md</code>: design tokens, allowed libraries, performance budgets, and file structures.
+            </p>
           </div>
-          <ul class="item-list">
-            <li>
-              <span class="bullet-tag">05</span>
-              <div class="item-content">
-                <strong>Bioenzymes</strong>
-                <span>Canteen citrus peels fermented over 90 days into non-toxic cleaning solution.</span>
-              </div>
-            </li>
-            <li>
-              <span class="bullet-tag">06</span>
-              <div class="item-content">
-                <strong>Bottle Planters</strong>
-                <span>Recovered PET beverage bottles fitted with wicking cords for classroom herbs.</span>
-              </div>
-            </li>
-          </ul>
-          <div style="font-size: 11.5px; color: #666; margin-top: 10px; border-top: 1px dashed #eee; padding-top: 8px;">
-            Diverts methane-producing organic waste from dumps.
+
+          <div class="card">
+            <div class="card-title">
+              <span>2. autonomous edit</span>
+              <span class="slide-badge accent">agent</span>
+            </div>
+            <p class="card-p">
+              the agent inspects the repository, plans file changes, and modifies code across multiple files simultaneously.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-title">
+              <span>3. compiler verification</span>
+              <span class="slide-badge" style="background: #fef3c7; color: #b45309;">truth</span>
+            </div>
+            <p class="card-p">
+              automated execution of <code>tsc</code> and <code>vite build</code>. if errors occur, the agent reads terminal output and repairs itself.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-title">
+              <span>4. git checkpoint</span>
+              <span class="slide-badge" style="background: #e8f5e9; color: #16a34a;">persistence</span>
+            </div>
+            <p class="card-p">
+              atomic git commits at each verified step guarantee a clean recovery path if an experiment fails.
+            </p>
           </div>
         </div>
       </div>
 
       <div class="slide-footer">
-        <span>Strict Criterion: Practical functional utility only. Zero decorative craft items.</span>
-        <span>ECOLOOP Product Portfolio</span>
+        <span>11 / 15 &bull; closed loop</span>
+        <span>spec &rarr; edit &rarr; verify &rarr; commit</span>
       </div>
     </div>
 
-    <!-- ==========================================
-         SLIDE 03: THE SCIENCE FAIR TRAP
-         ========================================== -->
-    <div class="slide" id="slide-3">
+    <!-- SLIDE 12: OPENCODE -->
+    <div class="slide">
       <div class="slide-header">
-        <div class="slide-title">The Challenge: The <span class="accent-green">Science Fair Trap</span></div>
-        <div class="slide-meta">Slide 03 / 12 &bull; Problem Diagnosis</div>
+        <span class="slide-badge accent">open source</span>
+        <h2 class="slide-title">introducing opencode</h2>
+        <p class="slide-subtitle">an open, extensible autonomous coding agent that runs directly in your terminal</p>
       </div>
 
-      <div class="slide-body">
-        <div class="big-idea-card">
-          <div class="big-idea-title">The Recurring Failure Mode</div>
-          <div class="big-idea-text">
-            "99% of school environmental projects build great prototypes, win an exhibition certificate, and then rot in a dusty display cabinet forever."
-          </div>
-          <div class="big-idea-sub">
-            Without an active digital inventory, transparent material data, and an inquiry routing pipeline, a physical recycling project cannot sustain itself beyond exhibition day.
-          </div>
-        </div>
-      </div>
-
-      <div class="slide-footer">
-        <span>Why Software Matters: Transforming temporary demonstration projects into persistent systems.</span>
-        <span>The Digital Imperative</span>
-      </div>
-    </div>
-
-    <!-- ==========================================
-         SLIDE 04: LIVE PLATFORM: CATALOG
-         ========================================== -->
-    <div class="slide" id="slide-4">
-      <div class="slide-header">
-        <div class="slide-title">The Platform: <span class="accent-blue">Live Web Catalog</span></div>
-        <div class="slide-meta">Slide 04 / 12 &bull; Software Execution</div>
-      </div>
-
-      <div class="slide-body grid-right-wide">
-        <!-- Left: Engineering Highlights -->
+      <div class="slide-body grid-2">
         <div class="card">
-          <div class="card-title">
-            <span>Marketplace Catalog</span>
-            <span class="card-badge blue">client layer</span>
-          </div>
-          <ul class="item-list">
+          <div class="card-title">why opencode?</div>
+          <ul class="clean-list">
             <li>
-              <span class="bullet-num">01</span>
-              <div class="item-content">
-                <strong>Dynamic Category Filtering</strong>
-                <span>Instant client-side sorting across Recycled Plastics, Textiles, and Organic Recovery.</span>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>100% open source</strong><br>
+                built by anomaly (github: <code>anomalyco/opencode</code>). zero vendor lock-in; connect to any model endpoint.
               </div>
             </li>
             <li>
-              <span class="bullet-num">02</span>
-              <div class="item-content">
-                <strong>Real-Time Query Search</strong>
-                <span>Searches by input material, product name, or campus application.</span>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>dual execution modes</strong><br>
+                <code>plan mode</code> surveys codebase structure without editing; <code>build mode</code> executes verified changes.
               </div>
             </li>
             <li>
-              <span class="bullet-num">03</span>
-              <div class="item-content">
-                <strong>Mobile-First Responsive Layout</strong>
-                <span>Optimized touch interaction for students browsing on smartphones.</span>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>native developer toolchain</strong><br>
+                integrates with git, bash tools, local linters, and compilers out of the box.
               </div>
             </li>
           </ul>
-          <div style="font-size: 12px; color: #666; border-top: 1px dashed #ddd; padding-top: 10px;">
-            Built with React 18, TypeScript, and Vite.
-          </div>
         </div>
 
-        <!-- Right: Real Screenshot -->
-        <div class="screenshot-frame">
-          <div class="screenshot-toolbar">
-            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-            <span>ecoloop-ssdps.vercel.app/products</span>
+        <div class="card soft-bg" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.6; color: #334155;">
+          <div style="color: #64748b; margin-bottom: 12px;">// quick installation</div>
+          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; margin-bottom: 16px;">
+            <span style="color: #0284c7;">$</span> npm install -g @opencode/cli<br>
+            <span style="color: #0284c7;">$</span> cd ./my-project<br>
+            <span style="color: #0284c7;">$</span> opencode
           </div>
-          <img src="images/screen-products.png" alt="ECOLOOP Products Catalog" class="screenshot-img">
+          <div style="color: #64748b;">// works on any mac, linux, or windows machine</div>
         </div>
       </div>
 
       <div class="slide-footer">
-        <span>Production Web Application &bull; Live React Frontend</span>
-        <span>Screen 01: Product Catalog</span>
+        <span>12 / 15 &bull; tools</span>
+        <span>opencode.ai</span>
       </div>
     </div>
 
-    <!-- ==========================================
-         SLIDE 05: MATERIAL TRANSPARENCY
-         ========================================== -->
-    <div class="slide" id="slide-5">
+    <!-- SLIDE 13: THE $0 SETUP -->
+    <div class="slide">
       <div class="slide-header">
-        <div class="slide-title">Material Transparency &amp; <span class="accent-blue">Honesty</span></div>
-        <div class="slide-meta">Slide 05 / 12 &bull; Product Specification</div>
-      </div>
-
-      <div class="slide-body grid-left-wide">
-        <!-- Left: Real Screenshot of MLP Detail Page -->
-        <div class="screenshot-frame">
-          <div class="screenshot-toolbar">
-            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-            <span>ecoloop-ssdps.vercel.app/products/mlp-sheets</span>
-          </div>
-          <img src="images/screen-mlp.png" alt="MLP Sheets Specification Detail" class="screenshot-img">
-        </div>
-
-        <!-- Right: Verification Architecture -->
-        <div class="card">
-          <div class="card-title">
-            <span>Rigorous Specifications</span>
-            <span class="card-badge green">verified data</span>
-          </div>
-          <ul class="item-list">
-            <li>
-              <span class="bullet-tag">input</span>
-              <div class="item-content">
-                <strong>Recovered Material Sourcing</strong>
-                <span>Every product explicitly names its input waste stream (e.g. post-consumer MLP packaging).</span>
-              </div>
-            </li>
-            <li>
-              <span class="bullet-tag">caution</span>
-              <div class="item-content">
-                <strong>Strict Safety &amp; Caution Notices</strong>
-                <span>Mandatory disclosures: e.g. Eco-bricks are non-structural; Bioenzymes are non-clinical.</span>
-              </div>
-            </li>
-            <li>
-              <span class="bullet-tag">impact</span>
-              <div class="item-content">
-                <strong>Circular Lifecycle Tracking</strong>
-                <span>Transparent explanation of value creation without exaggerated environmental claims.</span>
-              </div>
-            </li>
-          </ul>
-          <div style="font-size: 12px; color: #555; border-top: 1px dashed #ddd; padding-top: 10px;">
-            Zero greenwashing. Complete engineering honesty.
-          </div>
-        </div>
-      </div>
-
-      <div class="slide-footer">
-        <span>Product Detail Page &bull; Dedicated Specifications and Safety Disclosures</span>
-        <span>Screen 02: Specification Transparency</span>
-      </div>
-    </div>
-
-    <!-- ==========================================
-         SLIDE 06: ARCHITECTURE ($0 BUDGET)
-         ========================================== -->
-    <div class="slide" id="slide-6">
-      <div class="slide-header">
-        <div class="slide-title">The <span class="accent-blue">$0.00</span> Serverless Architecture</div>
-        <div class="slide-meta">Slide 06 / 12 &bull; System Design</div>
+        <span class="slide-badge accent">accessibility</span>
+        <h2 class="slide-title">the $0 student setup</h2>
+        <p class="slide-subtitle">how to build software with autonomous agents without spending a penny</p>
       </div>
 
       <div class="slide-body grid-2">
         <div class="card">
           <div class="card-title">
-            <span>Decoupled Data Pipeline</span>
-            <span class="card-badge blue">resilience</span>
+            <span>tier 1: fast cloud (free)</span>
+            <span class="slide-badge accent">cloud</span>
           </div>
-          <ul class="item-list">
+          <ul class="clean-list">
             <li>
-              <span class="bullet-num">01</span>
-              <div class="item-content">
-                <strong>React 18 + TypeScript Frontend</strong>
-                <span>Single Page Application compiled to static assets and deployed to edge CDN (Vercel).</span>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>groq api</strong><br>
+                blazing fast inference with generous daily free tiers. runs open models like llama 3.3.
               </div>
             </li>
             <li>
-              <span class="bullet-num">02</span>
-              <div class="item-content">
-                <strong>Client-Side LocalStorage Buffer</strong>
-                <span>Caches product inquiries locally so submissions never drop during weak campus Wi-Fi.</span>
-              </div>
-            </li>
-            <li>
-              <span class="bullet-num">03</span>
-              <div class="item-content">
-                <strong>Google Apps Script Serverless Webhook</strong>
-                <span>HTTP POST endpoint receives payload and authenticates submission with zero server maintenance.</span>
-              </div>
-            </li>
-            <li>
-              <span class="bullet-num">04</span>
-              <div class="item-content">
-                <strong>Google Sheets Live Datastore</strong>
-                <span>Acts as a real-time collaborative database accessible to faculty and student leads.</span>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>openrouter free models</strong><br>
+                access to free community endpoints for prototyping and reasoning without a credit card.
               </div>
             </li>
           </ul>
         </div>
 
-        <div class="card bg-light">
-          <div class="card-title">
-            <span>Operating Cost Ledger</span>
-            <span class="card-badge green">budget: 0.00 &euro;</span>
-          </div>
-          <div class="terminal-box">
-            <span class="dim">// Monthly Infrastructure Invoice</span><br>
-            Frontend Edge Hosting:  <span class="ok">$0.00</span> (Vercel Tier)<br>
-            Backend API Computing:  <span class="ok">$0.00</span> (Google Apps Script)<br>
-            Database Storage:       <span class="ok">$0.00</span> (Google Sheets)<br>
-            SSL Certificate &amp; CDN:  <span class="ok">$0.00</span> (Included)<br>
-            --------------------------------------<br>
-            <span class="cmd">TOTAL MONTHLY OVERHEAD: $0.00 / month</span>
-          </div>
-          <div style="font-size: 12.5px; color: #444; margin-top: 14px;">
-            <strong>Takeaway for Students:</strong> You do not need funding or enterprise cloud subscriptions to launch a production-grade digital platform.
-          </div>
-        </div>
-      </div>
-
-      <div class="slide-footer">
-        <span>Resilient Architecture &bull; Local Cache + Serverless Webhook + Cloud Sheet</span>
-        <span>Zero Cost Infrastructure</span>
-      </div>
-    </div>
-
-    <!-- ==========================================
-         SLIDE 07: BEYOND CHATBOTS: THE HARNESS
-         ========================================== -->
-    <div class="slide" id="slide-7">
-      <div class="slide-header">
-        <div class="slide-title">Beyond Chatbots: The <span class="accent-blue">Agentic Harness</span></div>
-        <div class="slide-meta">Slide 07 / 12 &bull; Engineering Paradigm</div>
-      </div>
-
-      <div class="slide-body grid-2">
-        <!-- Consumer Mode -->
         <div class="card">
           <div class="card-title">
-            <span>01 / The Consumer Approach</span>
-            <span class="card-badge" style="background: #fee2e2; color: #b91c1c;">isolated chatbox</span>
+            <span>tier 2: 100% offline (private)</span>
+            <span class="slide-badge" style="background: #e8f5e9; color: #16a34a;">local</span>
           </div>
-          <div style="font-size: 13.5px; color: #444; margin-bottom: 10px;">
-            Treating AI as an automated essay or text generator:
-          </div>
-          <div class="terminal-box" style="background: #f8fafc; color: #1e293b; border-color: #cbd5e1;">
-            <span class="dim">// Typical Student Prompt:</span><br>
-            "Write a 400-word paragraph about recycling plastic wrappers with a strong introduction..."
-          </div>
-          <ul class="item-list" style="margin-top: 16px;">
-            <li><span class="bullet-num">&times;</span><div class="item-content"><strong>Zero Software Output:</strong> Produces throwaway words, not software.</div></li>
-            <li><span class="bullet-num">&times;</span><div class="item-content"><strong>Zero Engineering Feedback:</strong> No compiler verification, no runtime testing.</div></li>
-          </ul>
-        </div>
-
-        <!-- Agentic Harness -->
-        <div class="card bg-light">
-          <div class="card-title">
-            <span>02 / The Agentic Coding Harness</span>
-            <span class="card-badge blue">autonomous loop</span>
-          </div>
-          <div style="font-size: 13.5px; color: #444; margin-bottom: 10px;">
-            Pair-programming with an autonomous software agent:
-          </div>
-          <div class="terminal-box">
-            <span class="dim">// The Three Pillars of a Harness:</span><br>
-            1. <span class="cmd">Model (The Brain):</span> LLM reasoning engine.<br>
-            2. <span class="cmd">Tools (The Hands):</span> Reads files, edits diffs, runs terminal.<br>
-            3. <span class="cmd">Environment:</span> Local repo, compiler, linter, and git.
-          </div>
-          <ul class="item-list" style="margin-top: 16px;">
-            <li><span class="bullet-num">&check;</span><div class="item-content"><strong>Self-Correcting:</strong> Agent reads compiler errors and fixes bugs itself.</div></li>
-            <li><span class="bullet-num">&check;</span><div class="item-content"><strong>Direct Production:</strong> Edits components, compiles bundles, pushes commits.</div></li>
+          <ul class="clean-list">
+            <li>
+              <div class="bullet-dot" style="background: #16a34a;"></div>
+              <div class="list-text">
+                <strong>ollama local runtime</strong><br>
+                run models entirely on your laptop hardware. zero internet connection required.
+              </div>
+            </li>
+            <li>
+              <div class="bullet-dot" style="background: #16a34a;"></div>
+              <div class="list-text">
+                <strong>recommended model</strong><br>
+                <code>qwen2.5-coder:7b</code> offers state-of-the-art coding reasoning on standard consumer laptops.
+              </div>
+            </li>
           </ul>
         </div>
       </div>
 
       <div class="slide-footer">
-        <span>The Paradigm Shift: From passive prompt-answering to active workspace manipulation.</span>
-        <span>Agentic Architecture</span>
+        <span>13 / 15 &bull; developer onboarding</span>
+        <span>free tools for students</span>
       </div>
     </div>
 
-    <!-- ==========================================
-         SLIDE 08: THE AGENTIC FEEDBACK LOOP
-         ========================================== -->
-    <div class="slide" id="slide-8">
+    <!-- SLIDE 14: TRANSITION MEME 04 -->
+    <div class="slide">
+      <div class="transition-wrap">
+        <div class="transition-header">
+          <span class="slide-badge meme">reality check // 04</span>
+          <h2>the compiler never lies</h2>
+        </div>
+
+        <div class="transition-card">
+          <img src="images/spiderman.jpg" alt="spiderman pointing meme">
+        </div>
+
+        <p class="transition-caption">
+          "i fixed all the bugs" says the ai model.<br>
+          typescript compiler: 47 errors found in 3 files.
+        </p>
+      </div>
+
+      <div class="slide-footer">
+        <span>14 / 15 &bull; transition</span>
+        <span>compiler verification</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 15: WRAP UP & Q&A -->
+    <div class="slide">
       <div class="slide-header">
-        <div class="slide-title">The <span class="accent-blue">Feedback Loop</span>: How We Shipped Fast</div>
-        <div class="slide-meta">Slide 08 / 12 &bull; Workflow Mechanics</div>
+        <span class="slide-badge accent">conclusion</span>
+        <h2 class="slide-title">ecoloop &bull; open discussion</h2>
+        <p class="slide-subtitle">collaborative ideas, material exchanges, and live platform demo</p>
       </div>
 
       <div class="slide-body grid-2">
         <div class="card">
-          <div class="card-title">
-            <span>The 5-Step Autonomous Cycle</span>
-            <span class="card-badge blue">execution engine</span>
-          </div>
-          <ul class="item-list">
+          <div class="card-title">core engineering takeaways</div>
+          <ul class="clean-list">
             <li>
-              <span class="bullet-num">01</span>
-              <div class="item-content">
-                <strong>Specification (AGENTS.md)</strong>
-                <span>Engineer defines product data, brand constraints, and routing architecture in Markdown.</span>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>specifications matter:</strong> agents are only as sharp as the constraints you give them.
               </div>
             </li>
             <li>
-              <span class="bullet-num">02</span>
-              <div class="item-content">
-                <strong>Autonomous Code Generation</strong>
-                <span>Agent edits React TypeScript components and updates CSS design tokens.</span>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>compiler is ground truth:</strong> always let real compilers and tests validate output.
               </div>
             </li>
             <li>
-              <span class="bullet-num">03</span>
-              <div class="item-content">
-                <strong>Local Compiler Execution</strong>
-                <span>Agent executes `tsc &amp;&amp; vite build` directly in the project workspace.</span>
-              </div>
-            </li>
-            <li>
-              <span class="bullet-num">04</span>
-              <div class="item-content">
-                <strong>Autonomous Self-Correction</strong>
-                <span>If TypeScript throws a type mismatch, the agent inspects stderr and repairs the file.</span>
-              </div>
-            </li>
-            <li>
-              <span class="bullet-num">05</span>
-              <div class="item-content">
-                <strong>Git Persistence</strong>
-                <span>Agent stages modified files and commits clean, version-controlled checkpoints.</span>
+              <div class="bullet-dot"></div>
+              <div class="list-text">
+                <strong>commit constantly:</strong> small, verified git commits make experimentation safe.
               </div>
             </li>
           </ul>
         </div>
 
-        <div class="card bg-light">
-          <div class="card-title">
-            <span>Compiler Verification Terminal</span>
-            <span class="card-badge green">production build</span>
+        <div class="card soft-bg" style="align-items: center; justify-content: center; text-align: center;">
+          <div style="font-size: 26px; font-weight: 700; color: #0f172a;">
+            thank you.
           </div>
-          <div class="terminal-box" style="font-size: 12px;">
-            <span class="cmd">&gt; ecoloop-marketplace@1.0.0 build</span><br>
-            <span class="cmd">&gt; tsc &amp;&amp; vite build</span><br><br>
-            vite v6.4.3 building for production...<br>
-            <span class="dim">&check; 1607 modules transformed.</span><br><br>
-            dist/index.html            1.72 kB | gzip: 0.76 kB<br>
-            dist/assets/index.css     19.25 kB | gzip: 4.04 kB<br>
-            dist/assets/index.js     260.57 kB | gzip: 75.94 kB<br><br>
-            <span class="ok">&check; built in 1.90s with zero errors</span>
+          <div style="font-size: 14px; color: #64748b; margin-top: 8px; max-width: 360px; line-height: 1.5;">
+            explore the platform code, try the inquiry engine, or experiment with open-source agents.
           </div>
-          <div style="font-size: 12.5px; color: #444; margin-top: 12px;">
-            <strong>Human Role:</strong> Architect, product designer, and quality verifier.<br>
-            <strong>Agent Role:</strong> Syntax executor, boilerplate writer, and compiler troubleshooter.
+          <div style="margin-top: 20px; font-family: 'JetBrains Mono', monospace; font-size: 12px; background: #e0f2fe; color: #0369a1; padding: 6px 16px; border-radius: 20px;">
+            github.com/Harman209/ecoloop
           </div>
         </div>
       </div>
 
       <div class="slide-footer">
-        <span>Engineering Reality &bull; Human specifies; AI agent executes, compiles, and verifies</span>
-        <span>The Agentic Cycle</span>
-      </div>
-    </div>
-
-    <!-- ==========================================
-         SLIDE 09: OPENCODE INTRODUCTION
-         ========================================== -->
-    <div class="slide" id="slide-9">
-      <div class="slide-header">
-        <div class="slide-title">OpenCode: <span class="accent-blue">Free &amp; Open Source</span> Agent</div>
-        <div class="slide-meta">Slide 09 / 12 &bull; Student Tooling</div>
-      </div>
-
-      <div class="slide-body grid-2">
-        <div class="card">
-          <div class="card-title">
-            <span>What is OpenCode?</span>
-            <span class="card-badge blue">opencode.ai</span>
-          </div>
-          <ul class="item-list">
-            <li>
-              <span class="bullet-num">01</span>
-              <div class="item-content">
-                <strong>Open Source Terminal &amp; Desktop Agent</strong>
-                <span>A fully open-source AI coding harness developed for terminal TUIs and desktop environments.</span>
-              </div>
-            </li>
-            <li>
-              <span class="bullet-num">02</span>
-              <div class="item-content">
-                <strong>Zero Financial Requirement</strong>
-                <span>100% free software. Does not require paid IDE subscriptions or enterprise accounts.</span>
-              </div>
-            </li>
-            <li>
-              <span class="bullet-num">03</span>
-              <div class="item-content">
-                <strong>Two Specialized Operating Modes</strong>
-                <span>`plan` mode explores code safely; `build` mode executes full autonomous edits.</span>
-              </div>
-            </li>
-            <li>
-              <span class="bullet-num">04</span>
-              <div class="item-content">
-                <strong>GitHub Actions Integration</strong>
-                <span>Comment `/opencode` on GitHub PRs and issues to automate cloud coding for free.</span>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="card bg-light">
-          <div class="card-title">
-            <span>Installation &amp; Setup</span>
-            <span class="card-badge green">1-minute setup</span>
-          </div>
-          <div class="terminal-box">
-            <span class="dim"># Install OpenCode globally via npm</span><br>
-            <span class="cmd">npm install -g @opencode/cli@latest</span><br><br>
-            <span class="dim"># Or install via standalone script</span><br>
-            <span class="cmd">curl -fsSL https://opencode.ai/v2/install | bash</span><br><br>
-            <span class="dim"># Launch in any project directory</span><br>
-            <span class="cmd">opencode</span>
-          </div>
-          <div style="font-size: 12.5px; color: #444; margin-top: 12px;">
-            Runs natively on Linux, macOS, and Windows.
-          </div>
-        </div>
-      </div>
-
-      <div class="slide-footer">
-        <span>Accessible Tooling &bull; Open-source agent available at github.com/anomalyco/opencode</span>
-        <span>OpenCode Architecture</span>
-      </div>
-    </div>
-
-    <!-- ==========================================
-         SLIDE 10: RUNNING ON $0 (MODELS & LOCAL LLMS)
-         ========================================== -->
-    <div class="slide" id="slide-10">
-      <div class="slide-header">
-        <div class="slide-title">Running on <span class="accent-blue">$0</span>: Free Models &amp; Local LLMs</div>
-        <div class="slide-meta">Slide 10 / 12 &bull; Zero Budget Strategy</div>
-      </div>
-
-      <div class="slide-body grid-2">
-        <!-- Option 1: Free Cloud Tiers -->
-        <div class="card">
-          <div class="card-title">
-            <span>Approach 1: Free Cloud Tiers</span>
-            <span class="card-badge blue">high speed</span>
-          </div>
-          <ul class="item-list">
-            <li>
-              <span class="bullet-tag">Groq</span>
-              <div class="item-content">
-                <strong>High-Speed Free Inference</strong>
-                <span>Generous free rate limits running Llama 3 models at 300+ tokens/second.</span>
-              </div>
-            </li>
-            <li>
-              <span class="bullet-tag">Router</span>
-              <div class="item-content">
-                <strong>OpenRouter Free Endpoints</strong>
-                <span>Access dozens of competitive open-weight coding models with zero credit card entry.</span>
-              </div>
-            </li>
-          </ul>
-          <div style="font-size: 12px; color: #555; margin-top: 14px; border-top: 1px dashed #ddd; padding-top: 10px;">
-            Ideal for laptops with standard specifications and active internet connection.
-          </div>
-        </div>
-
-        <!-- Option 2: 100% Offline Local Models -->
-        <div class="card bg-light">
-          <div class="card-title">
-            <span>Approach 2: Offline Local LLMs (Ollama)</span>
-            <span class="card-badge green">100% offline</span>
-          </div>
-          <ul class="item-list">
-            <li>
-              <span class="bullet-tag">Ollama</span>
-              <div class="item-content">
-                <strong>Local Model Execution</strong>
-                <span>Run models directly on your hardware without transmitting code over the internet.</span>
-              </div>
-            </li>
-            <li>
-              <span class="bullet-tag">Models</span>
-              <div class="item-content">
-                <strong>Top Free Coding Weights</strong>
-                <span>`qwen2.5-coder:7b`, `llama3.1:8b`, or `deepseek-coder` run on consumer laptops.</span>
-              </div>
-            </li>
-          </ul>
-          <div class="terminal-box" style="margin-top: 14px; font-size: 11.5px;">
-            <span class="cmd">ollama run qwen2.5-coder:7b</span><br>
-            <span class="dim"># Point OpenCode to local Ollama host:</span><br>
-            <span class="cmd">export OPENCODE_PROVIDER=ollama</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="slide-footer">
-        <span>Complete Financial Accessibility &bull; Cloud Free Tiers or Local On-Device Compute</span>
-        <span>Cost-Free Inference</span>
-      </div>
-    </div>
-
-    <!-- ==========================================
-         SLIDE 11: REUNION ISLAND BLUEPRINT
-         ========================================== -->
-    <div class="slide" id="slide-11">
-      <div class="slide-header">
-        <div class="slide-title">The Reunion Island Blueprint: <span class="accent-green">48-Hour Plan</span></div>
-        <div class="slide-meta">Slide 11 / 12 &bull; Actionable Next Steps</div>
-      </div>
-
-      <div class="slide-body grid-3">
-        <!-- Step 1 -->
-        <div class="card">
-          <div class="card-title">
-            <span>Step 1: Data Structuring</span>
-            <span class="card-badge green">input</span>
-          </div>
-          <ul class="item-list">
-            <li>
-              <span class="bullet-num">01</span>
-              <div class="item-content">
-                <strong>Index Cleanup Volume</strong>
-                <span>Log kilograms of bottles, wrappers, and beach plastic gathered during cleanups.</span>
-              </div>
-            </li>
-            <li>
-              <span class="bullet-num">02</span>
-              <div class="item-content">
-                <strong>Gather Radio Podcast Audio</strong>
-                <span>Consolidate audio files and student reflection links into a clean Markdown table.</span>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="card">
-          <div class="card-title">
-            <span>Step 2: Agentic Scaffolding</span>
-            <span class="card-badge blue">build</span>
-          </div>
-          <ul class="item-list">
-            <li>
-              <span class="bullet-num">03</span>
-              <div class="item-content">
-                <strong>Initialize OpenCode</strong>
-                <span>Run `opencode` inside a new Vite web repository.</span>
-              </div>
-            </li>
-            <li>
-              <span class="bullet-num">04</span>
-              <div class="item-content">
-                <strong>Autonomous UI Generation</strong>
-                <span>Prompt agent to scaffold a podcast audio player and live rubbish metric dashboard.</span>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="card">
-          <div class="card-title">
-            <span>Step 3: Global Deployment</span>
-            <span class="card-badge green">ship</span>
-          </div>
-          <ul class="item-list">
-            <li>
-              <span class="bullet-num">05</span>
-              <div class="item-content">
-                <strong>Deploy to GitHub Pages / Vercel</strong>
-                <span>Push repo to GitHub; automated actions deploy live site in under 60 seconds.</span>
-              </div>
-            </li>
-            <li>
-              <span class="bullet-num">06</span>
-              <div class="item-content">
-                <strong>Public International Hub</strong>
-                <span>Partner schools in Belgium, Norway, and Czech Republic can stream episodes and view stats.</span>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="slide-footer">
-        <span>Concrete Execution Protocol &bull; From Beach Cleanups and Radio Podcasts to a Live Web Hub</span>
-        <span>The 48-Hour Roadmap</span>
-      </div>
-    </div>
-
-    <!-- ==========================================
-         SLIDE 12: QUESTIONS & DISCUSSION
-         ========================================== -->
-    <div class="slide" id="slide-12">
-      <div class="slide-header">
-        <div class="slide-title">Open Discussion &amp; <span class="accent-green">Technical Q&amp;A</span></div>
-        <div class="slide-meta">Slide 12 / 12 &bull; Interactive Session</div>
-      </div>
-
-      <div class="slide-body grid-2">
-        <div class="card">
-          <div class="card-title">
-            <span>Discussion Prompts</span>
-            <span class="card-badge green">open floor</span>
-          </div>
-          <ul class="item-list">
-            <li>
-              <span class="bullet-tag">material</span>
-              <div class="item-content">
-                <strong>Plastics &amp; Processing</strong>
-                <span>Questions on multi-layered plastic thermal compression, density, or bioenzyme fermentation.</span>
-              </div>
-            </li>
-            <li>
-              <span class="bullet-tag">software</span>
-              <div class="item-content">
-                <strong>Digital Architecture</strong>
-                <span>Questions on React 18, Google Apps Script serverless routing, or Google Sheets datastores.</span>
-              </div>
-            </li>
-            <li>
-              <span class="bullet-tag">ai agent</span>
-              <div class="item-content">
-                <strong>OpenCode &amp; Agentic Workflows</strong>
-                <span>Questions on setting up open-source coding harnesses, local LLMs, or prompt specifications.</span>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="card bg-light" style="justify-content: center; align-items: center; text-align: center;">
-          <div style="font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700; color: #111;">
-            Thank You.
-          </div>
-          <div style="font-size: 14px; color: #555; max-width: 380px; margin-top: 8px; line-height: 1.5;">
-            Looking forward to hearing about your local environmental initiatives and software experiments.
-          </div>
-          <div style="margin-top: 20px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #1F6B4F; background: #e8f5e9; padding: 6px 14px; border-radius: 20px; border: 1px solid #c8e6c9;">
-            Swami Sant Dass Public School &bull; Jalandhar, India
-          </div>
-        </div>
-      </div>
-
-      <div class="slide-footer">
-        <span>Live Q&amp;A &bull; 30 Minutes Discussion and Experience Exchange</span>
-        <span>Session Concluded</span>
+        <span>15 / 15 &bull; live q&amp;a</span>
+        <span>session concluded</span>
       </div>
     </div>
 
@@ -1301,7 +1172,7 @@
 
   <script>
     let currentSlide = 1;
-    const totalSlides = 12;
+    const totalSlides = 15;
 
     function showSlide(index) {
       if (index < 1) index = 1;
