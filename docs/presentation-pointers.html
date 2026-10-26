@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EcoLoop: Slide-by-Slide Speaking Pointers</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      color: #171a18;
+      background: #ffffff;
+      padding: 32px 40px;
+      line-height: 1.45;
+      font-size: 13px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .header {
+      border-bottom: 2px solid #1f6b4f;
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .title {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #171a18;
+    }
+
+    .title span {
+      color: #1f6b4f;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: #526058;
+      margin-top: 2px;
+    }
+
+    .meta {
+      text-align: right;
+      font-size: 11px;
+      color: #1f6b4f;
+      font-weight: 600;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 24px;
+    }
+
+    .slide-block {
+      background: #fbfcfb;
+      border: 1px solid #e2e8e0;
+      border-left: 3px solid #1f6b4f;
+      border-radius: 6px;
+      padding: 10px 14px;
+      page-break-inside: avoid;
+    }
+
+    .slide-num {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: #1f6b4f;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .slide-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #171a18;
+      margin: 2px 0 6px 0;
+    }
+
+    ul {
+      padding-left: 16px;
+      margin: 0;
+    }
+
+    li {
+      font-size: 12.5px;
+      color: #334155;
+      line-height: 1.4;
+      margin-bottom: 3px;
+    }
+
+    li:last-child {
+      margin-bottom: 0;
+    }
+
+    strong {
+      color: #0f172a;
+    }
+
+    .footer {
+      margin-top: 24px;
+      padding-top: 10px;
+      border-top: 1px solid #e2e8e0;
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #64748b;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 10mm;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div>
+      <h1 class="title">Eco<span>Loop</span>: Presentation Speaking Pointers</h1>
+      <p class="subtitle">Quick reference cheat sheet for the 15-slide deck.</p>
+    </div>
+    <div class="meta">
+      Swami Sant Dass Public School<br>
+      github.com/Harman209/ecoloop
+    </div>
+  </div>
+
+  <div class="grid-2">
+
+    <!-- Slide 01 -->
+    <div class="slide-block">
+      <div class="slide-num">Slide 01</div>
+      <div class="slide-name">Title: EcoLoop</div>
+      <ul>
+        <li>Frame as an engineering system, not a craft or poster project.</li>
+        <li>Two distinct halves: physical materials + $0 digital infrastructure.</li>
+        <li>Affiliation: Swami Sant Dass Public School, Jalandhar.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 02 -->
+    <div class="slide-block">
+      <div class="slide-num">Slide 02</div>
+      <div class="slide-name">The Linear Packaging Problem</div>
+      <ul>
+        <li>Multi-layer packaging (MLP): chips wrappers bonding plastic &amp; foil.</li>
+        <li>Municipal recyclers dump 100% of it because separation is unprofitable.</li>
+        <li>Our fix: heat-press MLP into structural boards replacing plywood.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 03 -->
+    <div class="slide-block">
+      <div class="slide-num">Slide 03</div>
+      <div class="slide-name">The Physical Loop (6 Materials)</div>
+      <ul>
+        <li>6 verified items: Eco-Bricks, MLP Sheets, Bottle Planters, Uniform Bags, Seed Paper, Bioenzymes.</li>
+        <li>Point to photo: real heat-pressed sample board made of snack wrappers.</li>
+        <li>Durable, waterproof, termite-proof, drills and saws like timber.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 04 -->
+    <div class="slide-block">
+      <div class="slide-num">Slide 04</div>
+      <div class="slide-name">Reality Check 01: Transition</div>
+      <ul>
+        <li>Joke: teachers thought we would just put colored dustbins in school.</li>
+        <li>Reality: managing specs and orders required cloud software in 2 weeks.</li>
+        <li>Transition: moving from picking up wrappers to building software.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 05 -->
+    <div class="slide-block">
+      <div class="slide-num">Slide 05</div>
+      <div class="slide-name">Why Projects Need Software</div>
+      <ul>
+        <li>Without engineering specs, nobody takes recycled materials seriously.</li>
+        <li>Platform publishes density, dimensions, thermal ratings, lead times.</li>
+        <li>Built with React 18, TypeScript, and Vite for fast client routing.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 06 -->
+    <div class="slide-block">
+      <div class="slide-num">Slide 06</div>
+      <div class="slide-name">The Zero-Cost Serverless Backend</div>
+      <ul>
+        <li>Core constraint: zero budget, no corporate credit cards.</li>
+        <li>Pipeline: React form &rarr; Google Apps Script webhook &rarr; Google Sheets.</li>
+        <li>Result: $0.00/mo operating cost, zero maintenance, 99.9% uptime.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 07 -->
+    <div class="slide-block">
+      <div class="slide-num">Slide 07</div>
+      <div class="slide-name">Reality Check 02: Transition</div>
+      <ul>
+        <li>Enterprise devs spend $450/month debating Kubernetes and Docker.</li>
+        <li>High schoolers run production orders on Google Sheets and it never crashes.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 08 -->
+    <div class="slide-block">
+      <div class="slide-num">Slide 08</div>
+      <div class="slide-name">Interactive Inquiry Engine</div>
+      <ul>
+        <li>Selecting 'Enquire' pre-populates product ID, specs, and quantities.</li>
+        <li>Client-side validation catches mistakes before sending data.</li>
+        <li>Instant confirmation modal + direct logging into backend sheet.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 09 -->
+    <div class="slide-block">
+      <div class="slide-num">Slide 09</div>
+      <div class="slide-name">Developer as Architect</div>
+      <ul>
+        <li>Old way: typing repetitive boilerplate, fighting syntax, 3 hours debugging.</li>
+        <li>Modern way: developer designs constraints &amp; types; AI agents write code.</li>
+        <li>Human role shifts to architecture, boundaries, and verification.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 10 -->
+    <div class="slide-block">
+      <div class="slide-num">Slide 10</div>
+      <div class="slide-name">Reality Check 03: Transition</div>
+      <ul>
+        <li>Legacy advice: read 400 pages of framework documentation first.</li>
+        <li>Reading manuals at 3:00 AM is dead; write clean specs and let agents build.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 11 -->
+    <div class="slide-block">
+      <div class="slide-num">Slide 11</div>
+      <div class="slide-name">The Autonomous Coding Loop</div>
+      <ul>
+        <li>1. Define goal: clear spec document with design rules &amp; types.</li>
+        <li>2. Autonomous edit: agent reads codebase and modifies files.</li>
+        <li>3. Automated check: compiler runs, catches errors, agent self-repairs.</li>
+        <li>4. Safe history: git checkpoints let you revert experiments instantly.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 12 -->
+    <div class="slide-block">
+      <div class="slide-num">Slide 12</div>
+      <div class="slide-name">Introducing OpenCode</div>
+      <ul>
+        <li>100% open-source terminal agent (GitHub: anomalyco/opencode).</li>
+        <li>Plan mode (surveys codebase safely) vs Build mode (executes file edits).</li>
+        <li>One command install: <code>npm install -g @opencode/cli</code>.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 13 -->
+    <div class="slide-block">
+      <div class="slide-num">Slide 13</div>
+      <div class="slide-name">Free AI Models for Students</div>
+      <ul>
+        <li>Free cloud: Google Gemini (AI Studio), Groq Cloud, GitHub Models.</li>
+        <li>100% offline: Ollama running <code>qwen2.5-coder:7b</code> without internet.</li>
+        <li>Zero credit cards, zero subscriptions.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 14 -->
+    <div class="slide-block">
+      <div class="slide-num">Slide 14</div>
+      <div class="slide-name">Reality Check 04: Transition</div>
+      <ul>
+        <li>AI model claims: "I fixed all the bugs, looks perfect!"</li>
+        <li>Compiler reality: 47 errors found in 3 files.</li>
+        <li>Rule of thumb: never trust claims; always verify with the compiler.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 15 -->
+    <div class="slide-block" style="grid-column: span 2;">
+      <div class="slide-num">Slide 15</div>
+      <div class="slide-name">Thank You &amp; Scannable QR</div>
+      <ul>
+        <li>Scan QR code: opens GitHub repository with full source code and live demo.</li>
+        <li>Take-home: hand out the 1-page setup guide so students can install tools tonight.</li>
+        <li>Open the floor for questions from students and teachers.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <span>EcoLoop Presentation Strategy &bull; Swami Sant Dass Public School, Jalandhar</span>
+    <span>github.com/Harman209/ecoloop</span>
+  </div>
+
+</body>
+</html>
