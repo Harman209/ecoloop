@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>OpenCode Student Setup Guide &bull; Free AI Coding</title>
+  <title>EcoLoop Student Guide &bull; Agentic Coding & Zero-Cost Architecture</title>
   <style>
     * {
       box-sizing: border-box;
@@ -14,12 +14,13 @@
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
       color: #0f172a;
       background: #ffffff;
-      padding: 30px 36px;
+      padding: 32px 40px;
       line-height: 1.45;
       font-size: 13px;
       -webkit-font-smoothing: antialiased;
     }
 
+    /* Header */
     .header {
       border-bottom: 2px solid #1f6b4f;
       padding-bottom: 12px;
@@ -31,8 +32,8 @@
 
     .title {
       font-size: 24px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
+      font-weight: 800;
+      letter-spacing: -0.025em;
       color: #171a18;
     }
 
@@ -43,52 +44,70 @@
     .subtitle {
       font-size: 13px;
       color: #526058;
-      margin-top: 2px;
+      margin-top: 3px;
     }
 
     .meta {
       text-align: right;
-      font-size: 11px;
+      font-size: 11.5px;
       color: #1f6b4f;
       font-weight: 600;
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      line-height: 1.4;
     }
 
+    /* Sections */
     .section {
       margin-bottom: 16px;
     }
 
     .section-title {
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 700;
       color: #171a18;
       letter-spacing: -0.01em;
       margin-bottom: 8px;
-      padding-bottom: 3px;
+      padding-bottom: 4px;
       border-bottom: 1px solid #e2e8e0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title .badge {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 10px;
+      font-weight: 700;
+      background: #e8efe9;
+      color: #1f6b4f;
+      padding: 2px 6px;
+      border-radius: 3px;
     }
 
     p {
       color: #334155;
       margin-bottom: 6px;
+      line-height: 1.5;
     }
 
+    /* Code Blocks */
     .code-block {
       background: #f8fafc;
       border: 1px solid #e2e8f0;
       border-radius: 6px;
       padding: 10px 14px;
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 12px;
+      font-size: 11.5px;
       color: #0f172a;
-      margin: 8px 0 10px 0;
-      line-height: 1.4;
+      margin: 6px 0 10px 0;
+      line-height: 1.45;
     }
 
     .code-comment {
       color: #64748b;
     }
 
+    /* Grids & Cards */
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -101,39 +120,183 @@
       border: 1px solid #e2e8f0;
       border-radius: 6px;
       padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
 
     .card-title {
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 700;
       color: #0f172a;
-      margin-bottom: 4px;
     }
 
     .card-desc {
-      font-size: 12px;
+      font-size: 11.5px;
       color: #475569;
       line-height: 1.4;
     }
 
-    .list {
-      padding-left: 16px;
+    /* Highlight Feature Box */
+    .featured-box {
+      background: #f0f7f3;
+      border: 1.5px solid #1f6b4f;
+      border-radius: 6px;
+      padding: 12px 14px;
+      margin: 8px 0 12px 0;
+    }
+
+    .featured-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .featured-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #1f6b4f;
+    }
+
+    .featured-tag {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 10px;
+      font-weight: 700;
+      background: #1f6b4f;
+      color: #ffffff;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .featured-desc {
+      font-size: 12px;
+      color: #1e293b;
+      line-height: 1.45;
+    }
+
+    /* Video Resource Rows */
+    .video-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+    }
+
+    .video-icon {
+      width: 28px;
+      height: 28px;
+      background: #fee2e2;
+      color: #dc2626;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+      font-size: 14px;
+    }
+
+    .video-content {
+      flex: 1;
+    }
+
+    .video-title {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .video-title a {
+      color: #0f172a;
+      text-decoration: none;
+    }
+
+    .video-title a:hover {
+      text-decoration: underline;
+      color: #1f6b4f;
+    }
+
+    .video-query {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 10.5px;
+      color: #1f6b4f;
+      margin: 2px 0 4px 0;
+    }
+
+    .video-desc {
+      font-size: 11px;
+      color: #64748b;
+      line-height: 1.35;
+    }
+
+    /* Steps */
+    .steps-list {
+      list-style: none;
+      counter-reset: step-counter;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .steps-list li {
+      counter-increment: step-counter;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 12px;
       color: #334155;
-      margin: 6px 0;
     }
 
-    .list li {
-      margin-bottom: 4px;
+    .steps-list li::before {
+      content: counter(step-counter);
+      background: #1f6b4f;
+      color: #ffffff;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 10.5px;
+      font-weight: 700;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
     }
 
+    .steps-list strong {
+      color: #0f172a;
+    }
+
+    /* Footer */
     .footer {
-      margin-top: 20px;
+      margin-top: 16px;
       padding-top: 10px;
-      border-top: 1px solid #e2e8f0;
+      border-top: 1px solid #e2e8e0;
       display: flex;
       justify-content: space-between;
       font-size: 11px;
       color: #64748b;
+    }
+
+    .footer a {
+      color: #1f6b4f;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .page-break {
+      page-break-after: always;
+      break-after: page;
+      height: 0;
+      margin: 0;
+      padding: 0;
     }
 
     @media print {
@@ -142,17 +305,19 @@
       }
       @page {
         size: A4 portrait;
-        margin: 10mm;
+        margin: 12mm 14mm;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- ================= PAGE 1 ================= -->
+
   <div class="header">
     <div>
-      <h1 class="title">OpenCode Student Setup Guide</h1>
-      <p class="subtitle">Complete, zero-cost guide to autonomous AI coding in your terminal.</p>
+      <h1 class="title">EcoLoop <span>Student Setup Guide</span></h1>
+      <p class="subtitle">Agentic coding, free local AI models, and zero-cost web deployment.</p>
     </div>
     <div class="meta">
       Swami Sant Dass Public School<br>
@@ -160,83 +325,191 @@
     </div>
   </div>
 
+  <!-- FEATURED LECTURE -->
+  <div class="featured-box">
+    <div class="featured-header">
+      <span class="featured-title">&#x1F393; MIT Missing Semester &bull; Lecture 7: Agentic Coding</span>
+      <span class="featured-tag">MUST WATCH</span>
+    </div>
+    <p class="featured-desc">
+      Taught at <strong>MIT CSAIL</strong> (missing.csail.mit.edu). This lecture bridges the gap between basic chat tools and actual autonomous development. It covers tool use (how agents read and write real workspace files), execution loops (letting agents run compilers and tests to self-repair), and context management via <code>AGENTS.md</code>.
+    </p>
+    <div style="margin-top: 6px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; color: #1f6b4f;">
+      Search on YouTube: <strong>"MIT Missing Semester Lecture 7: Agentic Coding"</strong> &bull; Link: <strong>missing.csail.mit.edu</strong>
+    </div>
+  </div>
+
+  <!-- SECTION 1: THE AGENTIC SHIFT -->
   <div class="section">
-    <h2 class="section-title">1. What is OpenCode?</h2>
+    <h2 class="section-title">
+      <span>1. The Paradigm Shift: Developer as Architect</span>
+      <span class="badge">CORE CONCEPT</span>
+    </h2>
     <p>
-      OpenCode is an open-source terminal agent developed by Anomaly (GitHub: <code>anomalyco/opencode</code>).
-      Unlike typical chatbots where you copy and paste code back and forth, OpenCode inspects your project directory, edits files directly, and runs your compiler or tests to automatically fix errors.
+      Traditional coding required months of syntax memorization before you could test an idea. With modern agentic harnesses, you don't type boilerplate by hand. 
+      You define the rules, architecture, and user experience; an autonomous agent creates the components and updates repository files; your job is quality control and browser testing.
     </p>
   </div>
 
+  <!-- SECTION 2: OPENCODE INSTALLATION -->
   <div class="section">
-    <h2 class="section-title">2. Quick Installation (60 Seconds)</h2>
-    <p>Open your terminal on Linux, macOS, or Windows (WSL / PowerShell) and run:</p>
+    <h2 class="section-title">
+      <span>2. Quick Tool Setup: OpenCode Terminal Agent</span>
+      <span class="badge">60 SECONDS</span>
+    </h2>
+    <p>
+      OpenCode (github.com/anomalyco/opencode) is an open-source terminal coding agent that runs on Linux, macOS, and Windows (WSL/PowerShell). It reads your local project tree and executes multi-file edits directly.
+    </p>
     <div class="code-block">
-      <span class="code-comment"># Install OpenCode globally via npm</span><br>
+      <span class="code-comment"># Option A: Install globally via npm (Node.js)</span><br>
       npm install -g @opencode/cli<br><br>
-      <span class="code-comment"># Alternatively, install via curl (macOS / Linux)</span><br>
+      <span class="code-comment"># Option B: Direct shell installer (macOS / Linux)</span><br>
       curl -fsSL https://opencode.ai/install.sh | bash
     </div>
   </div>
 
+  <!-- SECTION 3: FREE MODEL ENGINES -->
   <div class="section">
-    <h2 class="section-title">3. Free AI Models: Zero Cost, No Credit Card Required</h2>
-    <p>You do not need paid subscriptions to use autonomous AI agents. Here are the best free options available to students today:</p>
+    <h2 class="section-title">
+      <span>3. The Free AI Matrix: Zero Dollars, No Credit Cards</span>
+      <span class="badge">STUDENT FRIENDLY</span>
+    </h2>
+    <p>You do not need expensive subscriptions to run autonomous coding agents. Here are the 4 best zero-dollar options:</p>
 
     <div class="grid-2">
       <div class="card">
-        <div class="card-title">Google Gemini API (Cloud, Free)</div>
+        <div class="card-title">1. Ollama &bull; 100% Offline &amp; Private</div>
         <div class="card-desc">
-          Sign in to <strong>aistudio.google.com</strong> with your Google account and generate a free API key. Generous free limits for Gemini 1.5 Flash and Gemini 2.0.
+          Download <strong>ollama.com</strong>. Runs entirely on your laptop hardware without internet. Run <code>ollama run qwen2.5-coder:7b</code> for top-tier coding performance on standard student laptops.
         </div>
       </div>
 
       <div class="card">
-        <div class="card-title">Groq Cloud (Cloud, Free)</div>
+        <div class="card-title">2. Google AI Studio (Gemini API)</div>
         <div class="card-desc">
-          Sign in to <strong>console.groq.com</strong>. Extremely fast token generation running open-weight models like Llama 3.3 70B for zero dollars.
+          Visit <strong>aistudio.google.com</strong>. Generates free API keys with generous rate limits for Gemini 1.5 Flash and Gemini 2.0. Perfect for large full-stack codebases.
         </div>
       </div>
 
       <div class="card">
-        <div class="card-title">GitHub Models (Cloud, Free)</div>
+        <div class="card-title">3. Groq Cloud &bull; Ultra-Fast Inference</div>
         <div class="card-desc">
-          Accessible directly from your GitHub student account. Test models like GPT-4o and Claude 3.5 Sonnet directly in VS Code or GitHub Codespaces.
+          Visit <strong>console.groq.com</strong>. Provides ultra-fast token streaming of open-weight models like Llama 3.3 70B for $0.00. Instant file generation.
         </div>
       </div>
 
       <div class="card">
-        <div class="card-title">Ollama (100% Offline, Private)</div>
+        <div class="card-title">4. GitHub Student Developer Pack</div>
         <div class="card-desc">
-          Download <strong>ollama.com</strong>. Runs entirely on your laptop hardware without an internet connection. Recommended model: <code>qwen2.5-coder:7b</code>.
+          Verify your student ID at <strong>education.github.com</strong>. Unlocks free access to GitHub Models, Codespaces, domain names, and free cloud hosting credits.
         </div>
       </div>
     </div>
   </div>
 
+  <div class="footer">
+    <span>Page 1 / 2 &bull; EcoLoop Open Education Project</span>
+    <span>Source: <a href="https://github.com/Harman209/ecoloop">github.com/Harman209/ecoloop</a></span>
+  </div>
+
+  <!-- ================= PAGE 2 ================= -->
+  <div class="page-break"></div>
+
+  <div class="header" style="margin-top: 14px;">
+    <div>
+      <h1 class="title">Masterclass Library <span>&amp; Project Deployment</span></h1>
+      <p class="subtitle">Curated video tutorials and step-by-step instructions to launch your own circular platform.</p>
+    </div>
+    <div class="meta">
+      Swami Sant Dass Public School<br>
+      ecoloop-ssdps.vercel.app
+    </div>
+  </div>
+
+  <!-- SECTION 4: CURATED YOUTUBE LIBRARY -->
   <div class="section">
-    <h2 class="section-title">4. Recommended Daily Workflow</h2>
-    <ol class="list" style="padding-left: 20px;">
+    <h2 class="section-title">
+      <span>4. Curated Video Masterclasses</span>
+      <span class="badge">RECOMMENDED WATCHING</span>
+    </h2>
+
+    <div class="video-row">
+      <div class="video-icon">&#x25B6;</div>
+      <div class="video-content">
+        <div class="video-title"><a href="https://missing.csail.mit.edu" target="_blank">1. MIT CSAIL: The Missing Semester &bull; Lecture 7: Agentic Coding</a></div>
+        <div class="video-query">YouTube Search: "MIT Missing Semester Lecture 7 Agentic Coding"</div>
+        <div class="video-desc">Understand the underlying mechanics: tool execution loops, context boundaries, file system access, and how agents self-diagnose compiler errors.</div>
+      </div>
+    </div>
+
+    <div class="video-row">
+      <div class="video-icon">&#x25B6;</div>
+      <div class="video-content">
+        <div class="video-title">2. Ollama &bull; Complete Beginner Guide to Running AI Locally on Your Laptop</div>
+        <div class="video-query">YouTube Search: "Ollama beginner guide local AI models tutorial"</div>
+        <div class="video-desc">How to install Ollama on Windows, Mac, or Linux, pull <code>qwen2.5-coder</code>, and connect it to your terminal tools with zero cloud reliance.</div>
+      </div>
+    </div>
+
+    <div class="video-row">
+      <div class="video-icon">&#x25B6;</div>
+      <div class="video-content">
+        <div class="video-title">3. Deploy React &amp; Vite to Vercel in 60 Seconds (100% Free Hobby Tier)</div>
+        <div class="video-query">YouTube Search: "Deploy Vite React app to Vercel free guide"</div>
+        <div class="video-desc">Connect your GitHub repository to Vercel for automatic continuous deployments, custom domain routing, and free global SSL.</div>
+      </div>
+    </div>
+
+    <div class="video-row">
+      <div class="video-icon">&#x25B6;</div>
+      <div class="video-content">
+        <div class="video-title">4. Google Sheets as a Free Database with Google Apps Script Webhooks</div>
+        <div class="video-query">YouTube Search: "Google Sheets as database Google Apps Script POST webhook"</div>
+        <div class="video-desc">How to write a 10-line Apps Script function that receives POST requests from a React form and appends new rows into a spreadsheet for $0/month.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: CLONE ECOLOOP IN 3 STEPS -->
+  <div class="section">
+    <h2 class="section-title">
+      <span>5. How to Fork &amp; Deploy EcoLoop for Your School</span>
+      <span class="badge">TAKE ACTION</span>
+    </h2>
+    <ol class="steps-list">
       <li>
-        <strong>Navigate to your code:</strong> In your terminal, go to any project folder (e.g. <code>cd ~/my-app</code>).
+        <div><strong>Fork the Repository:</strong> Go to <code>github.com/Harman209/ecoloop</code> and click <em>Fork</em> to create your own copy on GitHub.</div>
       </li>
       <li>
-        <strong>Launch OpenCode:</strong> Type <code>opencode</code> and hit enter.
+        <div><strong>Deploy on Vercel:</strong> Sign in to <code>vercel.com</code> with GitHub, click <em>Add New Project</em>, select your forked <code>ecoloop</code> repo, and click <em>Deploy</em>. You get a live <code>.vercel.app</code> URL in under 2 minutes.</div>
       </li>
       <li>
-        <strong>Choose your mode:</strong>
-        Use <code>plan</code> mode to survey files and review architectural options before any code changes.
-        Switch to <code>build</code> mode to let the agent apply changes across your repository.
-      </li>
-      <li>
-        <strong>Define clear rules:</strong> Create a short file called <code>AGENTS.md</code> in your project root. Document your tech stack, design guidelines, and constraints so the agent never goes off track.
+        <div><strong>Connect Your Google Sheet:</strong> Create a Google Sheet, open <em>Extensions &rarr; Apps Script</em>, paste the webhook script from <code>docs/apps-script.js</code>, and paste your web app URL into your project's contact form. All inquiries now flow into your private sheet.</div>
       </li>
     </ol>
   </div>
 
+  <!-- SECTION 6: THREE GOLDEN RULES -->
+  <div class="section">
+    <h2 class="section-title">
+      <span>6. The Three Invariant Rules of Working with Coding Agents</span>
+      <span class="badge">BUILDER WISDOM</span>
+    </h2>
+    <div class="grid-2">
+      <div class="card" style="border-left: 3px solid #1f6b4f;">
+        <div class="card-title">Rule 01: Write the Spec First (AGENTS.md)</div>
+        <div class="card-desc">Create an <code>AGENTS.md</code> file in your repo root before coding. State your colors, design rules, and file boundaries so the agent never hallucinates.</div>
+      </div>
+      <div class="card" style="border-left: 3px solid #b45309;">
+        <div class="card-title">Rule 02: Deployed Without Testing = Broken</div>
+        <div class="card-desc">The AI will confidently say "all bugs resolved". Never believe it. Click every button, test the form fields, and inspect the browser console yourself.</div>
+      </div>
+    </div>
+  </div>
+
   <div class="footer">
-    <span>EcoLoop Open Education Initiative</span>
-    <span>Source &amp; Demos: github.com/Harman209/ecoloop</span>
+    <span>Swami Sant Dass Public School &bull; EcoLoop Open Source Project</span>
+    <span>Live Platform: <a href="https://ecoloop-ssdps.vercel.app">ecoloop-ssdps.vercel.app</a></span>
   </div>
 
 </body>
