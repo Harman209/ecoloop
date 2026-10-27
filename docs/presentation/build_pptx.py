@@ -302,7 +302,7 @@ for idx, (badge, name, desc, is_ngo) in enumerate(products_s3):
 # ==========================================================
 s4 = prs.slides.add_slide(blank_layout)
 add_meme_slide(s4, "how it started vs how it's going", "reality-check.jpg", 
-               "Started as scattered classroom craft projects. Turned into a unified circular brand with bulk material exchange and custom software.")
+               "Student crafts and the wrapper exchange were already happening. I built the circular reinvestment loop and the digital storefront.")
 
 # ==========================================================
 # SLIDE 5: Why Build a Digital Platform?
