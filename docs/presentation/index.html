@@ -861,25 +861,55 @@
         <p class="slide-subtitle">The difference between copy-pasting snippets and letting an agent build inside your files.</p>
       </div>
 
-      <div class="slide-body grid-2">
-        <div class="media-placeholder" style="background: #f8fafc; border-color: #cbd5e1; height: 380px;">
-          <strong style="font-size: 18px; color: #64748b; margin-bottom: 8px;">ChatGPT Web Window</strong>
-          <span class="placeholder-tag" style="color: #64748b;">[DROP CHATGPT SCREENSHOT HERE]</span>
-          <div style="font-size: 13px; color: #64748b; margin-top: 16px; line-height: 1.6; text-align: left;">
-            &bull; Copy-pasting snippets back and forth<br>
-            &bull; Forgets project context easily<br>
-            &bull; Cannot see or edit your local project files
+      <div class="slide-body grid-2 top-aligned">
+        <!-- Left: ChatGPT -->
+        <div style="background: #ffffff; border: 1px solid var(--color-border); border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 2px 10px rgba(0,0,0,0.03);">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <span style="font-size: 16px; font-weight: 700; color: #475569;">ChatGPT: Web Chatbot</span>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; background: #f1f5f9; color: #64748b; padding: 3px 8px; border-radius: 4px; font-weight: 600;">ISOLATED</span>
           </div>
+          <div style="border-radius: 6px; overflow: hidden; border: 1px solid #e2e8f0; height: 195px; background: #000000; display: flex; align-items: flex-start; justify-content: center;">
+            <img src="images/screen-chatgpt.png" alt="ChatGPT Interface" style="width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block;">
+          </div>
+          <ul class="clean-list" style="gap: 8px;">
+            <li style="gap: 10px;">
+              <div class="bullet-dot" style="background: #94a3b8; margin-top: 5px;"></div>
+              <div class="list-text" style="font-size: 13px; line-height: 1.45;"><strong>Copy-Paste Loop:</strong> Generates isolated code snippets; you must manually paste and fix them.</div>
+            </li>
+            <li style="gap: 10px;">
+              <div class="bullet-dot" style="background: #94a3b8; margin-top: 5px;"></div>
+              <div class="list-text" style="font-size: 13px; line-height: 1.45;"><strong>Zero File Access:</strong> Cannot see your directory tree, configs, or local dependencies.</div>
+            </li>
+            <li style="gap: 10px;">
+              <div class="bullet-dot" style="background: #94a3b8; margin-top: 5px;"></div>
+              <div class="list-text" style="font-size: 13px; line-height: 1.45;"><strong>Blind Execution:</strong> Cannot run builds, view terminal errors, or verify live changes.</div>
+            </li>
+          </ul>
         </div>
 
-        <div class="media-placeholder" style="background: #f0f7f3; border-color: var(--color-primary-green); height: 380px;">
-          <strong style="font-size: 18px; color: var(--color-primary-green); margin-bottom: 8px;">Agent Workspace (Antigravity / OpenCode)</strong>
-          <span class="placeholder-tag">[DROP ANTIGRAVITY SCREENSHOT HERE]</span>
-          <div style="font-size: 13px; color: var(--color-dark); margin-top: 16px; line-height: 1.6; text-align: left;">
-            &bull; Reads and edits real repository files<br>
-            &bull; Understands full folder structure and context<br>
-            &bull; Runs terminal builds and tests autonomously
+        <!-- Right: Antigravity / OpenCode -->
+        <div style="background: #ffffff; border: 1.5px solid var(--color-primary-green); border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 4px 14px rgba(31,107,79,0.06);">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <span style="font-size: 16px; font-weight: 700; color: var(--color-primary-green);">Antigravity: Agent Workspace</span>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; background: #e8efe9; color: var(--color-primary-green); padding: 3px 8px; border-radius: 4px; font-weight: 700;">AUTONOMOUS</span>
           </div>
+          <div style="border-radius: 6px; overflow: hidden; border: 1px solid #bbf7d0; height: 195px; background: #1f202a; display: flex; align-items: flex-start; justify-content: center;">
+            <img src="images/screen-antigravity.png" alt="Antigravity Agent Terminal" style="width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block;">
+          </div>
+          <ul class="clean-list" style="gap: 8px;">
+            <li style="gap: 10px;">
+              <div class="bullet-dot" style="margin-top: 5px;"></div>
+              <div class="list-text" style="font-size: 13px; line-height: 1.45;"><strong>Direct Repository Edits:</strong> Reads folder context and writes multi-file modifications directly.</div>
+            </li>
+            <li style="gap: 10px;">
+              <div class="bullet-dot" style="margin-top: 5px;"></div>
+              <div class="list-text" style="font-size: 13px; line-height: 1.45;"><strong>Autonomous Terminal:</strong> Executes shell commands, dev servers, and build scripts.</div>
+            </li>
+            <li style="gap: 10px;">
+              <div class="bullet-dot" style="margin-top: 5px;"></div>
+              <div class="list-text" style="font-size: 13px; line-height: 1.45;"><strong>Self-Repair Loop:</strong> Catches compiler and runtime errors and fixes them automatically.</div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

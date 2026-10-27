@@ -432,60 +432,72 @@ add_bullet_point(tf_s9_r, "Agents Write the Code:", "An autonomous agent creates
 add_bullet_point(tf_s9_r, "Focus on Testing:", "Your primary job becomes quality control, testing user flows, and refining the architecture.", COLOR_GREEN)
 
 # ==========================================================
-# SLIDE 10: ChatGPT vs Agent Harness (Placeholders for Harman's Screenshots)
+# SLIDE 10: ChatGPT vs Agent Workspace
 # ==========================================================
 s10 = prs.slides.add_slide(blank_layout)
 add_header(s10, "Chatbot vs Agent Workspace", "The difference between copy-pasting snippets and letting an agent build inside your files.")
 
-# Left Box: ChatGPT Screenshot Placeholder
-b_chat = s10.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.9), Inches(2.3), Inches(5.5), Inches(4.2))
-b_chat.fill.solid()
-b_chat.fill.fore_color.rgb = COLOR_LIGHT_BG
-b_chat.line.color.rgb = COLOR_BORDER
-b_chat.line.width = Pt(1.5)
+# Left Card: ChatGPT (Isolated Web Chat)
+card_chat = s10.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.9), Inches(2.15), Inches(5.5), Inches(4.85))
+card_chat.fill.solid()
+card_chat.fill.fore_color.rgb = RGBColor(252, 252, 254)
+card_chat.line.color.rgb = COLOR_BORDER
+card_chat.line.width = Pt(1)
 
-tf_bc = b_chat.text_frame
-tf_bc.word_wrap = True
-p_c1 = tf_bc.paragraphs[0]
-p_c1.alignment = PP_ALIGN.CENTER
-p_c1.text = "ChatGPT Web Window"
-p_c1.font.name = FONT_SANS
-p_c1.font.size = Pt(18)
-p_c1.font.bold = True
-p_c1.font.color.rgb = COLOR_MUTED
+tx_c_title = s10.shapes.add_textbox(Inches(1.1), Inches(2.25), Inches(5.1), Inches(0.35))
+tf_ct = tx_c_title.text_frame
+tf_ct.word_wrap = True
+tf_ct.margin_left = tf_ct.margin_top = 0
+p_ct = tf_ct.paragraphs[0]
+p_ct.text = "ChatGPT: Web Chatbot (Isolated)"
+p_ct.font.name = FONT_SANS
+p_ct.font.size = Pt(16)
+p_ct.font.bold = True
+p_ct.font.color.rgb = COLOR_MUTED
 
-p_c2 = tf_bc.add_paragraph()
-p_c2.alignment = PP_ALIGN.CENTER
-p_c2.text = "[DROP CHATGPT SCREENSHOT HERE]\n\n• Copy-pasting snippets back and forth\n• Forgets project context easily\n• Cannot see or edit your local project files"
-p_c2.font.name = FONT_SANS
-p_c2.font.size = Pt(13)
-p_c2.font.color.rgb = COLOR_MUTED
-p_c2.space_before = Pt(14)
+img_chat = os.path.join(IMAGES_DIR, "screen-chatgpt.png")
+if os.path.exists(img_chat):
+    s10.shapes.add_picture(img_chat, Inches(1.5), Inches(2.68), width=Inches(4.3))
 
-# Right Box: Agent Workspace Placeholder (AGY / OpenCode)
-b_agy = s10.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(6.9), Inches(2.3), Inches(5.5), Inches(4.2))
-b_agy.fill.solid()
-b_agy.fill.fore_color.rgb = RGBColor(240, 246, 242)
-b_agy.line.color.rgb = COLOR_GREEN
-b_agy.line.width = Pt(1.5)
+tx_c_desc = s10.shapes.add_textbox(Inches(1.1), Inches(5.15), Inches(5.1), Inches(1.75))
+tf_cd = tx_c_desc.text_frame
+tf_cd.word_wrap = True
+tf_cd.margin_left = tf_cd.margin_top = 0
 
-tf_ba = b_agy.text_frame
-tf_ba.word_wrap = True
-p_a1 = tf_ba.paragraphs[0]
-p_a1.alignment = PP_ALIGN.CENTER
-p_a1.text = "Agent Workspace (Antigravity / OpenCode)"
-p_a1.font.name = FONT_SANS
-p_a1.font.size = Pt(18)
-p_a1.font.bold = True
-p_a1.font.color.rgb = COLOR_GREEN
+add_bullet_point(tf_cd, "Copy-Paste Loop:", "Generates isolated snippets you must manually copy into your editor.", COLOR_MUTED)
+add_bullet_point(tf_cd, "Zero File Access:", "Cannot see project folders, config files, or installed dependencies.", COLOR_MUTED)
+add_bullet_point(tf_cd, "Blind Execution:", "Cannot run commands, view terminal errors, or test builds.", COLOR_MUTED)
 
-p_a2 = tf_ba.add_paragraph()
-p_a2.alignment = PP_ALIGN.CENTER
-p_a2.text = "[DROP ANTIGRAVITY SCREENSHOT HERE]\n\n• Reads and edits real repository files\n• Understands full folder structure and context\n• Runs terminal builds and tests autonomously"
-p_a2.font.name = FONT_SANS
-p_a2.font.size = Pt(13)
-p_a2.font.color.rgb = COLOR_DARK
-p_a2.space_before = Pt(14)
+# Right Card: Antigravity (Autonomous Agent Workspace)
+card_agy = s10.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(6.9), Inches(2.15), Inches(5.5), Inches(4.85))
+card_agy.fill.solid()
+card_agy.fill.fore_color.rgb = RGBColor(240, 246, 242)
+card_agy.line.color.rgb = COLOR_GREEN
+card_agy.line.width = Pt(1.5)
+
+tx_a_title = s10.shapes.add_textbox(Inches(7.1), Inches(2.25), Inches(5.1), Inches(0.35))
+tf_at = tx_a_title.text_frame
+tf_at.word_wrap = True
+tf_at.margin_left = tf_at.margin_top = 0
+p_at = tf_at.paragraphs[0]
+p_at.text = "Antigravity: Agent Workspace (Autonomous)"
+p_at.font.name = FONT_SANS
+p_at.font.size = Pt(16)
+p_at.font.bold = True
+p_at.font.color.rgb = COLOR_GREEN
+
+img_agy = os.path.join(IMAGES_DIR, "screen-antigravity.png")
+if os.path.exists(img_agy):
+    s10.shapes.add_picture(img_agy, Inches(7.3), Inches(3.02), width=Inches(4.7))
+
+tx_a_desc = s10.shapes.add_textbox(Inches(7.1), Inches(5.15), Inches(5.1), Inches(1.75))
+tf_ad = tx_a_desc.text_frame
+tf_ad.word_wrap = True
+tf_ad.margin_left = tf_ad.margin_top = 0
+
+add_bullet_point(tf_ad, "Direct Repository Edits:", "Inspects folder context and writes multi-file modifications directly.", COLOR_GREEN)
+add_bullet_point(tf_ad, "Autonomous Terminal:", "Runs shell commands, dev servers, and build tests in the workspace.", COLOR_GREEN)
+add_bullet_point(tf_ad, "Self-Repair Loop:", "Catches compiler and runtime errors and fixes them automatically.", COLOR_GREEN)
 
 # ==========================================================
 # SLIDE 11: How the Agent Loop Works
