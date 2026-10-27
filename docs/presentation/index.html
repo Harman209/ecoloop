@@ -385,6 +385,68 @@
       font-weight: bold;
     }
 
+    /* Product 3x2 Grid */
+    .product-grid-3x2 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 20px;
+      width: 100%;
+    }
+
+    .product-box {
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+      box-sizing: border-box;
+    }
+
+    .product-box.ngo-box {
+      border: 1.5px solid var(--color-primary-green);
+      background: #f0f7f3;
+      box-shadow: 0 4px 14px rgba(31, 107, 79, 0.06);
+    }
+
+    .product-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 3px 8px;
+      border-radius: 4px;
+      width: fit-content;
+      background: #e2e8f0;
+      color: #475569;
+    }
+
+    .product-badge.student {
+      background: #e8efe9;
+      color: var(--color-primary-green);
+    }
+
+    .product-badge.ngo {
+      background: var(--color-primary-green);
+      color: #ffffff;
+    }
+
+    .product-box-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-dark);
+      letter-spacing: -0.015em;
+    }
+
+    .product-box-desc {
+      font-size: 13.5px;
+      color: var(--color-muted);
+      line-height: 1.45;
+    }
+
     /* Product Stack */
     .product-stack {
       display: flex;
@@ -589,46 +651,47 @@
     <div class="slide">
       <div class="slide-header">
         <h2 class="slide-title">The Physical Loop</h2>
-        <p class="slide-subtitle">Six circular products systematically diverted from waste streams.</p>
+        <p class="slide-subtitle">Six circular material systems systematically diverted from school waste streams.</p>
       </div>
 
-      <div class="slide-body grid-2">
-        <div class="product-stack">
-          <div class="product-row">
-            <strong>Student-Made: Seed Paper</strong>
-            <span>Handmade plantable paper embedded with native seeds, crafted in school.</span>
+      <div class="slide-body" style="align-items: flex-start;">
+        <div class="product-grid-3x2">
+          <!-- Item 1 -->
+          <div class="product-box">
+            <span class="product-badge student">STUDENT-MADE</span>
+            <div class="product-box-title">Seed Paper</div>
+            <div class="product-box-desc">Handmade plantable paper embedded with native seeds, crafted directly inside school.</div>
           </div>
-          <div class="product-row">
-            <strong>Student-Made: Bioenzymes</strong>
-            <span>Citrus fruit peels fermented into natural multi-purpose cleaning liquids.</span>
+          <!-- Item 2 -->
+          <div class="product-box">
+            <span class="product-badge student">STUDENT-MADE</span>
+            <div class="product-box-title">Bioenzymes</div>
+            <div class="product-box-desc">Citrus fruit peels fermented into natural multi-purpose cleaning liquids for campus sanitation.</div>
           </div>
-          <div class="product-row">
-            <strong>Student-Made: Uniform Bags</strong>
-            <span>Durable tote bags stitched from discarded school uniform fabrics.</span>
+          <!-- Item 3 -->
+          <div class="product-box">
+            <span class="product-badge student">STUDENT-MADE</span>
+            <div class="product-box-title">Uniform Bags</div>
+            <div class="product-box-desc">Durable, reusable tote bags stitched from discarded school uniform fabrics.</div>
           </div>
-          <div class="product-row">
-            <strong>Student-Made: Eco-Bricks</strong>
-            <span>PET bottles tightly packed with clean plastic wrappers for simple construction.</span>
+          <!-- Item 4 -->
+          <div class="product-box">
+            <span class="product-badge student">STUDENT-MADE</span>
+            <div class="product-box-title">Eco-Bricks</div>
+            <div class="product-box-desc">PET bottles tightly packed with clean plastic wrappers for modular walls and simple structures.</div>
           </div>
-          <div class="product-row">
-            <strong>Student-Made: Bottle Planters</strong>
-            <span>Upcycled beverage containers for school corridor nursery gardening.</span>
+          <!-- Item 5 -->
+          <div class="product-box">
+            <span class="product-badge student">STUDENT-MADE</span>
+            <div class="product-box-title">Bottle Planters</div>
+            <div class="product-box-desc">Upcycled beverage containers for school corridor nursery and vertical greenery installations.</div>
           </div>
-          <div class="product-row" style="border-bottom: none;">
-            <strong>NGO Partnership: MLP Sheets</strong>
-            <span>Heavy-duty boards heat-pressed from snack wrappers using hydraulic machinery.</span>
+          <!-- Item 6: NGO Partnership -->
+          <div class="product-box ngo-box">
+            <span class="product-badge ngo">NGO PARTNER</span>
+            <div class="product-box-title">MLP Sheets</div>
+            <div class="product-box-desc">Heavy-duty structural boards heat-pressed from snack packaging using industrial hydraulic machinery.</div>
           </div>
-        </div>
-
-        <div class="media-card" style="border: 2px dashed #bbf7d0; background: #f8faf9; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 28px;">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-            <line x1="9" x2="9.01" y1="9" y2="9"/>
-            <line x1="15" x2="15.01" y1="9" y2="9"/>
-          </svg>
-          <span style="font-family: var(--font-sans); font-size: 16px; font-weight: 700; color: var(--color-primary-green); margin-top: 14px;">[MEME: "bro think he recyclable"]</span>
-          <span style="font-size: 13.5px; color: var(--color-muted); margin-top: 6px; line-height: 1.45; max-width: 320px;">(Snack packaging trying to enter the recycling bin)<br>Drop your meme image here or delete this box</span>
         </div>
       </div>
     </div>
@@ -685,8 +748,8 @@
           </ul>
         </div>
 
-        <div class="media-card">
-          <img src="images/screen-home-url.png" alt="EcoLoop live platform homepage showing circular model">
+        <div class="media-card" style="height: auto; border: 1px solid var(--color-border); background: #ffffff; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border-radius: 8px;">
+          <img src="images/screen-home-url.png" alt="EcoLoop live platform homepage showing circular model" style="width: 100%; height: auto; display: block; border-radius: 7px;">
         </div>
       </div>
     </div>

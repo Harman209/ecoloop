@@ -232,70 +232,70 @@ add_bullet_point(tf_c2, "Unified Circular Model:", "Unifying scattered school gr
 add_bullet_point(tf_c2, "Digital Transparency:", "Building an online catalog so buyers can see exact specifications and request real samples.", COLOR_GREEN)
 
 # ==========================================================
-# SLIDE 3: The Physical Loop
+# SLIDE 3: The Physical Loop (3x2 Grid)
 # ==========================================================
 s3 = prs.slides.add_slide(blank_layout)
-add_header(s3, "The Physical Loop", "Six circular products systematically diverted from waste streams.")
+add_header(s3, "The Physical Loop", "Six circular products systematically diverted from school waste streams.")
 
-tx_s3 = s3.shapes.add_textbox(Inches(0.9), Inches(2.2), Inches(5.6), Inches(4.8))
-tf_s3 = tx_s3.text_frame
-tf_s3.word_wrap = True
-tf_s3.margin_left = tf_s3.margin_top = 0
-
-products = [
-    ("Student-Made: Seed Paper", "Handmade plantable paper embedded with native seeds, crafted in school."),
-    ("Student-Made: Bioenzymes", "Citrus fruit peels fermented into natural multi-purpose cleaning liquids."),
-    ("Student-Made: Uniform Bags", "Durable tote bags stitched from discarded school uniform fabrics."),
-    ("Student-Made: Eco-Bricks", "PET bottles tightly packed with clean plastic wrappers for simple construction."),
-    ("Student-Made: Bottle Planters", "Upcycled beverage containers for school corridor nursery gardening."),
-    ("NGO Partnership: MLP Sheets", "Heavy-duty boards heat-pressed from snack wrappers using hydraulic machinery.")
+products_s3 = [
+    ("STUDENT-MADE", "Seed Paper", "Handmade plantable paper embedded with native seeds, crafted directly inside school.", False),
+    ("STUDENT-MADE", "Bioenzymes", "Citrus fruit peels fermented into natural multi-purpose cleaning liquids for campus sanitation.", False),
+    ("STUDENT-MADE", "Uniform Bags", "Durable everyday tote bags stitched from discarded school uniform fabrics.", False),
+    ("STUDENT-MADE", "Eco-Bricks", "PET bottles tightly packed with clean plastic wrappers for modular garden walls and simple structures.", False),
+    ("STUDENT-MADE", "Bottle Planters", "Upcycled beverage containers for school corridor nursery and vertical greenery installations.", False),
+    ("NGO PARTNER", "MLP Sheets", "Heavy-duty structural boards heat-pressed from snack packaging using industrial hydraulic machinery.", True),
 ]
 
-for i, (p_name, p_desc) in enumerate(products):
-    p = tf_s3.paragraphs[0] if i == 0 else tf_s3.add_paragraph()
-    if i > 0:
-        p.space_before = Pt(11)
-    
-    is_ngo = "NGO" in p_name
-    dot_color = COLOR_GREEN_LT if is_ngo else COLOR_GREEN
-    
-    r1 = p.add_run()
-    r1.text = "■  " + p_name + "\n"
-    r1.font.name = FONT_SANS
-    r1.font.size = Pt(14.5)
-    r1.font.bold = True
-    r1.font.color.rgb = dot_color
-    
-    r2 = p.add_run()
-    r2.text = "   " + p_desc
-    r2.font.name = FONT_SANS
-    r2.font.size = Pt(13)
-    r2.font.color.rgb = COLOR_MUTED
+col_w = Inches(3.6)
+row_h = Inches(2.15)
+gap_x = Inches(0.4)
+gap_y = Inches(0.35)
+base_left = Inches(0.9)
+base_top = Inches(2.3)
 
-# Right Placeholder for Meme ("bro think he recyclable")
-box_s3 = s3.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(6.9), Inches(2.2), Inches(5.5), Inches(4.5))
-box_s3.fill.solid()
-box_s3.fill.fore_color.rgb = RGBColor(240, 246, 242)
-box_s3.line.color.rgb = COLOR_GREEN
-box_s3.line.width = Pt(1.5)
-
-tf_s3_r = box_s3.text_frame
-tf_s3_r.word_wrap = True
-p_m1 = tf_s3_r.paragraphs[0]
-p_m1.alignment = PP_ALIGN.CENTER
-p_m1.text = '[MEME: "bro think he recyclable"]'
-p_m1.font.name = FONT_SANS
-p_m1.font.size = Pt(18)
-p_m1.font.bold = True
-p_m1.font.color.rgb = COLOR_GREEN
-
-p_m2 = tf_s3_r.add_paragraph()
-p_m2.alignment = PP_ALIGN.CENTER
-p_m2.text = "(Snack packaging trying to enter the recycling bin)\n\nDrop your meme image here or delete this box"
-p_m2.font.name = FONT_SANS
-p_m2.font.size = Pt(13)
-p_m2.font.color.rgb = COLOR_MUTED
-p_m2.space_before = Pt(12)
+for idx, (badge, name, desc, is_ngo) in enumerate(products_s3):
+    col = idx % 3
+    row = idx // 3
+    left = base_left + col * (col_w + gap_x)
+    top = base_top + row * (row_h + gap_y)
+    
+    card = s3.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, col_w, row_h)
+    card.fill.solid()
+    if is_ngo:
+        card.fill.fore_color.rgb = RGBColor(240, 246, 242)
+        card.line.color.rgb = COLOR_GREEN
+        card.line.width = Pt(1.5)
+    else:
+        card.fill.fore_color.rgb = COLOR_LIGHT_BG
+        card.line.color.rgb = COLOR_BORDER
+        card.line.width = Pt(1)
+        
+    tf_c = card.text_frame
+    tf_c.word_wrap = True
+    tf_c.margin_left = tf_c.margin_right = Inches(0.2)
+    tf_c.margin_top = Inches(0.18)
+    
+    p_b = tf_c.paragraphs[0]
+    p_b.text = badge
+    p_b.font.name = FONT_MONO
+    p_b.font.size = Pt(10)
+    p_b.font.bold = True
+    p_b.font.color.rgb = COLOR_GREEN if is_ngo else COLOR_MUTED
+    
+    p_n = tf_c.add_paragraph()
+    p_n.text = name
+    p_n.font.name = FONT_SANS
+    p_n.font.size = Pt(17)
+    p_n.font.bold = True
+    p_n.font.color.rgb = COLOR_DARK
+    p_n.space_before = Pt(4)
+    
+    p_d = tf_c.add_paragraph()
+    p_d.text = desc
+    p_d.font.name = FONT_SANS
+    p_d.font.size = Pt(12)
+    p_d.font.color.rgb = COLOR_MUTED
+    p_d.space_before = Pt(6)
 
 # ==========================================================
 # SLIDE 4: How It Started vs How It's Going (Meme)
