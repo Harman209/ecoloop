@@ -10,7 +10,6 @@ prs = Presentation()
 prs.slide_width = Inches(13.333)
 prs.slide_height = Inches(7.5)
 
-# Blank slide layout
 blank_layout = prs.slide_layouts[6]
 
 # Brand Colors
@@ -73,126 +72,6 @@ def add_bullet_point(tf, title, desc, dot_color=COLOR_GREEN):
     run_desc.font.size = Pt(14)
     run_desc.font.color.rgb = COLOR_MUTED
 
-# ==========================================================
-# SLIDE 1: Title
-# ==========================================================
-s1 = prs.slides.add_slide(blank_layout)
-tx_s1 = s1.shapes.add_textbox(Inches(1.2), Inches(2.2), Inches(11), Inches(3.5))
-tf_s1 = tx_s1.text_frame
-tf_s1.word_wrap = True
-
-p_title = tf_s1.paragraphs[0]
-r_eco = p_title.add_run()
-r_eco.text = "Eco"
-r_eco.font.name = FONT_SANS
-r_eco.font.size = Pt(64)
-r_eco.font.bold = True
-r_eco.font.color.rgb = COLOR_DARK
-
-r_loop = p_title.add_run()
-r_loop.text = "Loop"
-r_loop.font.name = FONT_SANS
-r_loop.font.size = Pt(64)
-r_loop.font.bold = True
-r_loop.font.color.rgb = COLOR_GREEN
-
-p_sub = tf_s1.add_paragraph()
-p_sub.text = "Circular material systems and zero-cost digital architecture."
-p_sub.font.name = FONT_SANS
-p_sub.font.size = Pt(22)
-p_sub.font.color.rgb = COLOR_MUTED
-p_sub.space_before = Pt(16)
-
-p_sch = tf_s1.add_paragraph()
-p_sch.text = "Swami Sant Dass Public School, Jalandhar"
-p_sch.font.name = FONT_SANS
-p_sch.font.size = Pt(16)
-p_sch.font.bold = True
-p_sch.font.color.rgb = COLOR_GREEN
-p_sch.space_before = Pt(36)
-
-# ==========================================================
-# SLIDE 2: Linear Packaging Problem
-# ==========================================================
-s2 = prs.slides.add_slide(blank_layout)
-add_header(s2, "The Linear Packaging Problem", "Why conventional municipal recycling fails on modern multi-layer packaging.")
-
-# Col 1
-tx_c1 = s2.shapes.add_textbox(Inches(0.9), Inches(2.3), Inches(5.5), Inches(4.5))
-tf_c1 = tx_c1.text_frame
-tf_c1.word_wrap = True
-p_h1 = tf_c1.paragraphs[0]
-p_h1.text = "The Material Reality"
-p_h1.font.name = FONT_SANS
-p_h1.font.size = Pt(20)
-p_h1.font.bold = True
-p_h1.font.color.rgb = COLOR_RED
-
-add_bullet_point(tf_c1, "Multi-Layer Packaging (MLP):", "Chips and snack packaging fuse plastic films with aluminum foil. Standard recyclers cannot separate these layers cost-effectively, diverting millions of tons directly to landfills.", COLOR_RED)
-add_bullet_point(tf_c1, "Fragmented Logistics:", "Communities and schools generate clean packaging waste, but lack direct channels connecting them to verified upcycling alternatives.", COLOR_RED)
-add_bullet_point(tf_c1, "Information Asymmetry:", "Consumers and institutions cannot verify whether their sorted recyclables are actually reprocessed or simply dumped.", COLOR_RED)
-
-# Col 2
-tx_c2 = s2.shapes.add_textbox(Inches(6.9), Inches(2.3), Inches(5.5), Inches(4.5))
-tf_c2 = tx_c2.text_frame
-tf_c2.word_wrap = True
-p_h2 = tf_c2.paragraphs[0]
-p_h2.text = "The EcoLoop Approach"
-p_h2.font.name = FONT_SANS
-p_h2.font.size = Pt(20)
-p_h2.font.bold = True
-p_h2.font.color.rgb = COLOR_GREEN
-
-add_bullet_point(tf_c2, "Mechanical Upcycling:", "Heat-compressing clean multi-layer plastics into structural sheets that replace traditional plywood and particle boards.", COLOR_GREEN)
-add_bullet_point(tf_c2, "Digital Transparency:", "Publishing exact material specifications, density metrics, and inventory through an open platform.", COLOR_GREEN)
-add_bullet_point(tf_c2, "Closed Institutional Loops:", "Partnering directly with campuses to collect, process, and return finished utility goods back to the source.", COLOR_GREEN)
-
-# ==========================================================
-# SLIDE 3: The Physical Loop
-# ==========================================================
-s3 = prs.slides.add_slide(blank_layout)
-add_header(s3, "The Physical Loop: Verified Materials", "Six circular products systematically diverted from waste streams.")
-
-# Left stack
-tx_s3 = s3.shapes.add_textbox(Inches(0.9), Inches(2.2), Inches(5.6), Inches(4.8))
-tf_s3 = tx_s3.text_frame
-tf_s3.word_wrap = True
-tf_s3.margin_left = tf_s3.margin_top = 0
-
-products = [
-    ("Eco-Bricks", "High-density PET containers packed with clean flexible plastics."),
-    ("MLP Sheets", "Heat-pressed multi-layer packaging replacing standard plywood."),
-    ("Bottle Planters", "Upcycled PET containers for nursery and hydroponic gardening."),
-    ("Uniform Bags", "Heavyweight tote bags repurposed from discarded school uniforms."),
-    ("Seed Paper", "Zero-bleach handmade paper embedded with native plant seeds."),
-    ("Bioenzymes", "Citrus-fermented organic cleaning concentrates.")
-]
-
-for i, (p_name, p_desc) in enumerate(products):
-    p = tf_s3.paragraphs[0] if i == 0 else tf_s3.add_paragraph()
-    if i > 0:
-        p.space_before = Pt(12)
-    r1 = p.add_run()
-    r1.text = "■  " + p_name + "\n"
-    r1.font.name = FONT_SANS
-    r1.font.size = Pt(15)
-    r1.font.bold = True
-    r1.font.color.rgb = COLOR_GREEN
-    
-    r2 = p.add_run()
-    r2.text = "   " + p_desc
-    r2.font.name = FONT_SANS
-    r2.font.size = Pt(13)
-    r2.font.color.rgb = COLOR_MUTED
-
-# Right image
-img_path_s3 = os.path.join(IMAGES_DIR, "sample-mlp.jpg")
-if os.path.exists(img_path_s3):
-    s3.shapes.add_picture(img_path_s3, Inches(6.9), Inches(2.2), width=Inches(5.5), height=Inches(4.5))
-
-# ==========================================================
-# SLIDE 4: Reality Check 01 (Editable Meme Placeholder)
-# ==========================================================
 def add_meme_placeholder_slide(slide, title_text, placeholder_text, caption_text):
     tx_title = slide.shapes.add_textbox(Inches(1.5), Inches(0.8), Inches(10.3), Inches(0.9))
     tf_t = tx_title.text_frame
@@ -241,45 +120,165 @@ def add_meme_placeholder_slide(slide, title_text, placeholder_text, caption_text
     p_c.font.size = Pt(15)
     p_c.font.color.rgb = COLOR_MUTED
 
-s4 = prs.slides.add_slide(blank_layout)
-add_meme_placeholder_slide(s4, "Reality Check: How It Started vs How It Is Going", 
-                           "[MEME 01 PLACEHOLDER: How It Started vs How It Is Going]", 
-                           "Started by collecting empty snack wrappers in school. Ended up building an automated cloud software platform.")
+# ==========================================================
+# SLIDE 1: Title
+# ==========================================================
+s1 = prs.slides.add_slide(blank_layout)
+tx_s1 = s1.shapes.add_textbox(Inches(1.2), Inches(2.2), Inches(11), Inches(3.5))
+tf_s1 = tx_s1.text_frame
+tf_s1.word_wrap = True
+
+p_title = tf_s1.paragraphs[0]
+r_eco = p_title.add_run()
+r_eco.text = "Eco"
+r_eco.font.name = FONT_SANS
+r_eco.font.size = Pt(64)
+r_eco.font.bold = True
+r_eco.font.color.rgb = COLOR_DARK
+
+r_loop = p_title.add_run()
+r_loop.text = "Loop"
+r_loop.font.name = FONT_SANS
+r_loop.font.size = Pt(64)
+r_loop.font.bold = True
+r_loop.font.color.rgb = COLOR_GREEN
+
+p_sub = tf_s1.add_paragraph()
+p_sub.text = "Circular material systems and zero-cost digital architecture."
+p_sub.font.name = FONT_SANS
+p_sub.font.size = Pt(22)
+p_sub.font.color.rgb = COLOR_MUTED
+p_sub.space_before = Pt(16)
+
+p_sch = tf_s1.add_paragraph()
+p_sch.text = "Swami Sant Dass Public School, Jalandhar"
+p_sch.font.name = FONT_SANS
+p_sch.font.size = Pt(16)
+p_sch.font.bold = True
+p_sch.font.color.rgb = COLOR_GREEN
+p_sch.space_before = Pt(36)
 
 # ==========================================================
-# SLIDE 5: Why Physical Projects Need Software
+# SLIDE 2: Linear Packaging Problem
+# ==========================================================
+s2 = prs.slides.add_slide(blank_layout)
+add_header(s2, "The Packaging Trap: Multi-Layer Plastics", "Why standard municipal recyclers throw clean packaging straight into landfills.")
+
+tx_c1 = s2.shapes.add_textbox(Inches(0.9), Inches(2.3), Inches(5.5), Inches(4.5))
+tf_c1 = tx_c1.text_frame
+tf_c1.word_wrap = True
+p_h1 = tf_c1.paragraphs[0]
+p_h1.text = "The Material Reality"
+p_h1.font.name = FONT_SANS
+p_h1.font.size = Pt(20)
+p_h1.font.bold = True
+p_h1.font.color.rgb = COLOR_RED
+
+add_bullet_point(tf_c1, "Bonded Metal & Plastic:", "Chips and snack packets laminate aluminum foil between plastic film. Separating those layers is chemically difficult and commercially unprofitable.", COLOR_RED)
+add_bullet_point(tf_c1, "100% Landfill Destination:", "Because municipal plants cannot process multi-layer packaging, almost all snack wrappers are burned or dumped into local landfills.", COLOR_RED)
+add_bullet_point(tf_c1, "Clean Waste in Schools:", "Canteens and classrooms generate sacks of clean snack wrappers daily with zero realistic collection logistics.", COLOR_RED)
+
+tx_c2 = s2.shapes.add_textbox(Inches(6.9), Inches(2.3), Inches(5.5), Inches(4.5))
+tf_c2 = tx_c2.text_frame
+tf_c2.word_wrap = True
+p_h2 = tf_c2.paragraphs[0]
+p_h2.text = "The EcoLoop Approach"
+p_h2.font.name = FONT_SANS
+p_h2.font.size = Pt(20)
+p_h2.font.bold = True
+p_h2.font.color.rgb = COLOR_GREEN
+
+add_bullet_point(tf_c2, "Skip Separation, Heat-Compress:", "Instead of separating the foil, we partner to heat-press whole wrappers into dense boards that replace plywood.", COLOR_GREEN)
+add_bullet_point(tf_c2, "Unified Circular Model:", "Unifying scattered school green crafts and outsourced heavy materials into one clean system.", COLOR_GREEN)
+add_bullet_point(tf_c2, "Digital Transparency:", "Building an online catalog so buyers can see exact specifications and request real samples.", COLOR_GREEN)
+
+# ==========================================================
+# SLIDE 3: The Physical Loop (In-House vs NGO Partner)
+# ==========================================================
+s3 = prs.slides.add_slide(blank_layout)
+add_header(s3, "The Physical Loop: In-House Crafts & NGO Partnership", "What we make directly in school, and what we produce with our partner NGO.")
+
+tx_s3 = s3.shapes.add_textbox(Inches(0.9), Inches(2.2), Inches(5.6), Inches(4.8))
+tf_s3 = tx_s3.text_frame
+tf_s3.word_wrap = True
+tf_s3.margin_left = tf_s3.margin_top = 0
+
+products = [
+    ("Student-Made: Seed Paper", "Handmade plantable paper embedded with native seeds, crafted in school."),
+    ("Student-Made: Bioenzymes", "Citrus fruit peels fermented into natural multi-purpose cleaning liquids."),
+    ("Student-Made: Uniform Bags", "Durable tote bags stitched from discarded school uniform fabrics."),
+    ("Student-Made: Eco-Bricks", "PET bottles tightly packed with clean plastic wrappers for simple construction."),
+    ("Student-Made: Bottle Planters", "Upcycled beverage containers for school corridor nursery gardening."),
+    ("NGO Partnership: MLP Sheets", "Heavy-duty boards heat-pressed from snack wrappers using hydraulic machinery.")
+]
+
+for i, (p_name, p_desc) in enumerate(products):
+    p = tf_s3.paragraphs[0] if i == 0 else tf_s3.add_paragraph()
+    if i > 0:
+        p.space_before = Pt(11)
+    
+    is_ngo = "NGO" in p_name
+    dot_color = COLOR_GREEN_LT if is_ngo else COLOR_GREEN
+    
+    r1 = p.add_run()
+    r1.text = "■  " + p_name + "\n"
+    r1.font.name = FONT_SANS
+    r1.font.size = Pt(14.5)
+    r1.font.bold = True
+    r1.font.color.rgb = dot_color
+    
+    r2 = p.add_run()
+    r2.text = "   " + p_desc
+    r2.font.name = FONT_SANS
+    r2.font.size = Pt(13)
+    r2.font.color.rgb = COLOR_MUTED
+
+img_path_s3 = os.path.join(IMAGES_DIR, "sample-mlp.jpg")
+if os.path.exists(img_path_s3):
+    s3.shapes.add_picture(img_path_s3, Inches(6.9), Inches(2.2), width=Inches(5.5), height=Inches(4.5))
+
+# ==========================================================
+# SLIDE 4: Reality Check 01 (Meme Placeholder)
+# ==========================================================
+s4 = prs.slides.add_slide(blank_layout)
+add_meme_placeholder_slide(s4, "Reality Check: How It Started vs How It Is Going", 
+                           "[MEME 01: Teachers thinking we'd just pick up litter vs Building a brand & platform]", 
+                           "Started as scattered classroom craft projects. Turned into a unified circular brand with external partnerships and custom software.")
+
+# ==========================================================
+# SLIDE 5: Why Build a Digital Platform?
 # ==========================================================
 s5 = prs.slides.add_slide(blank_layout)
-add_header(s5, "Why Physical Projects Need Software", "Moving from static school displays to an open, operational platform.")
+add_header(s5, "Why Build a Digital Platform?", "Transforming school crafts into verifiable, specification-backed utility products.")
 
 tx_s5 = s5.shapes.add_textbox(Inches(0.9), Inches(2.2), Inches(5.6), Inches(4.5))
 tf_s5 = tx_s5.text_frame
 tf_s5.word_wrap = True
 p_h5 = tf_s5.paragraphs[0]
-p_h5.text = "Platform Capabilities"
+p_h5.text = "Platform Objectives"
 p_h5.font.name = FONT_SANS
 p_h5.font.size = Pt(20)
 p_h5.font.bold = True
 p_h5.font.color.rgb = COLOR_GREEN
 
-add_bullet_point(tf_s5, "Engineering Specifications:", "Every product includes physical dimensions, density metrics, thermal characteristics, and production lead times.", COLOR_GREEN)
-add_bullet_point(tf_s5, "Direct Transaction Routing:", "Schools and community partners can query stock, request material samples, and submit institutional orders.", COLOR_GREEN)
-add_bullet_point(tf_s5, "Modern Frontend Stack:", "React 18 with TypeScript and Vite for fast client-side navigation and strict type safety.", COLOR_GREEN)
+add_bullet_point(tf_s5, "Engineering Credibility:", "Publishing actual dimensions, material density, thermal ratings, and production lead times so buyers take recycled goods seriously.", COLOR_GREEN)
+add_bullet_point(tf_s5, "Direct Inquiry Routing:", "Giving institutions and partners a friction-free way to query available stock and request physical samples.", COLOR_GREEN)
+add_bullet_point(tf_s5, "Connecting School to Outside World:", "Taking activities happening inside classrooms and presenting them professionally to external organizations.", COLOR_GREEN)
 
 img_path_s5 = os.path.join(IMAGES_DIR, "screen-products.png")
 if os.path.exists(img_path_s5):
     s5.shapes.add_picture(img_path_s5, Inches(6.9), Inches(2.2), width=Inches(5.5), height=Inches(4.5))
 
 # ==========================================================
-# SLIDE 6: Zero-Cost Backend
+# SLIDE 6: Zero-Cost Serverless Backend
 # ==========================================================
 s6 = prs.slides.add_slide(blank_layout)
-add_header(s6, "The Zero-Cost Serverless Backend", "Delivering full transactional workflows without servers or ongoing bills.")
+add_header(s6, "The Zero-Cost Backend: Built on Google Sheets", "Handling live incoming inquiries without paid servers or corporate credit cards.")
 
 steps = [
-    ("STEP 01", "React Client", "User submits an inquiry; client-side validation ensures clean data before transmission."),
-    ("STEP 02", "Apps Script Webhook", "A stateless Google Apps Script endpoint receives and parses JSON payload securely."),
-    ("STEP 03", "Sheets Datastore", "Appends records, updates inventory tracking, and triggers automated email alerts.")
+    ("STEP 01", "React Form", "User fills in their name, product choice, and notes. The browser validates all inputs locally."),
+    ("STEP 02", "Apps Script Webhook", "A free Google Apps Script webhook receives the data payload securely in the cloud."),
+    ("STEP 03", "Sheets Database", "Appends the inquiry row into a live Google Sheet and immediately triggers an email alert.")
 ]
 
 for i, (num, title, desc) in enumerate(steps):
@@ -314,7 +313,6 @@ for i, (num, title, desc) in enumerate(steps):
     p3.font.color.rgb = COLOR_MUTED
     p3.space_before = Pt(8)
 
-# Cost Banner
 banner = s6.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.9), Inches(5.3), Inches(11.5), Inches(1.3))
 banner.fill.solid()
 banner.fill.fore_color.rgb = RGBColor(232, 239, 233)
@@ -325,7 +323,7 @@ tf_ban = banner.text_frame
 tf_ban.word_wrap = True
 p_ban = tf_ban.paragraphs[0]
 r_b1 = p_ban.add_run()
-r_b1.text = "Total Infrastructure Operating Cost:   "
+r_b1.text = "Monthly Infrastructure Bill:   "
 r_b1.font.name = FONT_SANS
 r_b1.font.size = Pt(18)
 r_b1.font.bold = True
@@ -339,96 +337,144 @@ r_b2.font.bold = True
 r_b2.font.color.rgb = COLOR_GREEN
 
 r_b3 = p_ban.add_run()
-r_b3.text = "No credit card required. Zero servers to maintain. 99.9% uptime."
+r_b3.text = "No credit cards, zero server maintenance, and reliable for real order leads."
 r_b3.font.name = FONT_SANS
 r_b3.font.size = Pt(13)
 r_b3.font.color.rgb = COLOR_MUTED
 
 # ==========================================================
-# SLIDE 7: Reality Check 02 (Editable Meme Placeholder)
+# SLIDE 7: Reality Check 02 (Meme Placeholder)
 # ==========================================================
 s7 = prs.slides.add_slide(blank_layout)
 add_meme_placeholder_slide(s7, "Reality Check: The Cloud Bill Dilemma",
-                           "[MEME 02 PLACEHOLDER: $450/mo AWS vs $0 Google Sheets]",
-                           "Enterprise developers arguing about Kubernetes microservices while two high schoolers run production on Google Sheets.")
+                           "[MEME 02: Paying $50/month for cloud databases vs High schoolers using a free Google Sheet]",
+                           "Why spend monthly money on complex database servers when a free Google Sheet captures all your orders?")
 
 # ==========================================================
-# SLIDE 8: Interactive Inquiry Engine
+# SLIDE 8: The Inquiry Engine: An Honest Review
 # ==========================================================
 s8 = prs.slides.add_slide(blank_layout)
-add_header(s8, "Interactive Inquiry Engine", "Handling institutional orders and sample requests with context preservation.")
+add_header(s8, "The Inquiry Engine: An Honest Review", "Built in a single night sprint: functional, basic, and with plenty of room to improve.")
 
 tx_s8 = s8.shapes.add_textbox(Inches(0.9), Inches(2.2), Inches(5.6), Inches(4.5))
 tf_s8 = tx_s8.text_frame
 tf_s8.word_wrap = True
 p_h8 = tf_s8.paragraphs[0]
-p_h8.text = "Order & Sample Workflow"
+p_h8.text = "The Reality of Our MVP"
 p_h8.font.name = FONT_SANS
 p_h8.font.size = Pt(20)
 p_h8.font.bold = True
 p_h8.font.color.rgb = COLOR_GREEN
 
-add_bullet_point(tf_s8, "Contextual Pre-Filling:", "Selecting an item automatically binds its product ID, specifications, and suggested order minimums into form state.", COLOR_GREEN)
-add_bullet_point(tf_s8, "Client-Side Validation:", "Immediate feedback flags incomplete or invalid entries before triggering network dispatches.", COLOR_GREEN)
-add_bullet_point(tf_s8, "Confirmation & Logging:", "A clean confirmation modal displays expected turnaround times while logging data directly to the spreadsheet.", COLOR_GREEN)
+add_bullet_point(tf_s8, "Built in One Night:", "Put together in a single late-night sprint to give the CBSE exhibition judges a working demo to test.", COLOR_GREEN)
+add_bullet_point(tf_s8, "Basic but Working:", "Automatically pre-populates product details and logs records straight into our backend without paying for services.", COLOR_GREEN)
+add_bullet_point(tf_s8, "Room for Improvement:", "Needs automated inventory deduction, better error states, and order tracking. It's an MVP, not final software.", COLOR_GREEN)
 
 img_path_s8 = os.path.join(IMAGES_DIR, "screen-enquire.png")
 if os.path.exists(img_path_s8):
     s8.shapes.add_picture(img_path_s8, Inches(6.9), Inches(2.2), width=Inches(5.5), height=Inches(4.5))
 
 # ==========================================================
-# SLIDE 9: Paradigm Shift: Developer as Architect
+# SLIDE 9: Developer as Architect
 # ==========================================================
 s9 = prs.slides.add_slide(blank_layout)
-add_header(s9, "The Paradigm Shift: Developer as Architect", "How autonomous workflows shift focus from repetitive syntax to system design.")
+add_header(s9, "How I Built It Without Knowing React", "Moving from typing boilerplate code to designing systems with AI agents.")
 
 tx_s9_l = s9.shapes.add_textbox(Inches(0.9), Inches(2.3), Inches(5.5), Inches(4.5))
 tf_s9_l = tx_s9_l.text_frame
 tf_s9_l.word_wrap = True
 p_h9_l = tf_s9_l.paragraphs[0]
-p_h9_l.text = "Traditional Coding"
+p_h9_l.text = "The Traditional Hurdle"
 p_h9_l.font.name = FONT_SANS
 p_h9_l.font.size = Pt(20)
 p_h9_l.font.bold = True
 p_h9_l.font.color.rgb = COLOR_MUTED
 
-add_bullet_point(tf_s9_l, "Manual Syntax Typing:", "Manually typing repetitive component boilerplate and state handlers line by line.", COLOR_MUTED)
-add_bullet_point(tf_s9_l, "Dependency Friction:", "Spending hours searching forum threads to diagnose broken npm packages and imports.", COLOR_MUTED)
-add_bullet_point(tf_s9_l, "Low-Level Bugs:", "Getting stuck on typos and syntax bugs instead of building real user features.", COLOR_MUTED)
+add_bullet_point(tf_s9_l, "Syntax Friction:", "Getting stuck on missing brackets, package version mismatches, and unfamiliar framework setup.", COLOR_MUTED)
+add_bullet_point(tf_s9_l, "Hours on Forums:", "Spending entire evenings digging through Stack Overflow threads instead of building real features.", COLOR_MUTED)
+add_bullet_point(tf_s9_l, "Idea Blocked:", "Giving up on software ideas simply because you haven't spent 6 months memorizing syntax.", COLOR_MUTED)
 
 tx_s9_r = s9.shapes.add_textbox(Inches(6.9), Inches(2.3), Inches(5.5), Inches(4.5))
 tf_s9_r = tx_s9_r.text_frame
 tf_s9_r.word_wrap = True
 p_h9_r = tf_s9_r.paragraphs[0]
-p_h9_r.text = "Autonomous AI Coding"
+p_h9_r.text = "Developer as Architect"
 p_h9_r.font.name = FONT_SANS
 p_h9_r.font.size = Pt(20)
 p_h9_r.font.bold = True
 p_h9_r.font.color.rgb = COLOR_GREEN
 
-add_bullet_point(tf_s9_r, "Define System Constraints:", "You define the core goals, system constraints, component contracts, and visual design rules.", COLOR_GREEN)
-add_bullet_point(tf_s9_r, "Autonomous Agent Edits:", "The AI agent explores your files, writes components, and links routes across the codebase.", COLOR_GREEN)
-add_bullet_point(tf_s9_r, "Automated Verification:", "Automated tools test the code, surface errors, and repair bugs instantly.", COLOR_GREEN)
+add_bullet_point(tf_s9_r, "Define the System Rules:", "You specify the data models, visual style, and constraints in plain language.", COLOR_GREEN)
+add_bullet_point(tf_s9_r, "Agents Write the Code:", "An autonomous agent creates components, connects routes, and modifies multiple files.", COLOR_GREEN)
+add_bullet_point(tf_s9_r, "Focus on Testing:", "Your primary job becomes quality control, testing user flows, and refining the architecture.", COLOR_GREEN)
 
 # ==========================================================
-# SLIDE 10: Reality Check 03 (Editable Meme Placeholder)
+# SLIDE 10: ChatGPT vs Agent Harness (Placeholders for Harman's Screenshots)
 # ==========================================================
 s10 = prs.slides.add_slide(blank_layout)
-add_meme_placeholder_slide(s10, "Reality Check: Learning to Code in 2026",
-                           "[MEME 03 PLACEHOLDER: 400 Pages of Docs vs Writing Clean Specs]",
-                           "Reading 200 pages of manual documentation at 3:00 AM is officially a thing of the past. Define the requirements and let the tools execute.")
+add_header(s10, "Chatbot vs Agent Workspace", "The difference between copy-pasting snippets and letting an agent build inside your files.")
+
+# Left Box: ChatGPT Screenshot Placeholder
+b_chat = s10.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.9), Inches(2.3), Inches(5.5), Inches(4.2))
+b_chat.fill.solid()
+b_chat.fill.fore_color.rgb = COLOR_LIGHT_BG
+b_chat.line.color.rgb = COLOR_BORDER
+b_chat.line.width = Pt(1.5)
+
+tf_bc = b_chat.text_frame
+tf_bc.word_wrap = True
+p_c1 = tf_bc.paragraphs[0]
+p_c1.alignment = PP_ALIGN.CENTER
+p_c1.text = "ChatGPT Web Window"
+p_c1.font.name = FONT_SANS
+p_c1.font.size = Pt(18)
+p_c1.font.bold = True
+p_c1.font.color.rgb = COLOR_MUTED
+
+p_c2 = tf_bc.add_paragraph()
+p_c2.alignment = PP_ALIGN.CENTER
+p_c2.text = "[DROP CHATGPT SCREENSHOT HERE]\n\n• Copy-pasting snippets back and forth\n• Forgets project context easily\n• Cannot see or edit your local project files"
+p_c2.font.name = FONT_SANS
+p_c2.font.size = Pt(13)
+p_c2.font.color.rgb = COLOR_MUTED
+p_c2.space_before = Pt(14)
+
+# Right Box: Agent Workspace Placeholder (AGY / OpenCode)
+b_agy = s10.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(6.9), Inches(2.3), Inches(5.5), Inches(4.2))
+b_agy.fill.solid()
+b_agy.fill.fore_color.rgb = RGBColor(240, 246, 242)
+b_agy.line.color.rgb = COLOR_GREEN
+b_agy.line.width = Pt(1.5)
+
+tf_ba = b_agy.text_frame
+tf_ba.word_wrap = True
+p_a1 = tf_ba.paragraphs[0]
+p_a1.alignment = PP_ALIGN.CENTER
+p_a1.text = "Agent Workspace (Antigravity / OpenCode)"
+p_a1.font.name = FONT_SANS
+p_a1.font.size = Pt(18)
+p_a1.font.bold = True
+p_a1.font.color.rgb = COLOR_GREEN
+
+p_a2 = tf_ba.add_paragraph()
+p_a2.alignment = PP_ALIGN.CENTER
+p_a2.text = "[DROP ANTIGRAVITY SCREENSHOT HERE]\n\n• Reads and edits real repository files\n• Understands full folder structure and context\n• Runs terminal builds and tests autonomously"
+p_a2.font.name = FONT_SANS
+p_a2.font.size = Pt(13)
+p_a2.font.color.rgb = COLOR_DARK
+p_a2.space_before = Pt(14)
 
 # ==========================================================
-# SLIDE 11: Autonomous Coding Loop
+# SLIDE 11: How the Agent Loop Works
 # ==========================================================
 s11 = prs.slides.add_slide(blank_layout)
-add_header(s11, "How the Autonomous Coding Loop Works", "Not a chatbot copying snippets, but an automated cycle that creates and tests code.")
+add_header(s11, "How Working with an Agent Actually Looks", "A practical 4-step loop of specifying, editing, testing, and self-repairing.")
 
 loop_steps = [
-    ("STAGE 01", "Define the Goal", "Write clear requirements, design rules, and data structures in a simple specification document."),
-    ("STAGE 02", "Autonomous Edit", "The agent reads existing files, writes modular components, and links application routes."),
-    ("STAGE 03", "Automated Check", "Automated tools build the code. If an error appears, the agent reads terminal output and fixes it."),
-    ("STAGE 04", "Safe History", "Every successful step is saved into version control, allowing you to experiment freely with zero risk.")
+    ("STAGE 01", "Write the Spec", "Describe what you want in plain language: colors, component layout, and behavior rules."),
+    ("STAGE 02", "Agent Edits Files", "The agent inspects your repository, writes components, and updates project files directly."),
+    ("STAGE 03", "You Test Locally", "You run the app in your browser, click the buttons, and see what works or what broke."),
+    ("STAGE 04", "Agent Fixes Bugs", "You paste the error or unexpected behavior back to the agent; it reads the log and repairs it.")
 ]
 
 for i, (stage, st_title, st_desc) in enumerate(loop_steps):
@@ -464,26 +510,25 @@ for i, (stage, st_title, st_desc) in enumerate(loop_steps):
     p3.space_before = Pt(12)
 
 # ==========================================================
-# SLIDE 12: Introducing OpenCode
+# SLIDE 12: Tools You Can Use: OpenCode
 # ==========================================================
 s12 = prs.slides.add_slide(blank_layout)
-add_header(s12, "Introducing OpenCode", "An open-source autonomous coding agent that runs directly in your terminal.")
+add_header(s12, "Replicating This Workflow: OpenCode", "An open-source terminal agent that gives you the same autonomous capabilities.")
 
 tx_s12 = s12.shapes.add_textbox(Inches(0.9), Inches(2.3), Inches(5.6), Inches(4.5))
 tf_s12 = tx_s12.text_frame
 tf_s12.word_wrap = True
 p_h12 = tf_s12.paragraphs[0]
-p_h12.text = "Why OpenCode?"
+p_h12.text = "Why OpenCode for Students?"
 p_h12.font.name = FONT_SANS
 p_h12.font.size = Pt(20)
 p_h12.font.bold = True
 p_h12.font.color.rgb = COLOR_GREEN
 
-add_bullet_point(tf_s12, "100% Open Source:", "Maintained by Anomaly (GitHub: anomalyco/opencode). Free to use with zero vendor lock-in.", COLOR_GREEN)
-add_bullet_point(tf_s12, "Dual Execution Modes:", "Plan Mode surveys your architecture without editing; Build Mode autonomously edits files and runs tests.", COLOR_GREEN)
-add_bullet_point(tf_s12, "Connects to Any Model:", "Works with free cloud endpoints or completely private offline models on your personal computer.", COLOR_GREEN)
+add_bullet_point(tf_s12, "100% Free & Open Source:", "Created by Anomaly (GitHub: anomalyco/opencode). Zero subscriptions or vendor lock-in.", COLOR_GREEN)
+add_bullet_point(tf_s12, "Lives in Your Terminal:", "Reads your project files, edits code, and runs local commands just like specialized agent harnesses.", COLOR_GREEN)
+add_bullet_point(tf_s12, "Dual Execution Modes:", "Plan Mode reviews architecture safely; Build Mode executes real code changes.", COLOR_GREEN)
 
-# Terminal box
 term_box = s12.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(6.9), Inches(2.3), Inches(5.5), Inches(3.6))
 term_box.fill.solid()
 term_box.fill.fore_color.rgb = COLOR_LIGHT_BG
@@ -531,9 +576,9 @@ p_h13_l.font.size = Pt(20)
 p_h13_l.font.bold = True
 p_h13_l.font.color.rgb = COLOR_GREEN
 
-add_bullet_point(tf_s13_l, "Google Gemini API:", "Sign in to aistudio.google.com for a free key. Generous free tiers with Gemini 1.5 Flash and Gemini 2.0.", COLOR_GREEN)
-add_bullet_point(tf_s13_l, "Groq Cloud:", "Ultra-fast token generation on open-weight models like Llama 3.3 via console.groq.com.", COLOR_GREEN)
-add_bullet_point(tf_s13_l, "GitHub Models:", "Free student access to models like GPT-4o and Claude inside VS Code and GitHub Codespaces.", COLOR_GREEN)
+add_bullet_point(tf_s13_l, "Google Gemini API:", "Sign in to aistudio.google.com for a free key. Generous free limits for fast coding models.", COLOR_GREEN)
+add_bullet_point(tf_s13_l, "Groq Cloud:", "Ultra-fast free inference on open models like Llama 3.3 via console.groq.com.", COLOR_GREEN)
+add_bullet_point(tf_s13_l, "GitHub Models:", "Free student access to preview models inside VS Code and GitHub Codespaces.", COLOR_GREEN)
 
 tx_s13_r = s13.shapes.add_textbox(Inches(6.9), Inches(2.3), Inches(5.5), Inches(4.5))
 tf_s13_r = tx_s13_r.text_frame
@@ -545,17 +590,17 @@ p_h13_r.font.size = Pt(20)
 p_h13_r.font.bold = True
 p_h13_r.font.color.rgb = COLOR_GREEN
 
-add_bullet_point(tf_s13_r, "Completely Private & Local:", "Install from ollama.com. Runs entirely on your laptop hardware without needing an internet connection.", COLOR_GREEN)
-add_bullet_point(tf_s13_r, "Recommended Model:", "qwen2.5-coder:7b delivers outstanding coding logic on standard laptops with 8GB to 16GB of RAM.", COLOR_GREEN)
-add_bullet_point(tf_s13_r, "Zero Latency:", "Instant responses directly on device with zero dependence on external network connectivity.", COLOR_GREEN)
+add_bullet_point(tf_s13_r, "Private & Local:", "Download ollama.com. Runs entirely on your laptop hardware without needing internet.", COLOR_GREEN)
+add_bullet_point(tf_s13_r, "Recommended Model:", "qwen2.5-coder:7b delivers strong coding reasoning on standard student laptops.", COLOR_GREEN)
+add_bullet_point(tf_s13_r, "Zero Latency:", "Fast responses directly on your machine with complete data privacy.", COLOR_GREEN)
 
 # ==========================================================
-# SLIDE 14: Reality Check 04 (Editable Meme Placeholder)
+# SLIDE 14: Reality Check 04 (Meme Placeholder: AI Confidence vs Reality)
 # ==========================================================
 s14 = prs.slides.add_slide(blank_layout)
-add_meme_placeholder_slide(s14, "Reality Check: The Compiler Never Lies",
-                           "[MEME 04 PLACEHOLDER: AI claims bugs are fixed vs Compiler errors]",
-                           "\"I fixed all the bugs,\" says the AI model. The compiler: 47 errors found in 3 files.")
+add_meme_placeholder_slide(s14, "Reality Check: AI Confidence vs Reality",
+                           "[MEME 04: AI confidently saying 'all bugs fixed' vs Clicking the button and the console explodes]",
+                           "Prompting is only 20% of the work. Testing whether the buttons actually work is the other 80%.")
 
 # ==========================================================
 # SLIDE 15: Thank You & QR
@@ -590,12 +635,10 @@ p_ty_sub.font.size = Pt(17)
 p_ty_sub.font.color.rgb = COLOR_MUTED
 p_ty_sub.space_before = Pt(8)
 
-# QR Code
 img_path_qr = os.path.join(IMAGES_DIR, "qr-ecoloop.png")
 if os.path.exists(img_path_qr):
     s15.shapes.add_picture(img_path_qr, Inches(5.4), Inches(2.8), width=Inches(2.5), height=Inches(2.5))
 
-# GitHub link & School
 tx_foot = s15.shapes.add_textbox(Inches(2.5), Inches(5.6), Inches(8.3), Inches(1.2))
 tf_foot = tx_foot.text_frame
 tf_foot.word_wrap = True
@@ -616,7 +659,6 @@ p_f2.font.bold = True
 p_f2.font.color.rgb = COLOR_DARK
 p_f2.space_before = Pt(6)
 
-# Save
 output_path = "/home/h4rman/Projects/ecoloop/docs/presentation/ecoloop-presentation.pptx"
 prs.save(output_path)
-print(f"SUCCESS: Generated {output_path}")
+print(f"SUCCESS: Generated updated {output_path}")
