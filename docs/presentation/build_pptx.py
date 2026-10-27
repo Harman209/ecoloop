@@ -120,6 +120,45 @@ def add_meme_placeholder_slide(slide, title_text, placeholder_text, caption_text
     p_c.font.size = Pt(15)
     p_c.font.color.rgb = COLOR_MUTED
 
+def add_meme_slide(slide, title_text, img_filename, caption_text):
+    # Header
+    tx_box = slide.shapes.add_textbox(Inches(1.0), Inches(0.65), Inches(11.3), Inches(0.85))
+    tf = tx_box.text_frame
+    tf.word_wrap = True
+    p = tf.paragraphs[0]
+    p.alignment = PP_ALIGN.CENTER
+    p.text = title_text
+    p.font.name = FONT_SANS
+    p.font.size = Pt(30)
+    p.font.bold = True
+    p.font.color.rgb = COLOR_DARK
+    
+    # Image (Big meme, max height 4.4 inches, centered)
+    img_path = os.path.join(IMAGES_DIR, img_filename)
+    if os.path.exists(img_path):
+        from PIL import Image
+        with Image.open(img_path) as im:
+            iw, ih = im.size
+        target_h = Inches(4.3)
+        target_w = Inches(4.3 * (iw / ih))
+        if target_w > Inches(8.6):
+            target_w = Inches(8.6)
+            target_h = Inches(8.6 * (ih / iw))
+        left = (Inches(13.33) - target_w) / 2
+        top = Inches(1.65) + (Inches(4.4) - target_h) / 2
+        slide.shapes.add_picture(img_path, left, top, width=target_w, height=target_h)
+    
+    # Caption
+    tx_cap = slide.shapes.add_textbox(Inches(1.8), Inches(6.22), Inches(9.7), Inches(0.8))
+    tf_c = tx_cap.text_frame
+    tf_c.word_wrap = True
+    p_c = tf_c.paragraphs[0]
+    p_c.alignment = PP_ALIGN.CENTER
+    p_c.text = caption_text
+    p_c.font.name = FONT_SANS
+    p_c.font.size = Pt(14)
+    p_c.font.color.rgb = COLOR_MUTED
+
 # ==========================================================
 # SLIDE 1: Title
 # ==========================================================
@@ -259,12 +298,11 @@ p_m2.font.color.rgb = COLOR_MUTED
 p_m2.space_before = Pt(12)
 
 # ==========================================================
-# SLIDE 4: Reality Check 01 (Meme Placeholder)
+# SLIDE 4: How It Started vs How It's Going (Meme)
 # ==========================================================
 s4 = prs.slides.add_slide(blank_layout)
-add_meme_placeholder_slide(s4, "Reality Check: How It Started vs How It Is Going", 
-                           "[MEME 01: Teachers thinking we'd just pick up litter vs Building a brand & platform]", 
-                           "Started as scattered classroom craft projects. Turned into a unified circular brand with external partnerships and custom software.")
+add_meme_slide(s4, "how it started vs how it's going", "reality-check.jpg", 
+               "Started as scattered classroom craft projects. Turned into a unified circular brand with external partnerships and custom software.")
 
 # ==========================================================
 # SLIDE 5: Why Build a Digital Platform?
@@ -366,12 +404,11 @@ r_b3.font.size = Pt(13)
 r_b3.font.color.rgb = COLOR_MUTED
 
 # ==========================================================
-# SLIDE 7: Reality Check 02 (Meme Placeholder)
+# SLIDE 7: Why Our Database Bill Is Literally $0 (Meme)
 # ==========================================================
 s7 = prs.slides.add_slide(blank_layout)
-add_meme_placeholder_slide(s7, "Reality Check: The Cloud Bill Dilemma",
-                           "[MEME 02: Paying $50/month for cloud databases vs High schoolers using a free Google Sheet]",
-                           "Why spend monthly money on complex database servers when a free Google Sheet captures all your orders?")
+add_meme_slide(s7, "why our database bill is literally $0", "buff-jack.jpeg",
+               "Why spend monthly money on complex database servers when a free Google Sheet captures all your incoming inquiries?")
 
 # ==========================================================
 # SLIDE 8: The Inquiry Engine: An Honest Review
@@ -630,12 +667,11 @@ add_bullet_point(tf_s13_r, "Recommended Model:", "qwen2.5-coder:7b delivers stro
 add_bullet_point(tf_s13_r, "Zero Latency:", "Fast responses directly on your machine with complete data privacy.", COLOR_GREEN)
 
 # ==========================================================
-# SLIDE 14: Reality Check 04 (Meme Placeholder: AI Confidence vs Reality)
+# SLIDE 14: Deployed Without Testing (Meme)
 # ==========================================================
 s14 = prs.slides.add_slide(blank_layout)
-add_meme_placeholder_slide(s14, "Reality Check: AI Confidence vs Reality",
-                           "[MEME 04: AI confidently saying 'all bugs fixed' vs Clicking the button and the console explodes]",
-                           "Prompting is only 20% of the work. Testing whether the buttons actually work is the other 80%.")
+add_meme_slide(s14, "deployed without testing", "nochecking.jpg",
+               "Prompting is only 20% of the work. Clicking every button to see what actually broke is the other 80%.")
 
 # ==========================================================
 # SLIDE 15: Thank You & QR
