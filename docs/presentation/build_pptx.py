@@ -193,10 +193,10 @@ add_bullet_point(tf_c2, "Unified Circular Model:", "Unifying scattered school gr
 add_bullet_point(tf_c2, "Digital Transparency:", "Building an online catalog so buyers can see exact specifications and request real samples.", COLOR_GREEN)
 
 # ==========================================================
-# SLIDE 3: The Physical Loop (In-House vs NGO Partner)
+# SLIDE 3: The Physical Loop
 # ==========================================================
 s3 = prs.slides.add_slide(blank_layout)
-add_header(s3, "The Physical Loop: In-House Crafts & NGO Partnership", "What we make directly in school, and what we produce with our partner NGO.")
+add_header(s3, "The Physical Loop", "Six circular products systematically diverted from waste streams.")
 
 tx_s3 = s3.shapes.add_textbox(Inches(0.9), Inches(2.2), Inches(5.6), Inches(4.8))
 tf_s3 = tx_s3.text_frame
@@ -233,9 +233,30 @@ for i, (p_name, p_desc) in enumerate(products):
     r2.font.size = Pt(13)
     r2.font.color.rgb = COLOR_MUTED
 
-img_path_s3 = os.path.join(IMAGES_DIR, "sample-mlp.jpg")
-if os.path.exists(img_path_s3):
-    s3.shapes.add_picture(img_path_s3, Inches(6.9), Inches(2.2), width=Inches(5.5), height=Inches(4.5))
+# Right Placeholder for Meme ("bro think he recyclable")
+box_s3 = s3.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(6.9), Inches(2.2), Inches(5.5), Inches(4.5))
+box_s3.fill.solid()
+box_s3.fill.fore_color.rgb = RGBColor(240, 246, 242)
+box_s3.line.color.rgb = COLOR_GREEN
+box_s3.line.width = Pt(1.5)
+
+tf_s3_r = box_s3.text_frame
+tf_s3_r.word_wrap = True
+p_m1 = tf_s3_r.paragraphs[0]
+p_m1.alignment = PP_ALIGN.CENTER
+p_m1.text = '[MEME: "bro think he recyclable"]'
+p_m1.font.name = FONT_SANS
+p_m1.font.size = Pt(18)
+p_m1.font.bold = True
+p_m1.font.color.rgb = COLOR_GREEN
+
+p_m2 = tf_s3_r.add_paragraph()
+p_m2.alignment = PP_ALIGN.CENTER
+p_m2.text = "(Snack packaging trying to enter the recycling bin)\n\nDrop your meme image here or delete this box"
+p_m2.font.name = FONT_SANS
+p_m2.font.size = Pt(13)
+p_m2.font.color.rgb = COLOR_MUTED
+p_m2.space_before = Pt(12)
 
 # ==========================================================
 # SLIDE 4: Reality Check 01 (Meme Placeholder)
@@ -265,9 +286,11 @@ add_bullet_point(tf_s5, "Engineering Credibility:", "Publishing actual dimension
 add_bullet_point(tf_s5, "Direct Inquiry Routing:", "Giving institutions and partners a friction-free way to query available stock and request physical samples.", COLOR_GREEN)
 add_bullet_point(tf_s5, "Connecting School to Outside World:", "Taking activities happening inside classrooms and presenting them professionally to external organizations.", COLOR_GREEN)
 
-img_path_s5 = os.path.join(IMAGES_DIR, "screen-products.png")
+img_path_s5 = os.path.join(IMAGES_DIR, "screen-home-url.png")
+if not os.path.exists(img_path_s5):
+    img_path_s5 = os.path.join(IMAGES_DIR, "screen-home.png")
 if os.path.exists(img_path_s5):
-    s5.shapes.add_picture(img_path_s5, Inches(6.9), Inches(2.2), width=Inches(5.5), height=Inches(4.5))
+    s5.shapes.add_picture(img_path_s5, Inches(6.8), Inches(2.8), width=Inches(5.6))
 
 # ==========================================================
 # SLIDE 6: Zero-Cost Serverless Backend
