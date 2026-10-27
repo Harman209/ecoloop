@@ -243,7 +243,7 @@ products_s3 = [
     ("STUDENT-MADE", "Uniform Bags", "Durable everyday tote bags stitched from discarded school uniform fabrics.", False),
     ("STUDENT-MADE", "Eco-Bricks", "PET bottles tightly packed with clean plastic wrappers for modular garden walls and simple structures.", False),
     ("STUDENT-MADE", "Bottle Planters", "Upcycled beverage containers for school corridor nursery and vertical greenery installations.", False),
-    ("NGO PARTNER", "MLP Sheets", "Heavy-duty structural boards heat-pressed from snack packaging using industrial hydraulic machinery.", True),
+    ("BULK EXCHANGE", "MLP Sheets", "Heavy-duty structural boards heat-pressed by an external NGO from bulk wrapper batches.", True),
 ]
 
 col_w = Inches(3.6)
@@ -302,13 +302,13 @@ for idx, (badge, name, desc, is_ngo) in enumerate(products_s3):
 # ==========================================================
 s4 = prs.slides.add_slide(blank_layout)
 add_meme_slide(s4, "how it started vs how it's going", "reality-check.jpg", 
-               "Started as scattered classroom craft projects. Turned into a unified circular brand with external partnerships and custom software.")
+               "Started as scattered classroom craft projects. Turned into a unified circular brand with bulk material exchange and custom software.")
 
 # ==========================================================
 # SLIDE 5: Why Build a Digital Platform?
 # ==========================================================
 s5 = prs.slides.add_slide(blank_layout)
-add_header(s5, "Why Build a Digital Platform?", "Transforming school crafts into verifiable, specification-backed utility products.")
+add_header(s5, "Why Build a Digital Platform?", "Transforming scattered school crafts into a unified, public circular initiative.")
 
 tx_s5 = s5.shapes.add_textbox(Inches(0.9), Inches(2.2), Inches(5.6), Inches(4.5))
 tf_s5 = tx_s5.text_frame
@@ -320,8 +320,8 @@ p_h5.font.size = Pt(20)
 p_h5.font.bold = True
 p_h5.font.color.rgb = COLOR_GREEN
 
-add_bullet_point(tf_s5, "Engineering Credibility:", "Publishing actual dimensions, material density, thermal ratings, and production lead times so buyers take recycled goods seriously.", COLOR_GREEN)
-add_bullet_point(tf_s5, "Direct Inquiry Routing:", "Giving institutions and partners a friction-free way to query available stock and request physical samples.", COLOR_GREEN)
+add_bullet_point(tf_s5, "Unified Public Presence:", "Showcasing all circular materials and workflows in one public place so it operates as a serious initiative, not scattered classroom crafts.", COLOR_GREEN)
+add_bullet_point(tf_s5, "Direct Inquiry Routing:", "Giving outside people and institutions a friction-free way to contact us and request physical samples.", COLOR_GREEN)
 add_bullet_point(tf_s5, "Connecting School to Outside World:", "Taking activities happening inside classrooms and presenting them professionally to external organizations.", COLOR_GREEN)
 
 img_path_s5 = os.path.join(IMAGES_DIR, "screen-home-url.png")
