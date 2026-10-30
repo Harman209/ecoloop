@@ -14,7 +14,8 @@ import {
   ShieldCheck, 
   Lightbulb, 
   Layers,
-  Award
+  Award,
+  Globe
 } from 'lucide-react';
 
 export const Home: React.FC = () => {
@@ -27,6 +28,10 @@ export const Home: React.FC = () => {
         <div className="container hero-grid">
           <div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.75rem' }}>
+              <span className="hero-greeting-badge">
+                <Globe size={13} style={{ color: 'var(--color-primary-green)' }} />
+                <span>hi reunion island</span>
+              </span>
               <span className="eyebrow">
                 <Leaf size={13} />
                 ENVIRONMENT &amp; SUSTAINABILITY

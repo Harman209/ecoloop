@@ -172,6 +172,21 @@ img {
   background-color: var(--color-accent-orange-subtle);
 }
 
+.hero-greeting-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  background-color: var(--color-surface-subtle);
+  border: 1px solid var(--color-card-border);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1rem;
+}
+
 .section-title {
   font-size: 2.25rem;
   letter-spacing: -0.02em;
